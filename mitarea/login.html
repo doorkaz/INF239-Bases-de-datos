@@ -1,70 +1,42 @@
-
+<!DOCTYPE html>
 <html>  
-<style type="text/css">
-    body{   
-    background: #eef;  
-    }  
-    #frm{  
-        border: solid gray 1px;  
-        width:25%;  
-        border-radius: 2px;  
-        margin: 120px auto;  
-        background: white;  
-        padding: 50px;  
-    }  
-    #btn{  
-        color: #fff;  
-        background: #337ab7;  
-        padding: 7px;  
-        margin-left: 70%;  
-    }  
-</style>>
-
 <head>  
     <title>PHP login system</title>  
-    <!--insert style.css file inside index.html --> 
-    <link rel = "stylesheet" type = "text/css" href = "style.css">   
+    <meta charset="UTF-8">
+    <link rel = "stylesheet" type = "text/css" href = "css/login.css">   
 </head>  
 <body>  
-    <div id = "frm">  
-        <h1>Login</h1>  
+    <div id = "form">  
+        <h1>Iniciar sesión</h1>  
         <form name="f1" action = "./PHP/login.php" onsubmit = "return validation()" method = "POST">  
-            <p>  
-                <label> UserName: </label>  
-                <input type = "text" id ="uname" name  = "uname" />  
-            </p>  
-            <p>  
-                <label> Password: </label>  
-                <input type = "password" id ="password" name  = "password" />  
-            </p>  
-            <p>     
-                <input type =  "submit" id = "btn" value = "Login" />  
-            </p>  
+            <p><input type = "text" id ="uname" name  = "uname" placeholder="Nombre de usuario"/></p>
+            <p><input type = "password" id ="password" name  = "password" placeholder="Contraseña"/></p>
+            <p><input type =  "submit" id = "btn" value = "Login" /></p>
         </form>  
     </div>  
    <!-- validation for empty field  --> 
     <script>  
-            function validation()  
-            {  
-                var id=document.f1.user.value;  
-                var ps=document.f1.pass.value;  
-                if(id.length=="" && ps.length=="") {  
-                    alert("User Name and Password fields are empty");  
-                    return false;  
-                }  
-                else  
-                {  
-                    if(id.length=="") {  
-                        alert("User Name is empty");  
-                        return false;  
-                    }   
-                    if (ps.length=="") {  
-                    alert("Password field is empty");  
-                    return false;  
-                    }  
-                }                             
+        function validation()  
+        {  
+            var id=document.f1.user.value;  
+            var ps=document.f1.pass.value;  
+            if(id.length=="" && ps.length=="") {  
+                alert("User Name and Password fields are empty");  
+                return false;  
             }  
-        </script>  
+            else  
+            {  
+                if(id.length=="") {  
+                    alert("User Name is empty");  
+                    return false;  
+                }   
+                if (ps.length=="") {  
+                alert("Password field is empty");  
+                return false;  
+                }  
+            }                             
+        }  
+    </script>  
 </body>     
 
 </html>  
