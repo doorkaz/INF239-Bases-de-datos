@@ -30,14 +30,7 @@
   </head>
 
   <body class="index">
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=277385395761685";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+  
     <header class="header contain-to-grid">
       <nav class="top-bar" data-topbar>
         <ul class="title-area">
@@ -60,7 +53,7 @@
               <li class="item "><a href="/mitarea/index.html">phpMyAdmin</a></li>
           </ul>
           <ul class="right">
-            <li class="item "><a href="/mitarea/index.html"><?=$_SESSION['Nombre']?></a></li>>
+            <li class="item "><a href="/mitarea/PHP/cuenta.php"><?=$_SESSION['Nombre']?></a></li>>
           </ul>
         </section>
       </nav>
@@ -87,8 +80,7 @@
 <div class="row">
   <div class="large-12 columns">
     <p>
-      You have successfully installed XAMPP on this system! Now you can start using Apache, MariaDB, PHP and other components.
-      You can find more info in the <a href="/dashboard/faq.html">FAQs</a> section or check the <a href="/dashboard/howto.html">HOW-TO Guides</a> for getting started with PHP applications.
+      Ho
     </p>
     <p>
       XAMPP is meant only for development purposes. It has certain configuration settings that make it easy to develop locally but that are insecure if you want to have your installation accessible to others.
@@ -115,26 +107,6 @@
     </div>
 
     <footer class="footer row">
-      <div class="columns">
-        <div class="footer_lists-container row collapse">
-          <div class="footer_social columns large-2">
-            <ul class="social">
-  <li class="twitter"><a href="https://twitter.com/apachefriends">Follow us on Twitter</a></li>
-  <li class="facebook"><a href="https://www.facebook.com/we.are.xampp">Like us on Facebook</a></li>
-</ul>
-
-            <p class="footer_copyright">Copyright (c) 2022, Apache Friends</p>
-          </div>
-          <ul class="footer_links columns large-9">
-            <li><a href="https://www.apachefriends.org/blog.html">Blog</a></li>
-            <li><a href="/privacy_policy.html">Privacy Policy</a></li>
-            <li>
-<a target="_blank" href="http://www.fastly.com/">                CDN provided by
-                <img width="48" data-2x="/dashboard/images/fastly-logo@2x.png" src="/dashboard/images/fastly-logo.png" />
-</a>            </li>
-          </ul>
-        </div>
-      </div>
     </footer>
 
     <!-- JS Libraries -->
