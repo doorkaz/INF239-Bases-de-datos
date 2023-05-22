@@ -5,7 +5,7 @@ list($a, $b, $c) = $my_array;
 echo "I have several animals, a $a, a $b and a $c.";
 echo count($my_array);
 
-if (isset($_POST['uname']) && isset($_POST['password'])) {
+if (isset($_POST['Nombre']) && isset($_POST['Tipo'])) {
 
     function validate($data){
 
@@ -19,9 +19,9 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 
     }
 
-    $uname = validate($_POST['uname']);
+    $Nombre = validate($_POST['Nombre']);
 
-    $pass = validate($_POST['password']);
+    $Tipo = validate($_POST['Tipo']);
 
     if (empty($uname)) {
 
@@ -29,23 +29,28 @@ if (isset($_POST['uname']) && isset($_POST['password'])) {
 
         exit();
 
-    }else if(empty($pass)){
+    }else if(empty($Tipo)){
 
         header("Location: ../login.html?error=Password is required");
 
         exit();
 
     }else{
+        if ($Tipo == 1){
+            $sql = "SELECT * FROM paquetes WHERE Nombre_pack='$Nombre'";
 
-        $sql = "SELECT * FROM usuarios WHERE Nombre='$uname' AND Contrasena='$pass'";
+            $result = mysqli_query($conn, $sql);
+        }
+        else{
+            $sql = "SELECT * FROM hoteles WHERE Nombre_hotel='$Nombre'";
 
-        $result = mysqli_query($conn, $sql);
-
+            $result = mysqli_query($conn, $sql);
+        }
         if (mysqli_num_rows($result) === 1) {
 
             $row = mysqli_fetch_assoc($result);
 
-            if ($row['Nombre'] === $uname && $row['Contrasena'] === $pass) {
+            if ($row['Nombre'] === $Nombre) {
 
                 echo "Logged in!";
 
