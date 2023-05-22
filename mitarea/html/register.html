@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+    <link rel = "stylesheet" type = "text/css" href = "../css/auth.css"> 
+
+     
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body class ="body-register d-flex justify-content-center align-items-center vh-100">
+    <div class="container justify-content-center align-items-center col-sm-6 col-md-4 col-lg-4 col-xl-4">
+        <div class="bg-light p-4 rounded">
+            <h2 class="text-center fs-2">PrestigeTravels</h2>
+            <hr style="height: 3px;">
+            <h3 class="text-center fs-3"> Registro</h3>
+            <form>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="nombre">Nombre de usuario</label>
+                        <input type="text" class="form-control" id="nombre" placeholder="John Pork">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="fecha_nacimiento">Fecha de nacimiento</label>
+                        <input type="date" class="form-control" id="fecha_nacimiento" placeholder="2017-07-21">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="johnpork@gmail.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="password">Contraseña</label>
+                        <input type="password" class="form-control" id="password" placeholder="Contraseña">
+                    </div>
+
+                    <div class="d-grid form-group mt-2">
+                        <button class = "btn btn-success" type =  "submit" id = "btn">Registrarse</button>
+                    </div>
+                    <div class="form-group">
+                        <p><a class="check-acc" href="login.html">¿Ya tienes cuenta?</a></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>
