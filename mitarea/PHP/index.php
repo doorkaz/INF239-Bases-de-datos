@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <?php
 	session_start();
 	if(!ISSET($_SESSION['Correo'])){
@@ -12,45 +12,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>PrestigeTravels</title>
+
+  <!-- CSS -->
+  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+  <!-- BOOTSTRAP -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
-<body class="index">
-
-  <header class="header contain-to-grid">
-    <nav class="top-bar" data-topbar>
-      <ul class="title-area">
-        <li class="name">
-          <h1><a href="/mitarea/index.html">Index</a></h1>
-        </li>
-        <li class="toggle-topbar menu-icon">
-          <a href="#">
-            <span>Menu</span>
-          </a>
-        </li>
-      </ul>
-
-      <section class="top-bar-section">
-        <!-- Left Nav Section -->
-        <ul class="left">
-            <li class="item "><a href="/mitarea/index.html">FAQs</a></li>
-            <li class="item "><a href="/mitarea/index.html">HOW-TO Guides</a></li>
-            <li class="item "><a target="_blank" href="/dashboard/phpinfo.php">PHPInfo</a></li>
-            <li class="item "><a href="/mitarea/index.html">phpMyAdmin</a></li>
-        </ul>
-        <ul class="right">
-          <li class="item "><a href="cuenta.php"><?=$_SESSION['Nombre']?></a></li>>
-        </ul>
-      </section>
+<body>
+    <nav class="d-flex navbar navbar-expand-lg navbar-light bg-primary">
+        <a class="indexbar ms-3 fs-4 fw-" href="#">PrestigeTravels</a>
+        <a class="indexbar m-3" href="#">Hoteles</a>
+        <a class="indexbar m-3" href="#">Paquetes</a>
+        <a class="indexbar m-3" href="#">Carrito</a>
+        <a class="indexbar m-3 align-items-end justify-content-end" href="cuenta.php">Usuario < <?=$_SESSION['Nombre']?> ></a>
     </nav>
-  </header>
+    
+    <footer class="footer row">
+    </footer>
 
-  
-  
-  <footer class="footer row">
-  </footer>
-
-  <!-- JS Libraries -->
-  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-  <script src="/dashboard/javascripts/all.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>

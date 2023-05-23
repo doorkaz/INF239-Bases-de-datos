@@ -1,5 +1,4 @@
-<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="/dashboard/javascripts/all.js" type="text/javascript"></script>
+<!DOCTYPE html>
 <?php
 	session_start();
 	if(!ISSET($_SESSION['Correo'])){
@@ -7,7 +6,7 @@
 	}
 ?>
 <html lang="en">
-  <head>
+<head>
    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,66 +14,33 @@
     
     
     <title>Cuenta</title>
-  </head>
+    <!-- CSS -->
+    <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
 
-  <body class="index">
-  
-    <header class="header contain-to-grid">
-      <nav class="top-bar" data-topbar>
-        <ul class="title-area">
-          <li class="name">
-            <h1><a href="/mitarea/index.html">Cuenta</a></h1>
-          </li>
-          <li class="toggle-topbar menu-icon">
-            <a href="#">
-              <span>Menu</span>
-            </a>
-          </li>
-        </ul>
+<body class="index">
+    <nav class="d-flex navbar navbar-expand-lg navbar-light bg-primary">
+        <a class="indexbar ms-3 fs-4 fw-" href="#">PrestigeTravels</a>
+        <a class="indexbar m-3" href="#">Hoteles</a>
+        <a class="indexbar m-3" href="#">Paquetes</a>
+        <a class="indexbar m-3" href="#">Carrito</a>
+        <a class="indexbar m-3 align-items-end justify-content-end" href="cuenta.php">Usuario < <?=$_SESSION['Nombre']?> ></a>
+    </nav>
 
-        <section class="top-bar-section">
-          <!-- Left Nav Section -->
-          <ul class="left">
-              <li class="item "><a href="/mitarea/PHP/index.php">Index</a></li>
-              <li class="item "><a href="/mitarea/index.html">HOW-TO Guides</a></li>
-              <li class="item "><a target="_blank" href="/dashboard/phpinfo.php">PHPInfo</a></li>
-              <li class="item "><a href="/mitarea/index.html">phpMyAdmin</a></li>
-          </ul>
-          <ul class="right">
-            <li class="item "><a href="cuenta.php"><?=$_SESSION['Nombre']?></a></li>>
-          </ul>
-        </section>
-      </nav>
-    </header>
-
-    <div class="wrapper">
-      <div class="hero">
-  <div class="row">
-    <div class="large-12 columns">
-      <h1>
-        Cuenta <span><?=$_SESSION['Nombre']?></span></h1>
+    <div class="row">
+        <div class="large-12 columns">
+            <h2>Bienvenido <?=$_SESSION['Nombre']?>, ¡esta es tu pagina!</h2>
+        </div>
     </div>
-    
-  </div>
-</div>
-<div class="row">
-  <div class="large-12 columns">
-    <h2>Bienvenido <?=$_SESSION['Nombre']?>, ¡esta es tu pagina!</h2>
-  </div>
-</div>
-<div class="row">
-  <div class="large-12 columns">
-    <p>
-      Tu nombre es: <?=$_SESSION['Nombre']?>
-    </p>
-    <p>
-      Tu correo es: <?=$_SESSION['Correo']?>
-    </p>
-    <p>
-    Esta es su lista:
-    </p>
-  </div>
-</div>
+    <div class="row">
+        <div class="large-12 columns">
+            <p>Tu nombre es: <?=$_SESSION['Nombre']?></p>
+            <p>Tu correo es: <?=$_SESSION['Correo']?></p>
+            <p>Esta es su lista:</p>
+        </div>
+    </div>
 
 
 
@@ -82,6 +48,6 @@
 
     <footer class="footer row">
     </footer>
-
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
 </html>
