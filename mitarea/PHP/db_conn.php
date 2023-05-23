@@ -1,14 +1,14 @@
 <?php
 
-$sname= "localhost";
+$servername= "localhost";
 
-$unmae= "root";
+$username= "root";
+
+$database = "lab2";
 
 $password = "";
 
-$db_name = "tarea";
-
-$conn = mysqli_connect($sname, $unmae, $password, $db_name);
+$conn = mysqli_connect($servername, $username, $password, $database);
 
 if (!$conn) {
 
