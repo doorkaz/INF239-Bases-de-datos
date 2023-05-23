@@ -21,6 +21,7 @@
 
 <body>
     <nav class="d-flex navbar navbar-expand-lg navbar-light bg-primary">
+        <img src="../images/Logo.png" width="100" height="100">
         <a class="indexbar ms-3 fs-4 fw-" href="#">PrestigeTravels</a>
         <a class="indexbar m-3" href="#">Hoteles</a>
         <a class="indexbar m-3" href="#">Paquetes</a>
