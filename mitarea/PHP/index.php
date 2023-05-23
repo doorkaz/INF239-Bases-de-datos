@@ -27,8 +27,13 @@
         <a class="indexbar m-3" href="#">Paquetes</a>
         <a class="indexbar m-3" href="#">Carrito</a>
         <a class="indexbar m-3 align-items-end justify-content-end" href="cuenta.php">Usuario < <?=$_SESSION['Nombre']?> ></a>
-    </nav>
-    
+
+      </nav>
+    <form action="search.php" method="GET" onsubmit="return validation()" method = "POST">
+        <input id="search" type="nombre" placeholder="Type here">
+        <input id="submit" type="submit" value="Search">
+        <input type="date" name="fecha" value="<?php echo (isset ($_POST['date_from'])) ? $_POST['date_from']: ''; ?>" />
+    </form>
     <footer class="footer row">
     </footer>
 
