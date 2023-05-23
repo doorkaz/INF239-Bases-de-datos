@@ -8,23 +8,13 @@
 ?>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <!-- Always force latest IE rendering engine or request Chrome Frame -->
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Use title if it's in the page YAML frontmatter -->
-    <title>Tarea</title>
-
-
-    <link href="/dashboard/stylesheets/normalize.css" rel="stylesheet" type="text/css" /><link href="/dashboard/stylesheets/all.css" rel="stylesheet" type="text/css" />
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-
-    <script src="/dashboard/javascripts/modernizr.js" type="text/javascript"></script>
-
-
-
-
+   
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <title>Cuenta</title>
   </head>
 
   <body class="index">
@@ -51,7 +41,7 @@
               <li class="item "><a href="/mitarea/index.html">phpMyAdmin</a></li>
           </ul>
           <ul class="right">
-            <li class="item "><a href="/mitarea/cuenta.html"><?=$_SESSION['Nombre']?></a></li>>
+            <li class="item "><a href="cuenta.php"><?=$_SESSION['Nombre']?></a></li>>
           </ul>
         </section>
       </nav>

@@ -48,8 +48,6 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
                 echo "Logged in!";
 
-                $_SESSION['Correo'] = $row['Correo'];
-
                 $_SESSION['Nombre'] = $row['Nombre'];
 
                 $_SESSION['Correo'] = $row['Correo'];
