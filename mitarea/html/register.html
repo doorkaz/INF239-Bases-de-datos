@@ -17,23 +17,23 @@
             <h2 class="text-center fs-2">PrestigeTravels</h2>
             <hr style="height: 3px;">
             <h3 class="text-center fs-3"> Registro</h3>
-            <form>
+            <form action = "../PHP/register.php"  method = "POST">
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form-label" for="nombre">Nombre de usuario</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="John Pork">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="John Pork">
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="fecha_nacimiento">Fecha de nacimiento</label>
-                        <input type="date" class="form-control" id="fecha_nacimiento" max="2005-05-01">
+                        <input type="date" class="form-control" id="fechanac" name="fechanac" max="2005-05-01">
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="johnpork@gmail.com">
+                        <input type="email" class="form-control" id="correo" name="correo" placeholder="johnpork@gmail.com">
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="password">Contraseña</label>
-                        <input type="password" class="form-control" id="password" placeholder="Contraseña">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
                     </div>
 
                     <div class="d-grid form-group mt-2">
