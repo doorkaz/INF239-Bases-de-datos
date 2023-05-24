@@ -27,7 +27,9 @@
         <a class="indexbar m-3" href="#">Paquetes</a>
         <a class="indexbar m-3" href="#">Carrito</a>
         <a class="indexbar m-3 align-items-end justify-content-end" href="cuenta.php">Usuario < <?=$_SESSION['Nombre']?> ></a>
-
+        <form action="logout.php" method="post" position="right"> 
+          <input type="submit" value="Logout"> 
+        </form> 
       </nav>
     <form action="search.php" method="GET" onsubmit="return validation()" method = "POST">
         <input id="search" type="nombre" placeholder="Type here">
