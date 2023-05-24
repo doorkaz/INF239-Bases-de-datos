@@ -21,30 +21,60 @@
 </head>
 
 <body class="index">
-    <nav class="d-flex navbar navbar-expand-lg navbar-light bg-primary">
-        <a class="indexbar ms-3 fs-4 fw-" href="#">PrestigeTravels</a>
-        <a class="indexbar m-3" href="#">Hoteles</a>
-        <a class="indexbar m-3" href="#">Paquetes</a>
-        <a class="indexbar m-3" href="#">Carrito</a>
-        <a class="indexbar m-3 align-items-end justify-content-end" href="cuenta.php">Usuario < <?=$_SESSION['Nombre']?> ></a>
-    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1b3039">
+		<div class="container-fluid">
+			<a class="navbar-brand" style="color: white" href="index.php">PrestigeTravels</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link active" style="color: white" href="paquetes.php">Paquetes</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" style="color: white" href="hoteles.php">Hoteles</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" style="color: white" href="cart.php">Carrito</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" style="color: white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Cuenta
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="cuenta.php">Mi perfil</a></li>
+							<li><a class="dropdown-item" href="reviews.php">Reseñas</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="logout.php">Cerrar sesión</a></li>
+						</ul>
+					</li>
+					
+				</ul>
+				<span class="navbar-text me-2" style="color: white">
+					Cuenta activa en @<?=$_SESSION['Nombre']?>
+				</span>	
+				<form class="d-flex">
+					<input class="form-control me-2" style="color: #1b3039" type="search" placeholder="Buscar" aria-label="Search">
+					<button class="btn btn-outline-light btn-light" style="color: black" type="submit">Buscar</button>
+				</form>
+			</div>
+		</div>
+	</nav>
 
-    <div class="row">
-        <div class="large-12 columns">
+    <div class="container">
+        <div class="row">
             <h2>Bienvenido <?=$_SESSION['Nombre']?>, ¡esta es tu pagina!</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="large-12 columns">
             <p>Tu nombre es: <?=$_SESSION['Nombre']?></p>
             <p>Tu correo es: <?=$_SESSION['Correo']?></p>
             <p>Esta es su lista:</p>
         </div>
     </div>
+    
 
 
 
-    </div>
+    
 
     <footer class="footer row">
     </footer>

@@ -7,33 +7,78 @@
 ?>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>PrestigeTravels</title>
+	<title>PrestigeTravels</title>
 
-  <!-- CSS -->
-  <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
-  <!-- BOOTSTRAP -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<!-- CSS -->
+	<link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+	<!-- BOOTSTRAP -->
+  	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
-    <nav class="d-flex navbar navbar-expand-lg navbar-light bg-primary">
-        <img src="../images/Logo.png" width="100" height="100">
-        <a class="indexbar ms-3 fs-4 fw-" href="#">PrestigeTravels</a>
-        <a class="indexbar m-3" href="#">Hoteles</a>
-        <a class="indexbar m-3" href="#">Paquetes</a>
-        <a class="indexbar m-3" href="#">Carrito</a>
-        <a class="indexbar m-3 align-items-end justify-content-end" href="cuenta.php">Usuario < <?=$_SESSION['Nombre']?> ></a>
+	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1b3039">
+		<div class="container-fluid">
+			<a class="navbar-brand" style="color: white" href="index.php">PrestigeTravels</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link active" style="color: white" href="paquetes.php">Paquetes</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" style="color: white" href="hoteles.php">Hoteles</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" style="color: white" href="cart.php">Carrito</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" style="color: white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Cuenta
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="cuenta.php">Mi perfil</a></li>
+							<li><a class="dropdown-item" href="reviews.php">Reseñas</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="logout.php">Cerrar sesión</a></li>
+						</ul>
+					</li>
+					
+				</ul>
+				<span class="navbar-text me-2" style="color: white">
+					Cuenta activa en @<?=$_SESSION['Nombre']?>
+				</span>	
+				<form class="d-flex">
+					<input class="form-control me-2" style="color: #1b3039" type="search" placeholder="Buscar" aria-label="Search">
+					<button class="btn btn-outline-light btn-light" style="color: black" type="submit">Buscar</button>
+				</form>
+			</div>
+		</div>
+	</nav>
+	
 
-      </nav>
-    <form action="search.php" method="GET" onsubmit="return validation()" method = "POST">
-        <input id="search" type="nombre" placeholder="Type here">
-        <input id="submit" type="submit" value="Search">
-        <input type="date" name="fecha" value="<?php echo (isset ($_POST['date_from'])) ? $_POST['date_from']: ''; ?>" />
-    </form>
+	<div class="container">
+		<div class="row my-3">
+			<h1>¡Bienvenido a PrestigeTravels!</h1>
+			<h2>¿Ya planeaste tu panorama <?=$_SESSION['Nombre']?>?</h2>
+			
+		</div>
+	</div>
+	<div class = "h-50" style="background-color: #d1d5d7">
+		<div class="container">
+			<div class="row">
+				<h1> ¡Clickea en el botón para comenzar tu aventura! </h1>
+			</div>
+			
+		</div>
+	</div>
+    
+    
     <footer class="footer row">
     </footer>
 
