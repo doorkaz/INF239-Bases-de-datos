@@ -64,16 +64,45 @@
 			</div>
 		</div>
 	</nav>
+	</br>
+	</br>
+	<div>
+		<div class="container">
+			<div class="row">
+				<h1>¿Deseas cambiar tus datos personales?</h1>
+				<div class="col-md-6">
+					<table class= "table table-condensed">
+						<tbody>
+							<tr>
+								<td>Nombre</td>
+								<td><input type="text" class="form-control input-sm" name="nombre" value="<?=$_SESSION['Nombre']?>" required></td>
+							</tr>
+							<tr>
+								<td>Fecha de nacimiento</td>
+								<!-- TRANSFORMAR FECHA EN DIA MES AÑO -->
+								<?php $date = $_SESSION['Fecha_Nacimiento'];
+								$newDate= date("Y-m-d", strtotime($date)); ?>
+								<td><input type="date" class="form-control input-sm" name="fechanac" value="<?=$newDate?>"></td>
+							</tr>
+							<tr>
+								<td>Correo electrónico/Email</td>
+								<td><input type="email" class="form-control input-sm" name="correo" value="<?=$_SESSION['Correo']?>" readonly></td>
+							</tr>
+							
+						</tbody>
+					</table>
+					<div class="d-grid form-group mt-2">
+                        <button class = "btn btn-success" type =  "submit" id = "btn">Actualizar datos</button>
+                    </div>
+				</div>
 
-    <div class="container my-3">
-        <div class="row">
-            <h1>¿Deseas cambiar tu contraseña?</h1>
-            <p>Tu nombre es: <?=$_SESSION['Nombre']?></p>
-            <p>Tu correo es: <?=$_SESSION['Correo']?></p>
-            <p>Esta es su lista:</p>
-        </div>
-    </div>
-    
+				<div class="col-md-6">
+					<img src="../images/jpcover.jpg" class="d-block w-50">
+				</div>
+				
+			</div>
+		</div>
+	</div>
 
 
 

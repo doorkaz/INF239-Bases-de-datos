@@ -47,10 +47,17 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             if ($row['Nombre'] === $username && $row['Contrasena'] === $password) {
 
                 echo "Logged in!";
+                $_SESSION['id_usuario'] = $row['id_usuario'];
 
                 $_SESSION['Nombre'] = $row['Nombre'];
 
                 $_SESSION['Correo'] = $row['Correo'];
+
+                $_SESSION['Contrasena'] = $row['Contrasena'];
+                
+                $_SESSION['Fecha_Nacimiento'] = $row['Fecha_Nacimiento'];
+
+                $_SESSION['wishlist'] = $row['wishlist'];
 
                 header("Location: index.php");
 
