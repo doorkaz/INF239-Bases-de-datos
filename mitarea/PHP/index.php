@@ -31,11 +31,26 @@
           <input type="submit" value="Logout"> 
         </form> 
       </nav>
-    <form action="search.php" method="GET" onsubmit="return validation()" method = "POST">
-        <input id="search" type="nombre" placeholder="Type here">
-        <input id="submit" type="submit" value="Search">
+    <form method="POST" action= "index.php" >
+        <input type="text" name="keyword" placeholder="Type here" value="<?php echo isset($_POST['keyword']) ? $_POST['keyword'] : '' ?>"/>
+        <input type="submit" name="search" value="Search">
         <input type="date" name="fecha" value="<?php echo (isset ($_POST['date_from'])) ? $_POST['date_from']: ''; ?>" />
     </form>
+    <?php
+				if(ISSET($_POST['search'])){
+					$keyword = $_POST['keyword'];
+			?>
+    <?php    
+    include "db_conn.php";
+    $sql = "SELECT * FROM hoteles WHERE Nombre_hotel LIKE '%$keyword%'";
+    $result = mysqli_query($conn,$sql);
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<div id='link' onClick='addText(\"".$row['Nombre_hotel']."\");'>" . $row['Nombre_hotel'] . "</div>";  
+        }
+    ?>
+    <?php
+					}
+				?>
     <footer class="footer row">
     </footer>
 
