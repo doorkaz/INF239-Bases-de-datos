@@ -16,30 +16,31 @@
     <title>Cuenta</title>
     <!-- CSS -->
     <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+	<link rel = "stylesheet" type = "text/css" href = "../css/navbar.css">
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body class="index">
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1b3039">
+    <nav class="navbar navbar-expand-lg navbar-light shadow" style="background-color: #1b3039">
 		<div class="container-fluid">
-			<a class="navbar-brand" style="color: white" href="index.php">PrestigeTravels</a>
+			<a class="navbar-brand fs-4" style="color: white" href="index.php">PrestigeTravels</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-						<a class="nav-link active" style="color: white" href="paquetes.php">Paquetes</a>
+						<a class="nav-link active fs-6" style="color: white" href="paquetes.php">Paquetes</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link active" style="color: white" href="hoteles.php">Hoteles</a>
+						<a class="nav-link active fs-6" style="color: white" href="hoteles.php">Hoteles</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link active" style="color: white" href="cart.php">Carrito</a>
+						<a class="nav-link active fs-6" style="color: white" href="cart.php">Carrito</a>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" style="color: white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						<a class="nav-link dropdown-toggle fs-6 txt-shadow" style="color: white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Cuenta
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -62,9 +63,9 @@
 		</div>
 	</nav>
 
-    <div class="container">
+    <div class="container my-3">
         <div class="row">
-            <h2>Bienvenido <?=$_SESSION['Nombre']?>, ¡esta es tu pagina!</h2>
+            <h1>¿Deseas cambiar la contraseña?</h1>
             <p>Tu nombre es: <?=$_SESSION['Nombre']?></p>
             <p>Tu correo es: <?=$_SESSION['Correo']?></p>
             <p>Esta es su lista:</p>
