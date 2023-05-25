@@ -53,7 +53,7 @@
 					</li>
 				</ul>
 				<span class="navbar-text me-2" style="color: white">
-					Cuenta activa en @<?=$_SESSION['Nombre']?>
+					<i class="bi bi-person-circle"></i> Cuenta activa en <?=$_SESSION['Nombre']?>
 				</span>	
 				<form class="d-flex">
 					<input class="form-control me-2" style="color: #1b3039" type="search" placeholder="Buscar" aria-label="Search">

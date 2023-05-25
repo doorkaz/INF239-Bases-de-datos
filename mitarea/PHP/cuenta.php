@@ -19,6 +19,8 @@
 	<link rel = "stylesheet" type = "text/css" href = "../css/navbar.css">
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<!-- BOOTSTRAP FONT ICON -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 
 <body class="index">
@@ -53,7 +55,7 @@
 					
 				</ul>
 				<span class="navbar-text me-2" style="color: white">
-					Cuenta activa en @<?=$_SESSION['Nombre']?>
+					<i class="bi bi-person-circle"></i> Cuenta activa en @<?=$_SESSION['Nombre']?>
 				</span>	
 				<form class="d-flex">
 					<input class="form-control me-2" style="color: #1b3039" type="search" placeholder="Buscar" aria-label="Search">
@@ -65,7 +67,7 @@
 
     <div class="container my-3">
         <div class="row">
-            <h1>¿Deseas cambiar la contraseña?</h1>
+            <h1>¿Deseas cambiar tu contraseña?</h1>
             <p>Tu nombre es: <?=$_SESSION['Nombre']?></p>
             <p>Tu correo es: <?=$_SESSION['Correo']?></p>
             <p>Esta es su lista:</p>
