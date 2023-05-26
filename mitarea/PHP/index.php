@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <nav class="d-flex navbar navbar-expand-lg navbar-light bg-primary">
+    <nav  class="d-flex navbar navbar-expand-lg navbar-light bg-primary">
         <img src="../images/Logo.png" width="100" height="100">
         <a class="indexbar ms-3 fs-4 fw-" href="#">PrestigeTravels</a>
         <a class="indexbar m-3" href="#">Hoteles</a>
@@ -44,13 +44,14 @@
     include "db_conn.php";
     $sql = "SELECT * FROM hoteles WHERE Nombre_hotel LIKE '%$keyword%'";
     $result = mysqli_query($conn,$sql);
-    while ($row = mysqli_fetch_assoc($result)) {
+    while ($row = mysqli_fetch_assoc($result)) {?>
         echo "<div id='link' onClick='addText(\"".$row['Nombre_hotel']."\");'>" . $row['Nombre_hotel'] . "</div>";  
-        }
+        <?php
+          }
+        ?>
+      <?php
+      }
     ?>
-    <?php
-					}
-				?>
     <footer class="footer row">
     </footer>
 
