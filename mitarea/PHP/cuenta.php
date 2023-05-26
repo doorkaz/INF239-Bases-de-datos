@@ -16,35 +16,97 @@
     <title>Cuenta</title>
     <!-- CSS -->
     <link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+	<link rel = "stylesheet" type = "text/css" href = "../css/navbar.css">
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<!-- BOOTSTRAP FONT ICON -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 
 <body class="index">
-    <nav class="d-flex navbar navbar-expand-lg navbar-light bg-primary">
-        <a class="indexbar ms-3 fs-4 fw-" href="#">PrestigeTravels</a>
-        <a class="indexbar m-3" href="#">Hoteles</a>
-        <a class="indexbar m-3" href="#">Paquetes</a>
-        <a class="indexbar m-3" href="#">Carrito</a>
-        <a class="indexbar m-3 align-items-end justify-content-end" href="cuenta.php">Usuario < <?=$_SESSION['Nombre']?> ></a>
-    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light shadow" style="background-color: #1b3039">
+		<div class="container-fluid">
+			<a class="navbar-brand fs-4" style="color: white" href="index.php">PrestigeTravels</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link active fs-6" style="color: white" href="paquetes.php">Paquetes</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active fs-6" style="color: white" href="hoteles.php">Hoteles</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active fs-6" style="color: white" href="cart.php">Carrito</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle fs-6 txt-shadow" style="color: white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Cuenta
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="cuenta.php">Mi perfil</a></li>
+							<li><a class="dropdown-item" href="reviews.php">Reseñas</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="logout.php">Cerrar sesión</a></li>
+						</ul>
+					</li>
+					
+				</ul>
+				<span class="navbar-text me-2" style="color: white">
+					<i class="bi bi-person-circle"></i> Cuenta activa en @<?=$_SESSION['Nombre']?>
+				</span>	
+				<form class="d-flex">
+					<input class="form-control me-2" style="color: #1b3039" type="search" placeholder="Buscar" aria-label="Search">
+					<button class="btn btn-outline-light btn-light" style="color: black" type="submit">Buscar</button>
+				</form>
+			</div>
+		</div>
+	</nav>
+	</br>
+	</br>
+	<div>
+		<div class="container">
+			<div class="row">
+				<h1>¿Deseas cambiar tus datos personales?</h1>
+				<div class="col-md-6">
+					<table class= "table table-condensed">
+						<tbody>
+							<tr>
+								<td>Nombre</td>
+								<td><input type="text" class="form-control input-sm" name="nombre" value="<?=$_SESSION['Nombre']?>" required></td>
+							</tr>
+							<tr>
+								<td>Fecha de nacimiento</td>
+								<!-- TRANSFORMAR FECHA EN DIA MES AÑO -->
+								<?php $date = $_SESSION['Fecha_Nacimiento'];
+								$newDate= date("Y-m-d", strtotime($date)); ?>
+								<td><input type="date" class="form-control input-sm" name="fechanac" value="<?=$newDate?>"></td>
+							</tr>
+							<tr>
+								<td>Correo electrónico/Email</td>
+								<td><input type="email" class="form-control input-sm" name="correo" value="<?=$_SESSION['Correo']?>" readonly></td>
+							</tr>
+							
+						</tbody>
+					</table>
+					<div class="d-grid form-group mt-2">
+                        <button class = "btn btn-success" type =  "submit" id = "btn">Actualizar datos</button>
+                    </div>
+				</div>
 
-    <div class="row">
-        <div class="large-12 columns">
-            <h2>Bienvenido <?=$_SESSION['Nombre']?>, ¡esta es tu pagina!</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="large-12 columns">
-            <p>Tu nombre es: <?=$_SESSION['Nombre']?></p>
-            <p>Tu correo es: <?=$_SESSION['Correo']?></p>
-            <p>Esta es su lista:</p>
-        </div>
-    </div>
+				<div class="col-md-6">
+					<img src="../images/jpcover.jpg" class="d-block w-50">
+				</div>
+				
+			</div>
+		</div>
+	</div>
 
 
 
-    </div>
+    
 
     <footer class="footer row">
     </footer>
