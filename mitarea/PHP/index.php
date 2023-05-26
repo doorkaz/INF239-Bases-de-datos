@@ -55,9 +55,10 @@
 				<span class="navbar-text me-2" style="color: white">
 					<i class="bi bi-person-circle"></i> Cuenta activa en <?=$_SESSION['Nombre']?>
 				</span>	
-				<form class="d-flex">
-					<input class="form-control me-2" style="color: #1b3039" type="search" placeholder="Buscar" aria-label="Search">
-					<button class="btn btn-outline-light btn-light" style="color: black" type="submit">Buscar</button>
+				<form class="d-flex" method="POST" action= "index.php">
+					<input class="form-control me-2" style="color: #1b3039" type="search" name="keyword" placeholder="Buscar" aria-label="Search"
+					value= "<?php echo isset($_POST['keyword']) ? $_POST['keyword'] : '' ?>">
+					<button class="btn btn-outline-light btn-light" style="color: black" name="search" type="submit">Buscar</button>
 				</form>
 			</div>
 		</div>
@@ -140,6 +141,24 @@
 					<h1>¡Precios accesibles!</h1>
 					
 					
+				</div>
+			<?php
+				if(ISSET($_POST['search'])){
+					$keyword = $_POST['keyword'];
+				include "db_conn.php";
+				$sql = "SELECT * FROM hoteles WHERE Nombre_hotel LIKE '%$keyword%'";
+				$result = mysqli_query($conn,$sql);
+				while ($row = mysqli_fetch_assoc($result)) {
+				?>
+					<div class="col-sm-6">
+					<?php
+					foreach ($row as $r) {
+						if ($r == $row['id_hotel']) continue;
+						echo "<td>" . $r . "\n </td>";
+					}
+					}
+				}
+				?>
 				</div>
 			</div>
 			
