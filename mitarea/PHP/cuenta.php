@@ -4,6 +4,17 @@
 	if(!ISSET($_SESSION['Correo'])){
 		header('location:login.php');
 	}
+	/*
+	if(ISSET($_POST['actualizacion'])){
+			header('location:login.php');
+			$actual = $_POST['actualizacion'];
+			include "db_conn.php";
+			$nombre = $_POST['nombre'];
+			$_SESSION['Nombre']=$nombre;
+			$fechanac = $_POST['fechanac'];
+			$_SESSION['Fecha_Nacimiento']=$fechanac;
+		}
+	*/
 ?>
 <html lang="en">
 <head>
@@ -70,7 +81,7 @@
 		<div class="container">
 			<div class="row">
 				<h1>¿Deseas cambiar tus datos personales?</h1>
-				<div class="col-md-6">
+				<form class="col-md-6" method="POST" action="">
 					<table class= "table table-condensed">
 						<tbody>
 							<tr>
@@ -92,7 +103,7 @@
 						</tbody>
 					</table>
 					<div class="d-grid form-group mt-2">
-                        <button class = "btn btn-success" type =  "submit" id = "btn">Actualizar datos</button>
+                        <button class = "btn btn-success" type =  "submit" name="actualizacion" id = "actualizacion">Actualizar datos</button>
                     </div>
 				</div>
 

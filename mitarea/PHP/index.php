@@ -4,6 +4,14 @@
 	if(!ISSET($_SESSION['Correo'])){
 		header('location:login.php');
 	}
+?>	
+<?php
+	if(ISSET($_POST['search'])){
+		$keyword = $_POST['keyword'];
+	include "db_conn.php";
+	$sql = "SELECT * FROM hoteles WHERE Nombre_hotel LIKE '%$keyword%'";
+	$result = mysqli_query($conn,$sql);
+	}
 ?>
 <html lang="en">
 <head>
@@ -16,6 +24,7 @@
 	<!-- CSS -->
 	<link rel = "stylesheet" type = "text/css" href = "../css/index.css">
 	<link rel = "stylesheet" type = "text/css" href = "../css/navbar.css">
+	<link rel = "stylesheet" type = "text/css" href = "../css/table.css">
 	<!-- BOOTSTRAP -->
   	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<!-- BOOTSTRAP FONT ICON -->
@@ -55,9 +64,8 @@
 				<span class="navbar-text me-2" style="color: white">
 					<i class="bi bi-person-circle"></i> Cuenta activa en <?=$_SESSION['Nombre']?>
 				</span>	
-				<form class="d-flex" method="POST" action= "index.php">
-					<input class="form-control me-2" style="color: #1b3039" type="search" name="keyword" placeholder="Buscar" aria-label="Search"
-					value= "<?php echo isset($_POST['keyword']) ? $_POST['keyword'] : '' ?>">
+				<form class="d-flex" method="POST" action= "">
+					<input class="form-control me-2" style="color: #1b3039" type="search" name="keyword" placeholder="Buscar" aria-label="Search">
 					<button class="btn btn-outline-light btn-light" style="color: black" name="search" type="submit">Buscar</button>
 				</form>
 			</div>
@@ -142,24 +150,28 @@
 					
 					
 				</div>
-			<?php
-				if(ISSET($_POST['search'])){
-					$keyword = $_POST['keyword'];
-				include "db_conn.php";
-				$sql = "SELECT * FROM hoteles WHERE Nombre_hotel LIKE '%$keyword%'";
-				$result = mysqli_query($conn,$sql);
-				while ($row = mysqli_fetch_assoc($result)) {
-				?>
-					<div class="col-sm-6">
+				<table class="table-info" >
+					<thead>
+					<tr>
+					<th scope="col">#</th>
+					<th scope="col">First</th>
+					<th scope="col">Last</th>
+					<th scope="col">Handle</th>
+					</tr>
+					</thead>
 					<?php
-					foreach ($row as $r) {
-						if ($r == $row['id_hotel']) continue;
-						echo "<td>" . $r . "\n </td>";
+					if (ISSET($_POST['search'])){
+						if (empty($keyword) == False){
+							while ($row = mysqli_fetch_assoc($result)) {
+							foreach ($row as $r) {
+								if ($r == $row['id_hotel']) continue;
+								echo "<td>" . $r . "\n </td>";
+								}
+							}							
+						}
 					}
-					}
-				}
-				?>
-				</div>
+					?>
+				</table>
 			</div>
 			
 		</div>
