@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-05-2023 a las 05:09:45
+-- Tiempo de generación: 24-05-2023 a las 06:04:40
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `hoteles` (
   `id_hotel` int(11) NOT NULL,
+  `Nombre_hotel` varchar(200) NOT NULL,
   `Num_estrellas` int(11) NOT NULL,
   `Precio_noche` int(11) NOT NULL,
   `Ciudad` varchar(200) NOT NULL,
@@ -41,6 +42,14 @@ CREATE TABLE `hoteles` (
   `serv_desayuno` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `hoteles`
+--
+
+INSERT INTO `hoteles` (`id_hotel`, `Nombre_hotel`, `Num_estrellas`, `Precio_noche`, `Ciudad`, `cant_total_hab`, `hab_disp`, `estacionamiento`, `piscina`, `serv_lavanderia`, `pet_friend`, `serv_desayuno`) VALUES
+(1, 'John Pork', 5, 1200, 'Santiago', 50, 4, 1, 1, 1, 1, 1),
+(2, 'Totalmente no una estafa', 1, 100, 'Santiago', 1, 1, 0, 0, 0, 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +58,7 @@ CREATE TABLE `hoteles` (
 
 CREATE TABLE `paquetes` (
   `id_pack` int(11) NOT NULL,
+  `Nombre_pack` varchar(200) NOT NULL,
   `aero_ida` varchar(200) NOT NULL,
   `aero_vuelta` text NOT NULL,
   `ciudades` text NOT NULL,
@@ -61,6 +71,14 @@ CREATE TABLE `paquetes` (
   `total_packs` int(11) NOT NULL,
   `total_person_pack` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `paquetes`
+--
+
+INSERT INTO `paquetes` (`id_pack`, `Nombre_pack`, `aero_ida`, `aero_vuelta`, `ciudades`, `hospedajes`, `fecha_salida`, `fecha_llegada`, `total_noches`, `precio_persona`, `cant_pack_disp`, `total_packs`, `total_person_pack`) VALUES
+(1, 'Pack estafoso', 'NotSky', 'NotSky', 'Los Angeles, Las Vegas, Tu casa', 'Totalmente no una estafa, Casa de usuario', '2024-04-01', '2024-04-02', 1, 1, 1, 1, 1),
+(2, 'Ultra Super Hyper Enhanced Millonario Pack Deluxe Remix Update Styled Up And Knuckles Dark moon wii sports donkey kong and Dante from the devil may pack series of packs from ocarina of time', 'Sky', 'Sky', 'Santiago, Las vegas, Nueva York, Tokyo, Kyoto, Atlantis, La Luna, La antartida, El sol, Moscú, Ciudad John Pork, Knuckles', 'John Pork, Vegas Box, York pork, Tokyo pork, Kyoto deluxe hotel, Atlantic Hotel, Moon Hotel, Antartic Premium, Sun Hotel, Nyet Hotel, John Pork de John Pork, Knuckles Cool House', '2069-05-02', '2069-06-30', 100, 5000, 4, 10, 5);
 
 -- --------------------------------------------------------
 
@@ -110,6 +128,14 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `Correo`, `Nombre`, `Fecha_Nacimiento`, `Contrasena`, `wishlist`) VALUES
+(1, 'juan@mail.com', 'juan', '2003-05-01', 'juan', 'a'),
+(3, 'pedro@mail.com', 'pedro', '2002-02-12', 'pedro', '');
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -155,19 +181,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `hoteles`
 --
 ALTER TABLE `hoteles`
-  MODIFY `id_hotel` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_hotel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `paquetes`
 --
 ALTER TABLE `paquetes`
-  MODIFY `id_pack` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pack` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
