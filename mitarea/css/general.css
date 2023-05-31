@@ -1,0 +1,30 @@
+p{
+    margin-top: 0em !important;
+    margin-bottom: 0em !important;
+}
+.img-responsive{
+    width: 100%;
+    height: 200px;
+}
+
+.btn-reserve{
+    background-color: #3b687c !important;
+    color:white !important;
+}
+.btn-reserve:hover{
+    background-color: #1b3039 !important;
+}
+
+.btn-cart{
+    border-color: #3b687c !important;
+    color:#3b687c !important;
+}
+.btn-cart:hover{
+    background-color: #1b3039;
+    color: white !important;
+  }
+
+.details-link{
+    color: #347ac4;
+    text-decoration: none;
+}

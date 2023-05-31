@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-05-2023 a las 09:25:55
+-- Tiempo de generación: 24-05-2023 a las 06:04:40
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -120,27 +120,6 @@ CREATE TABLE `resena_pack` (
 -- --------------------------------------------------------
 
 --
--- Estructura Stand-in para la vista `top_hoteles`
--- (Véase abajo para la vista actual)
---
-CREATE TABLE `top_hoteles` (
-`id_hotel` int(11)
-,`Nombre_hotel` varchar(200)
-,`Num_estrellas` int(11)
-,`Precio_noche` int(11)
-,`Ciudad` varchar(200)
-,`cant_total_hab` int(11)
-,`hab_disp` int(11)
-,`estacionamiento` tinyint(1)
-,`piscina` tinyint(1)
-,`serv_lavanderia` tinyint(1)
-,`pet_friend` tinyint(1)
-,`serv_desayuno` tinyint(1)
-);
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -160,15 +139,6 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`id_usuario`, `Correo`, `Nombre`, `Fecha_Nacimiento`, `Contrasena`, `wishlist`) VALUES
 (1, 'juan@mail.com', 'juan', '2003-05-01', 'juan', 'a'),
 (3, 'pedro@mail.com', 'pedro', '2002-02-12', 'pedro', '');
-
--- --------------------------------------------------------
-
---
--- Estructura para la vista `top_hoteles`
---
-DROP TABLE IF EXISTS `top_hoteles`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `top_hoteles`  AS SELECT `hoteles`.`id_hotel` AS `id_hotel`, `hoteles`.`Nombre_hotel` AS `Nombre_hotel`, `hoteles`.`Num_estrellas` AS `Num_estrellas`, `hoteles`.`Precio_noche` AS `Precio_noche`, `hoteles`.`Ciudad` AS `Ciudad`, `hoteles`.`cant_total_hab` AS `cant_total_hab`, `hoteles`.`hab_disp` AS `hab_disp`, `hoteles`.`estacionamiento` AS `estacionamiento`, `hoteles`.`piscina` AS `piscina`, `hoteles`.`serv_lavanderia` AS `serv_lavanderia`, `hoteles`.`pet_friend` AS `pet_friend`, `hoteles`.`serv_desayuno` AS `serv_desayuno` FROM `hoteles` ORDER BY `hoteles`.`Num_estrellas` DESC LIMIT 0, 10 ;
 
 --
 -- Índices para tablas volcadas
@@ -216,7 +186,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `hoteles`
 --
 ALTER TABLE `hoteles`
-  MODIFY `id_hotel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_hotel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `paquetes`

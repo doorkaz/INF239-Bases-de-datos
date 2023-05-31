@@ -86,50 +86,63 @@
 				<div class="col-sm-6">
 					<div id="carouselExampleCaptions" class="carousel slide">
 						<div class="carousel-indicators">
-							<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-							<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-							<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+							
+							<?php
+							include "db_conn.php";
+							$sql = "SELECT * FROM top_hoteles";
+							$result = mysqli_query($conn, $sql);
+							$numero = mysqli_num_rows($result);
+							for($i = 0; $i < $numero; $i++){
+								if ($i == 0){
+									echo '<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>';
+								} else {
+									echo '<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="'. $i.'" aria-label="Slide ' . $i+1 .'"></button>';
+								}
+							}
+							
+							?>
 						</div>
 						<div class="carousel-inner">
-							<div class="carousel-item active">
-								<img src="../images/img1-hotel.jpg" class="d-block w-100" alt="firstSlide">
-								<div class="carousel-caption d-none d-md-block">
-									<h5>Hotel Torres</h5>
-									<p>Torres del Paine, Región de Magallanes y Antártica Chilena</p>
-									<p>Con vista a las Torres del Paine.</p>
-									<i class="bi bi-star-fill"></i>
-									<i class="bi bi-star-fill"></i>
-									<i class="bi bi-star-fill"></i>
-									<i class="bi bi-star-fill"></i>
-									<i class="bi bi-star-fill"></i>
-								</div>
-							</div>
-							<div class="carousel-item">
-								<img src="../images/img2-hotel.jpg" class="d-block w-100" alt="secondSlide">
-								<div class="carousel-caption d-none d-md-block">
-									<h5>Hotel Termas de Chillán</h5>
-									<p>Coihueco, Ñuble</p>
-									<p>Un espacio único para conectarse con la naturaleza</p>
-									<i class="bi bi-star-fill"></i>
-									<i class="bi bi-star-fill"></i>
-									<i class="bi bi-star-fill"></i>
-									<i class="bi bi-star-fill"></i>
-									<i class="bi bi-star-half"></i>
-								</div>
-							</div>
-							<div class="carousel-item">
-								<img src="../images/img3-hotel.jpg" class="d-block w-100" alt="thirdSlide">
-								<div class="carousel-caption d-none d-md-block">
-									<h5>Hotel Mistral</h5>
-									<p>La Serena, Región de Coquimbo</p>
-									<p>Un hotel todo incluido, pet friendly</p>
-									<i class="bi bi-star-fill"></i>
-									<i class="bi bi-star-fill"></i>
-									<i class="bi bi-star-fill"></i>
-									<i class="bi bi-star-fill"></i>
-									<i class="bi bi-star-fill"></i>
-								</div>
-							</div>
+							<?php
+							include "db_conn.php";
+							// Consulta la view
+							$sql = "SELECT * FROM top_hoteles";
+							$hoteles = mysqli_query($conn, $sql);
+							
+							// Itera hotel por hotel de la view
+							$first = false;
+							foreach ($hoteles as $hotel) {
+								// Primer item del carousel active
+								if ($first == false){
+									echo '<div class="carousel-item active">';
+										echo '<img src="../images/hoteles/h-id'. $hotel['id_hotel'].'-1.jpg" class="d-block w-100" alt="firstSlide">';
+										echo '<div class="carousel-caption d-none d-md-block rounded glass-efect">';
+											echo '<h5 class="carousel-color">'.$hotel['Nombre_hotel'].'</h5>';
+											for ($i = 1; $i <= $hotel["Num_estrellas"]; $i++) {
+												echo '<i class="bi bi-star-fill me-1"></i>'; 
+											}
+											for ($i = $hotel["Num_estrellas"] + 1; $i <= 5; $i++) {
+												echo '<i class="bi bi-star me-1"></i>';
+											}
+										echo '</div>';
+									echo '</div>';
+									$first = true;
+								} else {
+									echo '<div class="carousel-item">';
+										echo '<img src="../images/hoteles/h-id'. $hotel['id_hotel'].'-1.jpg" class="d-block w-100" alt="second">';
+										echo '<div class="carousel-caption d-none d-md-block glass-efect">';
+											echo '<h5>'. $hotel['Nombre_hotel'].'</h5>';
+											for ($i = 1; $i <= $hotel["Num_estrellas"]; $i++) {
+												echo '<i class="bi bi-star-fill me-1"></i>'; 
+											}
+											for ($i = $hotel["Num_estrellas"] + 1; $i <= 5; $i++) {
+												echo '<i class="bi bi-star me-1"></i>';
+											}
+										echo '</div>';
+									echo '</div>';
+								}
+							}
+							?>
 						</div>
 						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
 							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
