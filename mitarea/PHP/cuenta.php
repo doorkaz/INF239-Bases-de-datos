@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <?php
 	session_start();
-	if(!ISSET($_SESSION['Correo'])){
-		header('location:login.php');
-	}
-	/*
 	if(ISSET($_POST['actualizacion'])){
-			header('location:login.php');
 			$actual = $_POST['actualizacion'];
 			include "db_conn.php";
 			$nombre = $_POST['nombre'];
+			echo "$nombre";
 			$_SESSION['Nombre']=$nombre;
 			$fechanac = $_POST['fechanac'];
 			$_SESSION['Fecha_Nacimiento']=$fechanac;
+			$id = $_SESSION['id_usuario'];
+			$sql = "UPDATE 'usuarios' SET Nombre=$nombre,Fecha_Nacimiento = $fechanac WHERE id_usuario = $id ";
 		}
-	*/
+		
+	if(!ISSET($_SESSION['Correo'])){
+		header('location:login.php');
+	}
 ?>
 <html lang="en">
 <head>
