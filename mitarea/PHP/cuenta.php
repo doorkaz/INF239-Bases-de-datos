@@ -5,7 +5,6 @@
 			$actual = $_POST['actualizacion'];
 			include "db_conn.php";
 			$nombre = $_POST['nombre'];
-			echo "$nombre";
 			$_SESSION['Nombre']=$nombre;
 			$fechanac = $_POST['fechanac'];
 			$_SESSION['Fecha_Nacimiento']=$fechanac;
