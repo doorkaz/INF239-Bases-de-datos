@@ -11,12 +11,13 @@ if(ISSET($_GET['search'])){
         $query .= " WHERE";
 
         $keynames = array_keys($filtered_get); // make array of key names from $filtered_get
-        
+        $length= count($filtered_get); 
         foreach($filtered_get as $key => $value)
         {
-        $query .= " $key LIKE '$value'";  // $filtered_get keyname = $filtered_get['keyname'] value
-        if ((count($filtered_get)-1 > $key)) { // more than one search filter, and not the last
-            $query .= " OR";
+        $query .= " $key LIKE '%$value%'";  // $filtered_get keyname = $filtered_get['keyname'] value
+        if ($length>1) { // more than one search filter, and not the last
+            $query .= " AND";
+            $length -= 1;
         }
         }
     }
