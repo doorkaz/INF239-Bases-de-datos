@@ -99,10 +99,15 @@
 		</div>
 	</div>
 	<div class = "shadow-sm py-3 rounded" style="background-color: #fafafb">
+
 		<div class="container">
+
 			<div class="row">
+
 				<div class="col-sm-6">
+
 					<div id="carouselExampleCaptions" class="carousel slide">
+
 						<div class="carousel-indicators">
 							
 							<?php
@@ -117,10 +122,11 @@
 									echo '<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="'. $i.'" aria-label="Slide ' . $i+1 .'"></button>';
 								}
 							}
-							
 							?>
 						</div>
+
 						<div class="carousel-inner">
+
 							<?php
 							include "db_conn.php";
 							// Consulta la view
@@ -162,17 +168,25 @@
 							}
 							?>
 						</div>
+
 						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+
 							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+
 							<span class="visually-hidden">Previous</span>
+
 						</button>
 						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+
 							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+
 							<span class="visually-hidden">Next</span>
+
 						</button>
 					</div>
 				</div>
 				<div class="col-sm-6">
+
 					</br></br></br></br>
 					<h2>Recorrer Chile ahora es más facil</h2>
 					<h4>con variedad de opciones y...</h4>
@@ -181,22 +195,16 @@
 					
 					
 				</div>
-				<table class="table-info" >
-					<thead>
-					<tr>
-					<th scope="col">#</th>
-					<th scope="col">First</th>
-					<th scope="col">Last</th>
-					<th scope="col">Handle</th>
-					</tr>
-					</thead>
 
-				</table>
 			</div>
-					<?php
-					include 'search.php';
-					?>
+
+			<?php
+
+			include 'search.php';
+			?>
+
 		</div>
+
 	</div>
     
     
