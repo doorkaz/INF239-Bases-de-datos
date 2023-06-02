@@ -1,18 +1,11 @@
 <!DOCTYPE html>
 <?php
 	session_start();
+	include "db_conn.php";
 	if(!ISSET($_SESSION['Correo'])){
 		header('location:login.php');
 	}
 ?>	
-<?php
-	if(ISSET($_POST['search'])){
-		$keyword = $_POST['keyword'];
-	include "db_conn.php";
-	$sql = "SELECT * FROM hoteles WHERE Nombre_hotel LIKE '%$keyword%'";
-	$result = mysqli_query($conn,$sql);
-	}
-?>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -64,10 +57,7 @@
 				<span class="navbar-text me-2" style="color: white">
 					<i class="bi bi-person-circle"></i> Cuenta activa en <?=$_SESSION['Nombre']?>
 				</span>	
-				<form class="d-flex" method="POST" action= "">
-					<input class="form-control me-2" style="color: #1b3039" type="search" name="keyword" placeholder="Buscar" aria-label="Search">
-					<button class="btn btn-outline-light btn-light" style="color: black" name="search" type="submit">Buscar</button>
-				</form>
+				
 			</div>
 		</div>
 	</nav>
@@ -78,6 +68,34 @@
 			<h1>¡Bienvenido a PrestigeTravels!</h1>
 			<h4>Arma tu panorama con nosotros</h4>
 			
+			</div>
+			<form class="col-md-6" method="GET" action="">
+			<fieldset>
+					<tbody>
+						<tr>
+							<td>Nombre hotel/paquete</td>
+							<td><input type="text" class="form-control input-sm" type="search" name="Nombre_hotel" placeholder="¡Busca tu hotel!" ></td>
+						</tr>
+						<tr><!--
+							Fecha inicial
+							<?php  $newDate= date("Y-m-d"); ?>
+							<input type="date" class="form-control input-sm" name="fecha_inicio" value="<?=$newDate?>">
+						</tr>
+						<tr>
+							Fecha salida
+								<?php  $newDate= date("Y-m-d"); ?>
+								<input type="date" class="form-control input-sm" name="fecha_final" value="<?=$newDate?>">	
+						</tr>-->
+						<tr>
+							Ciudad
+							<input type="text" class="form-control input-sm" name="ciudad" placeholder="¡Encuentra la ciudad que deseas ir!">
+						</tr>
+					</li>
+					</tbody>
+				<div class="d-grid form-group mt-2">
+					<button class = "btn btn-success" type =  "submit" name="search" id = "search">Busca ya</button>
+				</div>
+			</fieldset>
 		</div>
 	</div>
 	<div class = "shadow-sm py-3 rounded" style="background-color: #fafafb">
@@ -172,21 +190,12 @@
 					<th scope="col">Handle</th>
 					</tr>
 					</thead>
-					<?php
-					if (ISSET($_POST['search'])){
-						if (empty($keyword) == False){
-							while ($row = mysqli_fetch_assoc($result)) {
-							foreach ($row as $r) {
-								if ($r == $row['id_hotel']) continue;
-								echo "<td>" . $r . "\n </td>";
-								}
-							}							
-						}
-					}
-					?>
+
 				</table>
 			</div>
-			
+					<?php
+					include 'search.php';
+					?>
 		</div>
 	</div>
     
