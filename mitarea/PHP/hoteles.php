@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php
-
+    include "db_conn.php";
 	session_start();
     include "obtener_hoteles.php";
 	if(!ISSET($_SESSION['Correo'])){
@@ -166,18 +166,23 @@
                                         echo '<i class="bi bi-star me-1"></i>';
                                     }
                                     
-                                    
-                                    echo '<div class="d-grid mt-2">';
-                                        echo '<button type="button" class="btn btn-reserve rounded">Reservar</button>';
-                                        echo '<button type="button" class="btn btn-cart rounded mt-1">Agregar al carrito</button>';
-                                    echo '</div>';
+                                    echo '<form action="hoteles.php">';
+                                        echo '<div class="d-grid mt-2">';
+                                            echo '<button type="button" type = "submit"  value='.$hotel['Nombre_hotel'].'name="Wish" id = "Wish" class="btn btn-reserve rounded">Reservar</button>';
+                                            
+                                            echo '<button type="button" class="btn btn-cart rounded mt-1">Agregar al carrito</button>';
+                                            
+                                        echo '</div>';
+                                    echo '</form>';
                                 echo '</div>';
                         echo '</div>';
                     echo '</div>';
                 }
                 echo '</div>';
             }
+            include 'wishfunction.php';
             ?>
+            
 		</div>
 	</div>
     

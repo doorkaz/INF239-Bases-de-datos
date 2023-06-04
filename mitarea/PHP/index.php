@@ -76,16 +76,18 @@
 							<td>Nombre hotel/paquete</td>
 							<td><input type="text" class="form-control input-sm" type="search" name="Nombre_hotel" placeholder="¡Busca tu hotel!" ></td>
 						</tr>
-						<tr><!--
-							Fecha inicial
-							<?php  $newDate= date("Y-m-d"); ?>
-							<input type="date" class="form-control input-sm" name="fecha_inicio" value="<?=$newDate?>">
-						</tr>
+						<!--
 						<tr>
 							Fecha salida
+							<?php  $newDate= date("Y-m-d"); ?>
+							<input type="date" class="form-control input-sm" name="fecha_salida" value="<?=$newDate?>">
+						</tr>
+						<tr>
+							Fecha llegada
 								<?php  $newDate= date("Y-m-d"); ?>
-								<input type="date" class="form-control input-sm" name="fecha_final" value="<?=$newDate?>">	
-						</tr>-->
+								<input type="date" class="form-control input-sm" name="fecha_llegada" value="<?=$newDate?>">	
+						</tr>
+						-->
 						<tr>
 							Ciudad
 							<input type="text" class="form-control input-sm" name="ciudad" placeholder="¡Encuentra la ciudad que deseas ir!">

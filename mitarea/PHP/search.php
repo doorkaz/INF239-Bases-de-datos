@@ -1,20 +1,23 @@
 <?php
 include 'db_conn.php'; 
-echo '<div class = "py-3 rounded">';
-echo '<div class="container">';
+
 if(ISSET($_GET['search'])){
-    $query = "SELECT * FROM hoteles";
+    echo '<div class = "py-3 rounded">';
+    echo '<div class="container">';
+    $query = "SELECT * FROM hoteles WHERE hab_disp >= 1 AND";
 
     $filtered_get = array_filter($_GET); // removes empty values from $_GET
 
     if (count($filtered_get)) { // not empty
-        $query .= " WHERE";
 
         $keynames = array_keys($filtered_get); // make array of key names from $filtered_get
         $length= count($filtered_get); 
         foreach($filtered_get as $key => $value)
         {
         $query .= " $key LIKE '%$value%'";  // $filtered_get keyname = $filtered_get['keyname'] value
+        if($key == "fecha_salida" || $key == "fecha_llegada"){
+
+        }
         if ($length>1) { // more than one search filter, and not the last
             $query .= " AND";
             $length -= 1;
