@@ -122,9 +122,10 @@
                                     echo '<form action=""  method="POST">';
                                         echo '<div class="d-grid mt-2">';
                                            
-                                            echo '<input type="hidden"  value="'.$hotel['Nombre_hotel'].'" name= "hotel">'; 
-                                            echo '<button type = "submit" name="Wish" id = "Wish" class="btn btn-reserve rounded">Reservar</button>';  
-                                            echo '<button type="button" class="btn btn-cart rounded mt-1">Agregar al carrito</button>';
+                                            echo '<input type="hidden"  value="'.$hotel['id_hotel'].'" name= "pid">'; 
+                                            echo '<input type="hidden"  value="0" name= "bool">'; 
+                                            echo '<button type = "submit" class="btn btn-reserve rounded">Reservar</button>';  
+                                            echo '<button type="submit" name="wish" class="btn btn-cart rounded mt-1">Agregar al carrito</button>';
                                             
                                         echo '</div>';
                                     echo '</form>';
@@ -134,8 +135,7 @@
                 }
                 echo '</div>';
             }
-            if (ISSET($_POST['Wish'])){
-                echo $_POST['hotel'];
+            if (ISSET($_POST['wish'])){
                 include 'wishfunction.php';
             }
             ?>

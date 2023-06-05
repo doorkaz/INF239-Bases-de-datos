@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-06-2023 a las 05:11:07
+-- Tiempo de generación: 31-05-2023 a las 09:25:55
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -20,23 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `prestigetravels`
 --
-
-DELIMITER $$
---
--- Procedimientos
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `add_wishlist` (IN `val` VARCHAR(200), IN `id` INT(11))   BEGIN 
-    UPDATE usuarios
-    SET wishlist=(
-        CASE WHEN wishlist=''
-            THEN val
-            ELSE concat_WS('\,',wishlist, val)
-        END
-    )
-    WHERE id_usuario = id;
-END$$
-
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -91,17 +74,16 @@ CREATE TABLE `paquetes` (
   `precio_persona` int(11) NOT NULL,
   `cant_pack_disp` int(11) NOT NULL,
   `total_packs` int(11) NOT NULL,
-  `total_person_pack` int(11) NOT NULL,
-  `Num_estrellas` int(1) DEFAULT NULL
+  `total_person_pack` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `paquetes`
 --
 
-INSERT INTO `paquetes` (`id_pack`, `Nombre_pack`, `aero_ida`, `aero_vuelta`, `ciudades`, `hospedajes`, `fecha_salida`, `fecha_llegada`, `total_noches`, `precio_persona`, `cant_pack_disp`, `total_packs`, `total_person_pack`, `Num_estrellas`) VALUES
-(1, 'Pack estafoso', 'NotSky', 'NotSky', 'Los Angeles, Las Vegas, Tu casa', 'Totalmente no una estafa, Casa de usuario', '2024-04-01', '2024-04-02', 1, 1, 1, 1, 1, 1),
-(2, 'Ultra Super Hyper Enhanced Millonario Pack Deluxe Remix Update Styled Up And Knuckles Dark moon wii sports donkey kong and Dante from the devil may pack series of packs from ocarina of time', 'Sky', 'Sky', 'Santiago, Las vegas, Nueva York, Tokyo, Kyoto, Atlantis, La Luna, La antartida, El sol, Moscú, Ciudad John Pork, Knuckles', 'John Pork, Vegas Box, York pork, Tokyo pork, Kyoto deluxe hotel, Atlantic Hotel, Moon Hotel, Antartic Premium, Sun Hotel, Nyet Hotel, John Pork de John Pork, Knuckles Cool House', '2069-05-02', '2069-06-30', 100, 5000, 4, 10, 5, 5);
+INSERT INTO `paquetes` (`id_pack`, `Nombre_pack`, `aero_ida`, `aero_vuelta`, `ciudades`, `hospedajes`, `fecha_salida`, `fecha_llegada`, `total_noches`, `precio_persona`, `cant_pack_disp`, `total_packs`, `total_person_pack`) VALUES
+(1, 'Pack estafoso', 'NotSky', 'NotSky', 'Los Angeles, Las Vegas, Tu casa', 'Totalmente no una estafa, Casa de usuario', '2024-04-01', '2024-04-02', 1, 1, 1, 1, 1),
+(2, 'Ultra Super Hyper Enhanced Millonario Pack Deluxe Remix Update Styled Up And Knuckles Dark moon wii sports donkey kong and Dante from the devil may pack series of packs from ocarina of time', 'Sky', 'Sky', 'Santiago, Las vegas, Nueva York, Tokyo, Kyoto, Atlantis, La Luna, La antartida, El sol, Moscú, Ciudad John Pork, Knuckles', 'John Pork, Vegas Box, York pork, Tokyo pork, Kyoto deluxe hotel, Atlantic Hotel, Moon Hotel, Antartic Premium, Sun Hotel, Nyet Hotel, John Pork de John Pork, Knuckles Cool House', '2069-05-02', '2069-06-30', 100, 5000, 4, 10, 5);
 
 -- --------------------------------------------------------
 
@@ -168,7 +150,7 @@ CREATE TABLE `usuarios` (
   `Nombre` varchar(200) NOT NULL,
   `Fecha_Nacimiento` date NOT NULL,
   `Contrasena` varchar(30) NOT NULL,
-  `wishlist` varchar(200) NOT NULL
+  `wishlist` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -176,7 +158,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `Correo`, `Nombre`, `Fecha_Nacimiento`, `Contrasena`, `wishlist`) VALUES
-(1, 'juan@mail.com', 'juan', '2003-05-01', 'juan', 'a,AS,Hotel Torres,Hotel Torres,Hotel Torres,Hotel Leyton,Hotel Leyton'),
+(1, 'juan@mail.com', 'juan', '2003-05-01', 'juan', 'a'),
 (3, 'pedro@mail.com', 'pedro', '2002-02-12', 'pedro', '');
 
 -- --------------------------------------------------------
