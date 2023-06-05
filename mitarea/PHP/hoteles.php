@@ -166,10 +166,12 @@
                                         echo '<i class="bi bi-star me-1"></i>';
                                     }
                                     
-                                    echo '<form action="hoteles.php">';
+                                    echo '<form action=""  method="POST">';
                                         echo '<div class="d-grid mt-2">';
-                                            echo '<button type="button" type = "submit"  value='.$hotel['Nombre_hotel'].'name="Wish" id = "Wish" class="btn btn-reserve rounded">Reservar</button>';
-                                            
+                                           
+                                            echo '<input type="hidden"  value="'.$hotel['Nombre_hotel'].'" name= "hotel">'; 
+                                            echo '<button type = "submit" name="Wish" id = "Wish" class="btn btn-reserve rounded">Reservar</button>';
+                                            echo $hotel['Nombre_hotel'];
                                             echo '<button type="button" class="btn btn-cart rounded mt-1">Agregar al carrito</button>';
                                             
                                         echo '</div>';
@@ -180,7 +182,10 @@
                 }
                 echo '</div>';
             }
+            if (ISSET($_POST['Wish'])){
+                echo $_POST['hotel'];
             include 'wishfunction.php';
+            }
             ?>
             
 		</div>

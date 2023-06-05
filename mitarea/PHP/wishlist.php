@@ -7,7 +7,7 @@ BEGIN
     SET wishlist=(
         CASE WHEN wishlist=''
             THEN val
-            ELSE concat(wishlist, val)
+            ELSE concat_WS('\,',wishlist, val)
         END
     )
     WHERE id_usuario = id;
