@@ -29,6 +29,8 @@
 	<link rel = "stylesheet" type = "text/css" href = "../css/navbar.css">
 	<link rel = "stylesheet" type = "text/css" href = "../css/table.css">
     <link rel = "stylesheet" type = "text/css" href = "../css/general.css">
+    <!--Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- FONTAWESOME -->
     <script src="https://kit.fontawesome.com/c7128d3718.js" crossorigin="anonymous"></script>
 	<!-- BOOTSTRAP -->
@@ -106,58 +108,9 @@
                                     echo '<p class="fs-5">' . $hotel["Nombre_hotel"] . '</p>';
                                     echo '<p class="fs-6">CLP $'. number_format($hotel['Precio_noche'], 0, ",", "."). '</p>';
                                     echo '</br>';
-                                    if (isset($_GET['hotel']) && $_GET['hotel'] === $hotel["id_hotel"]){
-                                        echo '<a href="hoteles.php" class="details-link">Mostrar detalles</a>';
-                                        if ($hotel["estacionamiento"] == 1){
-                                            echo '<p><i class="fa-solid fa-car"></i> Estacionamiento';
-                                            echo '<i class="bi bi-check"></i>';
-                                        } else{
-                                            echo '<p><i class="fa-solid fa-car"></i> Estacionamiento';
-                                            echo '<i class="bi bi-x"></i>';
-                                        }
-                                        echo '</p>';
-
-                                        
-                                        if ($hotel["piscina"] == 1){
-                                            echo '<p><i class="fa-solid fa-person-swimming"></i> Piscina';
-                                            echo '<i class="bi bi-check"></i>';
-                                        } else{
-                                            echo '<p><i class="fa-solid fa-person-swimming"></i> Piscina';
-                                            echo '<i class="bi bi-x"></i>';
-                                        }
-                                        echo '</p>';
-
-                                        
-                                        if ($hotel["serv_lavanderia"]==1){
-                                            echo '<p><img src="../images/washing.png" width="16" height="14"> Servicio de lavanderia';
-                                            echo '<i class="bi bi-check"></i>';
-                                        } else{
-                                            echo '<p><img src="../images/washing.png" width="16" height="14"> Servicio de lavanderia';
-                                            echo '<i class="bi bi-x"></i>';
-                                        }
-                                        echo '</p>';
-                                        
-                                        if ($hotel["pet_friend"]){
-                                            echo '<p><img src="../images/paw.png" width="16" height="14"> Pet Friendly';
-                                            echo '<i class="bi bi-check"></i>';
-                                        } else{
-                                            echo '<p><img src="../images/paw.png" width="16" height="14"> Pet Friendly';
-                                            echo '<i class="bi bi-x"></i>';
-                                        }
-                                        echo '</p>';
-
+                                    echo '<a class="details-link" role="button" onclick="mostrarDetalles('. $hotel["id_hotel"] .')">Mostrar detalles</a>';
+                                    echo '<div id="details-'.$hotel["id_hotel"].'" style="display: none"></div>';
                                     
-                                        if ($hotel["serv_desayuno"]){
-                                            echo '<p><i class="fa-solid fa-utensils"></i> Servicio de desayuno';
-                                            echo '<i class="bi bi-check"></i>';
-                                        } else{
-                                            echo '<p><i class="fa-solid fa-utensils"></i> Servicio de desayuno';
-                                            echo '<i class="bi bi-x"></i>';
-                                        }
-                                        echo '</p>';
-                                    } else {
-                                        echo '<a href="?hotel='.$hotel["id_hotel"].'" class="details-link">Mostrar detalles</a>';
-                                    }
                                     echo '</br>';
                                     for ($i = 1; $i <= $hotel["Num_estrellas"]; $i++) {
                                         echo '<i class="bi bi-star-fill me-1"></i>'; 
@@ -183,7 +136,30 @@
     
     <footer class="footer row">
     </footer>
+    <script>
+        function mostrarDetalles(id)
+        {
+            var details_id = "#details-"+id;
 
+
+            if ($(details_id).is(":visible")) {
+                // Si el texto ya está visible, ocultarlo en el segundo clic
+                $(details_id).hide();
+            } else {
+                $.ajax({
+                data: 'id='+id,
+                url: 'obtener_detalles.php',
+                type: 'POST',
+
+                success: function(details)
+                {
+                    $(details_id).html(details).show()
+                }
+                });
+            }
+            
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
