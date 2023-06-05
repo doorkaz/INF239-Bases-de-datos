@@ -3,7 +3,6 @@
 <?php
     include "db_conn.php";
 	session_start();
-    include "obtener_hoteles.php";
 	if(!ISSET($_SESSION['Correo'])){
 		header('location:login.php');
 	}
@@ -12,7 +11,7 @@
 	if(ISSET($_POST['search'])){
 		$keyword = $_POST['keyword'];
 	include "db_conn.php";
-	$sql = "SELECT * FROM hoteles WHERE Nombre_hotel LIKE '%$keyword%'";
+	$sql = "SELECT * FROM paquetees WHERE Nombre_paquete LIKE '%$keyword%'";
 	$result = mysqli_query($conn,$sql);
 	}
 ?>
@@ -91,38 +90,31 @@
 	<div class = "py-3 rounded">
 		<div class="container">
             <?php
-            
-            $datosHoteles = obtener_hoteles(); 
+            include "obtener_paquetes.php";
+            $datosPaquetes = obtener_paquetes(); 
 
-            // Divide los hoteles en grupos de 3
-            $gruposHoteles = array_chunk($datosHoteles, 4);
+            // Divide los paquetes en grupos de 4
+            $gruposPaquetes = array_chunk($datosPaquetes, 3);
 
-            // Generar filas con tres hoteles cada una
-            foreach ($gruposHoteles as $grupo) {
+            // Generar filas con 4 paquetes cada una
+            foreach ($gruposPaquetes as $grupo) {
                 echo '<div class="row mb-5" >';
-                foreach ($grupo as $hotel) {
-                    echo '<div class="col-sm-6 col-md-3 col-lg-3">';
-                        echo '<div class="card shadow-sm" style="width: 18rem;">';
-                            echo '<img class="card-img-top img-responsive" src="../images/hoteles/h-id' . $hotel["id_hotel"] . '-1.jpg" alt="imghotel">';
+                foreach ($grupo as $paquete) {
+                    echo '<div class="col-sm-6 col-md-4 col-lg-4">';
+                        echo '<div class="card shadow-sm" style="width: 18rem; height: 100%">';
+                            echo '<img class="card-img-top img-responsive" src="../images/paquetes/p-id' . $paquete["id_pack"] . '-1.jpg" alt="imgpaquete">';
                                 echo '<div class="card-body">';
-                                    echo '<p class="fs-5">' . $hotel["Nombre_hotel"] . '</p>';
-                                    echo '<p class="fs-6">CLP $'. number_format($hotel['Precio_noche'], 0, ",", "."). '</p>';
+                                    echo '<p class="fs-5">' . $paquete["Nombre_pack"] . '</p>';
+                                    echo '<p class="fs-6">CLP $'. number_format($paquete['precio_persona'], 0, ",", "."). '</p>';
                                     echo '</br>';
-                                    echo '<a class="details-link" role="button" onclick="mostrarDetalles('. $hotel["id_hotel"] .')">Mostrar detalles</a>';
-                                    echo '<div id="details-'.$hotel["id_hotel"].'" style="display: none"></div>';
                                     
                                     echo '</br>';
-                                    for ($i = 1; $i <= $hotel["Num_estrellas"]; $i++) {
-                                        echo '<i class="bi bi-star-fill me-1"></i>'; 
-                                    }
-                                    for ($i = $hotel["Num_estrellas"] + 1; $i <= 5; $i++) {
-                                        echo '<i class="bi bi-star me-1"></i>';
-                                    }
+                                    
                                     
                                     echo '<form action=""  method="POST">';
                                         echo '<div class="d-grid mt-2">';
-                                           
-                                            echo '<input type="hidden"  value="'.$hotel['Nombre_hotel'].'" name= "hotel">'; 
+                                        
+                                            echo '<input type="hidden"  value="'.$paquete['Nombre_pack'].'" name= "paquete">'; 
                                             echo '<button type = "submit" name="Wish" id = "Wish" class="btn btn-reserve rounded">Reservar</button>';  
                                             echo '<button type="button" class="btn btn-cart rounded mt-1">Agregar al carrito</button>';
                                             
@@ -135,9 +127,10 @@
                 echo '</div>';
             }
             if (ISSET($_POST['Wish'])){
-                echo $_POST['hotel'];
+                echo $_POST['paquete'];
                 include 'wishfunction.php';
             }
+
             ?>
             
 		</div>
@@ -145,30 +138,6 @@
     
     <footer class="footer row">
     </footer>
-    <script>
-        function mostrarDetalles(id)
-        {
-            var details_id = "#details-"+id;
-
-
-            if ($(details_id).is(":visible")) {
-                // Si el texto ya está visible, ocultarlo en el segundo clic
-                $(details_id).hide();
-            } else {
-                $.ajax({
-                data: 'id='+id,
-                url: 'obtener_detalles_hotel.php',
-                type: 'POST',
-
-                success: function(details)
-                {
-                    $(details_id).html(details).show()
-                }
-                });
-            }
-            
-        }
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
