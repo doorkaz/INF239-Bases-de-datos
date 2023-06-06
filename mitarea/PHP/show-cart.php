@@ -30,8 +30,8 @@ if(!ISSET($_SESSION['Correo'])){
 <?php
         }  
     }
-    $sql = "SELECT * FROM cart JOIN hoteles ON hoteles.id_hotel = cart.pid WHERE wishlist.bool = '0'";
-    $result = mysqli_query($conn, $sql);
+    //$sql = "SELECT * FROM cart JOIN hoteles ON hoteles.id_hotel = cart.pid WHERE wishlist.bool = '0'";
+    //$result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0){
 
