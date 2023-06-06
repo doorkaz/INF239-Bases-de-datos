@@ -2,6 +2,7 @@
 <?php
 	session_start();
 	include "db_conn.php";
+	include "quantityOnCart.php";
 	if(!ISSET($_SESSION['Correo'])){
 		header('location:login.php');
 	}
@@ -45,7 +46,11 @@
 						<a class="nav-link active fs-6" style="color: white" href="hoteles.php">Hoteles</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link active fs-6" style="color: white" href="cart.php">Carrito</a>
+						<a class="nav-link active fs-6" style="color: white" href="cart.php">Carrito 
+							<span class="rounded-circle ps-1 pe-1 text-center" style="background-color: #629fa5; color: #182c2e">
+								<?php quantityOnCart($_SESSION['id_usuario'])?>
+							</span>
+						</a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle fs-6" style="color: white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
