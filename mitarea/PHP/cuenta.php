@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 	session_start();
+	include "quantityOnCart.php";
 	if(ISSET($_POST['actualizacion'])){
 			$actual = $_POST['actualizacion'];
 			include "db_conn.php";
@@ -50,7 +51,11 @@
 						<a class="nav-link active fs-6" style="color: white" href="hoteles.php">Hoteles</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link active fs-6" style="color: white" href="cart.php">Carrito</a>
+						<a class="nav-link active fs-6" style="color: white" href="cart.php">Carrito 
+							<span class="rounded-circle ps-1 pe-1 text-center" style="background-color: #629fa5; color: #182c2e">
+								<?php quantityOnCart($_SESSION['id_usuario'])?>
+							</span>
+						</a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle fs-6 txt-shadow" style="color: white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -59,6 +64,7 @@
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" href="cuenta.php">Mi perfil</a></li>
 							<li><a class="dropdown-item" href="reviews.php">Reseñas</a></li>
+							<li><a class="dropdown-item" href="mywishlist.php">Mi wishlist</a></li>
 							<li><hr class="dropdown-divider"></li>
 							<li><a class="dropdown-item" href="logout.php">Cerrar sesión</a></li>
 						</ul>

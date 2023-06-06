@@ -69,6 +69,7 @@
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" href="cuenta.php">Mi perfil</a></li>
 							<li><a class="dropdown-item" href="reviews.php">Reseñas</a></li>
+                            <li><a class="dropdown-item" href="mywishlist.php">Mi wishlist</a></li>
 							<li><hr class="dropdown-divider"></li>
 							<li><a class="dropdown-item" href="logout.php">Cerrar sesión</a></li>
 						</ul>
@@ -129,8 +130,8 @@
                                            
                                             echo '<input type="hidden"  value="'.$hotel['id_hotel'].'" name= "pid">'; 
                                             echo '<input type="hidden"  value="0" name= "bool">'; 
-                                            echo '<button type = "submit" class="btn btn-reserve rounded">Reservar</button>';  
-                                            echo '<button type="submit" name="wish" class="btn btn-cart rounded mt-1">Agregar al carrito</button>';
+                                            echo '<button type = "submit" class="btn btn-reserve rounded">Agregar al carrito</button>';  
+                                            echo '<button type="submit" name="wish" class="btn btn-cart rounded mt-1">Wishlist</button>';
                                             
                                         echo '</div>';
                                     echo '</form>';
@@ -141,7 +142,7 @@
                 echo '</div>';
             }
             if (ISSET($_POST['wish'])){
-                include 'wishfunction.php';
+                include 'wishlist.php';
 
             }
             ?>

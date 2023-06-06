@@ -58,7 +58,8 @@
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" href="cuenta.php">Mi perfil</a></li>
-							<li><a class="dropdown-item" href="reviews.php">Reseñas</a></li>
+							<li><a class="dropdown-item" href="reviews.php">Mis reseñas</a></li>
+							<li><a class="dropdown-item" href="mywishlist.php">Mi wishlist</a></li>
 							<li><hr class="dropdown-divider"></li>
 							<li><a class="dropdown-item" href="logout.php">Cerrar sesión</a></li>
 						</ul>
