@@ -66,58 +66,9 @@ if(ISSET($_GET['search'])){
                             echo '<p class="fs-5">' . $hotel["Nombre_hotel"] . '</p>';
                             echo '<p class="fs-6">CLP $'. number_format($hotel['Precio_noche'], 0, ",", "."). '</p>';
                             echo '</br>';
-                            if (isset($_GET['hotel']) && $_GET['hotel'] === $hotel["id_hotel"]){
-                                echo '<a href="hoteles.php" class="details-link">Mostrar detalles</a>';
-                                if ($hotel["estacionamiento"] == 1){
-                                    echo '<p><i class="fa-solid fa-car"></i> Estacionamiento';
-                                    echo '<i class="bi bi-check"></i>';
-                                } else{
-                                    echo '<p><i class="fa-solid fa-car"></i> Estacionamiento';
-                                    echo '<i class="bi bi-x"></i>';
-                                }
-                                echo '</p>';
-
-                                
-                                if ($hotel["piscina"] == 1){
-                                    echo '<p><i class="fa-solid fa-person-swimming"></i> Piscina';
-                                    echo '<i class="bi bi-check"></i>';
-                                } else{
-                                    echo '<p><i class="fa-solid fa-person-swimming"></i> Piscina';
-                                    echo '<i class="bi bi-x"></i>';
-                                }
-                                echo '</p>';
-
-                                
-                                if ($hotel["serv_lavanderia"]==1){
-                                    echo '<p><img src="../images/washing.png" width="16" height="14"> Servicio de lavanderia';
-                                    echo '<i class="bi bi-check"></i>';
-                                } else{
-                                    echo '<p><img src="../images/washing.png" width="16" height="14"> Servicio de lavanderia';
-                                    echo '<i class="bi bi-x"></i>';
-                                }
-                                echo '</p>';
-                                
-                                if ($hotel["pet_friend"]){
-                                    echo '<p><img src="../images/paw.png" width="16" height="14"> Pet Friendly';
-                                    echo '<i class="bi bi-check"></i>';
-                                } else{
-                                    echo '<p><img src="../images/paw.png" width="16" height="14"> Pet Friendly';
-                                    echo '<i class="bi bi-x"></i>';
-                                }
-                                echo '</p>';
-
+                            echo '<a class="details-link" role="button" onclick="mostrarDetallesHotel('. $hotel["id_hotel"] .')">Mostrar detalles</a>';
+                            echo '<div id="details-'.$hotel["id_hotel"].'" style="display: none"></div>';
                             
-                                if ($hotel["serv_desayuno"]){
-                                    echo '<p><i class="fa-solid fa-utensils"></i> Servicio de desayuno';
-                                    echo '<i class="bi bi-check"></i>';
-                                } else{
-                                    echo '<p><i class="fa-solid fa-utensils"></i> Servicio de desayuno';
-                                    echo '<i class="bi bi-x"></i>';
-                                }
-                                echo '</p>';
-                            } else {
-                                echo '<a href="?hotel='.$hotel["id_hotel"].'" class="details-link">Mostrar detalles</a>';
-                            }
                             echo '</br>';
                             for ($i = 1; $i <= $hotel["Num_estrellas"]; $i++) {
                                 echo '<i class="bi bi-star-fill me-1"></i>'; 
@@ -126,18 +77,28 @@ if(ISSET($_GET['search'])){
                                 echo '<i class="bi bi-star me-1"></i>';
                             }
                             
-                            
-                            echo '<div class="d-grid mt-2">';
-                                echo '<button type="button" class="btn btn-reserve rounded">Reservar</button>';
-                                echo '<button type="button" class="btn btn-cart rounded mt-1">Agregar al carrito</button>';
-                            echo '</div>';
+                            echo '<form action=""  method="POST">';
+                                echo '<div class="d-grid mt-2">';
+                                    
+                                    echo '<input type="hidden"  value="'.$hotel['id_hotel'].'" name= "pid">'; 
+                                    echo '<input type="hidden"  value="0" name= "bool">'; 
+                                    echo '<button type = "submit" class="btn btn-reserve rounded">Reservar</button>';  
+                                    echo '<button type="submit" name="wish" class="btn btn-cart rounded mt-1">Agregar al carrito</button>';
+                                    
+                                echo '</div>';
+                            echo '</form>';
                         echo '</div>';
                 echo '</div>';
             echo '</div>';
         }
         echo '</div>';
     }
+    if (ISSET($_POST['wish'])){
+        include 'wishfunction.php';
+    }
+            
     echo '</div>';
     echo '</div>';
 }
+
 ?>
