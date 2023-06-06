@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2023 a las 00:19:34
+-- Tiempo de generación: 06-06-2023 a las 02:44:45
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -37,20 +37,6 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `add_wishlist` (IN `val` VARCHAR(200
 END$$
 
 DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `cart`
---
-
-CREATE TABLE `cart` (
-  `id` int(11) NOT NULL,
-  `pid` int(11) NOT NULL,
-  `uid` int(11) NOT NULL,
-  `timestamp` date NOT NULL DEFAULT current_timestamp(),
-  `bool` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -203,8 +189,17 @@ CREATE TABLE `wishlist` (
   `id` int(11) NOT NULL,
   `pid` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
+  `timestamp` date NOT NULL DEFAULT current_timestamp(),
   `bool` tinyint(1) NOT NULL COMMENT '1 if paquete 0 if hotel'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `wishlist`
+--
+
+INSERT INTO `wishlist` (`id`, `pid`, `uid`, `timestamp`, `bool`) VALUES
+(26, 1, 1, '2023-06-05', 0),
+(27, 5, 1, '2023-06-05', 0);
 
 -- --------------------------------------------------------
 
@@ -218,14 +213,6 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `cart`
---
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `uid` (`uid`),
-  ADD KEY `pid` (`pid`);
 
 --
 -- Indices de la tabla `hoteles`
@@ -265,19 +252,11 @@ ALTER TABLE `usuarios`
 -- Indices de la tabla `wishlist`
 --
 ALTER TABLE `wishlist`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `uid` (`uid`),
-  ADD KEY `pid` (`pid`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
-
---
--- AUTO_INCREMENT de la tabla `cart`
---
-ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `hoteles`
@@ -301,17 +280,11 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `cart`
---
-ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `resena_hotel`
@@ -326,12 +299,6 @@ ALTER TABLE `resena_hotel`
 ALTER TABLE `resena_pack`
   ADD CONSTRAINT `resena_pack_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `resena_pack_ibfk_2` FOREIGN KEY (`id_pack`) REFERENCES `paquetes` (`id_pack`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `wishlist`
---
-ALTER TABLE `wishlist`
-  ADD CONSTRAINT `wishlist_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
