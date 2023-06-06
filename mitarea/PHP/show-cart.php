@@ -10,7 +10,8 @@ if(!ISSET($_SESSION['Correo'])){
 
     if (mysqli_num_rows($result) > 0){
 
-        while ($row = mysqli_fetch_assoc($result)){?>
+        while ($row = mysqli_fetch_assoc($result)){      
+?>
             <tr>
                 <td>
                     <?php echo '<img class="card-img-top img-responsive" src="../images/paquetes/p-id' . $row["id_pack"] . '-1.jpg" alt="imgpaquete">'?>
@@ -30,12 +31,13 @@ if(!ISSET($_SESSION['Correo'])){
 <?php
         }  
     }
-    //$sql = "SELECT * FROM cart JOIN hoteles ON hoteles.id_hotel = cart.pid WHERE wishlist.bool = '0'";
-    //$result = mysqli_query($conn, $sql);
+    $sql = "SELECT * FROM cart JOIN hoteles ON hoteles.id_hotel = cart.pid WHERE wishlist.bool = '0'";
+    $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0){
 
-        while ($row = mysqli_fetch_assoc($result)){?>
+        while ($row = mysqli_fetch_assoc($result)){
+?>
             <tr>
                 <td>
                     <div class="card" style="width: 250px;">

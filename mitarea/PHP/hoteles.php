@@ -93,8 +93,7 @@
                 echo '</div>';
             }
             if (ISSET($_POST['wish'])){
-                include 'wishlist.php';
-
+                include 'wishlist.php'; 
             }
             ?>
             
