@@ -2,6 +2,7 @@
 
 <?php
     include "db_conn.php";
+    include "quantityOnCart.php";
 	session_start();
     include "obtener_hoteles.php";
 	if(!ISSET($_SESSION['Correo'])){
@@ -25,10 +26,10 @@
 	<title>PrestigeTravels</title>
 
 	<!-- CSS -->
-	<link rel = "stylesheet" type = "text/css" href = "../css/index.css">
-	<link rel = "stylesheet" type = "text/css" href = "../css/navbar.css">
-	<link rel = "stylesheet" type = "text/css" href = "../css/table.css">
-    <link rel = "stylesheet" type = "text/css" href = "../css/general.css">
+	<link rel = "stylesheet" type = "text/css" href = "../css/index.css" />
+	<link rel = "stylesheet" type = "text/css" href = "../css/navbar.css" />
+	<link rel = "stylesheet" type = "text/css" href = "../css/table.css" />
+    <link rel = "stylesheet" type = "text/css" href = "..\css\general.css" />
     <!--Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- FONTAWESOME -->
@@ -55,7 +56,11 @@
 						<a class="nav-link active fs-6 txt-shadow" style="color: white" href="hoteles.php">Hoteles</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link active fs-6" style="color: white" href="cart.php">Carrito</a>
+						<a class="nav-link active fs-6" style="color: white" href="cart.php">Carrito 
+                        <span class="rounded-circle ps-1 pe-1 text-center" style="background-color: #629fa5; color: #182c2e">
+                            <?php quantityOnCart($_SESSION['id_usuario'])?>
+                        </span>
+                        </a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle fs-6" style="color: white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -119,7 +124,7 @@
                                         echo '<i class="bi bi-star me-1"></i>';
                                     }
                                     
-                                    echo '<form action=""  method="POST">';
+                                    echo '<form action="#"  method="POST">';
                                         echo '<div class="d-grid mt-2">';
                                            
                                             echo '<input type="hidden"  value="'.$hotel['id_hotel'].'" name= "pid">'; 
@@ -137,12 +142,14 @@
             }
             if (ISSET($_POST['wish'])){
                 include 'wishfunction.php';
+
             }
             ?>
             
 		</div>
 	</div>
-    
+   
+
     <footer class="footer row">
     </footer>
     <script>
