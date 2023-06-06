@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-06-2023 a las 02:44:45
+-- Tiempo de generación: 05-06-2023 a las 05:11:07
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -176,30 +176,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `Correo`, `Nombre`, `Fecha_Nacimiento`, `Contrasena`, `wishlist`) VALUES
-(1, 'juan@mail.com', 'juan', '2003-05-01', 'juan', 'a,AS,Hotel Torres,Hotel Torres,Hotel Torres,Hotel Leyton,Hotel Leyton,Hotel Torres,Hotel Torres'),
+(1, 'juan@mail.com', 'juan', '2003-05-01', 'juan', 'a,AS,Hotel Torres,Hotel Torres,Hotel Torres,Hotel Leyton,Hotel Leyton'),
 (3, 'pedro@mail.com', 'pedro', '2002-02-12', 'pedro', '');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `wishlist`
---
-
-CREATE TABLE `wishlist` (
-  `id` int(11) NOT NULL,
-  `pid` int(11) NOT NULL,
-  `uid` int(11) NOT NULL,
-  `timestamp` date NOT NULL DEFAULT current_timestamp(),
-  `bool` tinyint(1) NOT NULL COMMENT '1 if paquete 0 if hotel'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `wishlist`
---
-
-INSERT INTO `wishlist` (`id`, `pid`, `uid`, `timestamp`, `bool`) VALUES
-(26, 1, 1, '2023-06-05', 0),
-(27, 5, 1, '2023-06-05', 0);
 
 -- --------------------------------------------------------
 
@@ -249,12 +227,6 @@ ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`);
 
 --
--- Indices de la tabla `wishlist`
---
-ALTER TABLE `wishlist`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -275,12 +247,6 @@ ALTER TABLE `paquetes`
 --
 ALTER TABLE `usuarios`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `wishlist`
---
-ALTER TABLE `wishlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Restricciones para tablas volcadas
