@@ -9,8 +9,17 @@
 			$fechanac = $_POST['fechanac'];
 			$_SESSION['Fecha_Nacimiento']=$fechanac;
 			$id = $_SESSION['id_usuario'];
-			$sql = "UPDATE 'usuarios' SET Nombre=$nombre,Fecha_Nacimiento = $fechanac WHERE id_usuario = $id ";
+			$sql = "UPDATE usuarios SET Nombre='$nombre' , Fecha_Nacimiento = '$fechanac' WHERE id_usuario = $id ";
+			mysqli_query($conn, $sql);
 		}
+	if(ISSET($_POST['delete'])){
+		$id = $_SESSION['id_usuario'];
+		$sql = "DELETE 'usuarios' WHERE id_usuario = $id ";
+		mysqli_query($conn, $sql);
+		echo 'Cuenta eliminada correctamente';
+		header('location:login.php');
+		
+	}
 		
 	if(!ISSET($_SESSION['Correo'])){
 		header('location:login.php');
@@ -106,7 +115,9 @@
                         <button class = "btn btn-success" type =  "submit" name="actualizacion" id = "actualizacion">Actualizar datos</button>
                     </div>
 				</div>
-
+				<form method="POST" action="">
+					<button class = "btn btn-danger" type =  "submit" name="delete" id = "delete">Delete datos</button>
+				</form>
 				<div class="col-md-6">
 					<img src="../images/jpcover.jpg" class="d-block w-50">
 				</div>

@@ -15,10 +15,10 @@
 	<title>PrestigeTravels</title>
 
 	<!-- CSS -->
-	<link rel = "stylesheet" type = "text/css" href = "../css/index.css">
-	<link rel = "stylesheet" type = "text/css" href = "../css/navbar.css">
-	<link rel = "stylesheet" type = "text/css" href = "../css/table.css">
-	<link rel = "stylesheet" type = "text/css" href = "../css/general.css">
+	<link rel = "stylesheet" type = "text/css" href = "../../css/index.css">
+	<link rel = "stylesheet" type = "text/css" href = "../../css/navbar.css">
+	<link rel = "stylesheet" type = "text/css" href = "../../css/table.css">
+	<link rel = "stylesheet" type = "text/css" href = "..\..\css\general.css">
 	<!--Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<!-- FONTAWESOME -->
@@ -81,7 +81,6 @@
 							<td>Nombre hotel/paquete</td>
 							<td><input type="text" class="form-control input-sm" type="search" name="Nombre" placeholder="¡Busca tu hotel o paquete!" ></td>
 						</tr>
-						<!--
 						<tr>
 							Fecha salida
 							<?php  $newDate= date("Y-m-d"); ?>
@@ -92,11 +91,15 @@
 								<?php  $newDate= date("Y-m-d"); ?>
 								<input type="date" class="form-control input-sm" name="fecha_llegada" value="<?=$newDate?>">	
 						</tr>
-						-->
 						<tr>
 						
 							¿Es un Hotel? 
-							<input type="checkbox" id="hotel" name="hotel" value="hotel">
+							<input type="checkbox" id="hotel" name="hotel" >
+						</tr>
+						<tr>
+						
+							¿Es un Paquete? 
+							<input type="checkbox" id="pack" name="pack" >
 						</tr>
 						<tr>
 							<input type="text" class="form-control input-sm" name="ciudad" placeholder="¡Encuentra la ciudad que deseas ir!">
