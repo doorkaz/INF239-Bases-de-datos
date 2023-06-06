@@ -19,7 +19,8 @@
 	<link rel = "stylesheet" type = "text/css" href = "../../css/index.css">
 	<link rel = "stylesheet" type = "text/css" href = "../../css/navbar.css">
 	<link rel = "stylesheet" type = "text/css" href = "../../css/table.css">
-	<link rel = "stylesheet" type = "text/css" href = "..\..\css\general.css">
+	<link rel = "stylesheet" type = "text/css" href = "../css/general.css">
+	<link rel = "stylesheet" type = "text/css" href = "../css/star.css">
 	<!--Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<!-- FONTAWESOME -->
@@ -80,7 +81,7 @@
 			
 			</div>
 			<form class="col-md-6" method="GET" action="index.php">
-			<fieldset>
+
 					<tbody>
 						<tr>
 							<td>Nombre hotel/paquete</td>
@@ -109,12 +110,32 @@
 						<tr>
 							<input type="text" class="form-control input-sm" name="ciudad" placeholder="¡Encuentra la ciudad que deseas ir!">
 						</tr>
-					</li>
+						Indique el precio
+						<tr>
+							<input type="number" class="form-control input-sm" name="precio" placeholder="¿A que precio desea su reserva?">
+						</tr>
+						Calificación preferida:
+						<div>
+							<div class="star belowchecked">
+									<input type="radio" name="rating" value="1">
+								</div>
+							<div class="star">
+									<input type="radio" name="rating" value="2">
+								</div>
+							<div class="star">
+									<input type="radio" name="rating" value="3">
+								</div>
+							<div class="star">
+									<input type="radio" name="rating" value="4">
+								</div>
+							<div class="star">
+									<input type="radio" name="rating" value="5">
+								</div>
+						</div>
 					</tbody>
 				<div class="d-grid form-group mt-2">
 					<button class = "btn btn-success" type =  "submit" name="search" id = "search">Busca ya</button>
 				</div>
-			</fieldset>
 		</div>
 	</div>
 	<div class = "shadow-sm py-3 rounded" style="background-color: #fafafb">
@@ -252,6 +273,22 @@
 			}
 			
 		}
+		$(function () {
+
+		$(".star").click(function(){
+			var x = $(this).find("input[type='radio']");
+			var val = x.val();
+			x.attr("checked",true);
+			$(".star input[type='radio']").each(function(){
+				if ($(this).val()<=val){
+					$(this).parent().addClass("belowchecked");
+				} else {
+					$(this).parent().removeClass("belowchecked");
+				}
+			});
+		});
+
+		});
 	</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>

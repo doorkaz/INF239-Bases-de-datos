@@ -1,6 +1,7 @@
 <?php
 include 'db_conn.php'; 
-
+$queryhotel = "";
+$querypack = "";
 if(ISSET($_GET['search'])){
     echo '<div class = "py-3 rounded">';
     echo '<div class="container">';
@@ -25,11 +26,16 @@ if(ISSET($_GET['search'])){
         else{
             $queryhotel = "SELECT * FROM hoteles WHERE hab_disp >= 1";
         }
-        $result_hotel = mysqli_query($conn, $queryhotel);
+        if (!empty($_GET['precio'])){
+            $precio = $_GET['precio'];
+            $queryhotel .= " AND Precio_noche <= $precio";
+        }
+        if (!empty($_GET['rating'])){
+            $precio = $_GET['precio'];
+            $queryhotel .= " AND Precio_noche <= $precio";
+        }
     }
     else if (!empty($_GET['pack']) && empty($_GET['hotel'])){
-        $a = $_GET['pack'];
-        echo $a;
         $querypack = "SELECT * FROM paquetes WHERE cant_pack_disp >= 1 AND " ;
         if(!empty($_GET['Nombre']) && empty($_GET['ciudad'])){
             $nombre= $_GET['Nombre'];
@@ -42,31 +48,63 @@ if(ISSET($_GET['search'])){
         else{
             $nombre= $_GET['Nombre'];
             $ciudad= $_GET['ciudad'];
-            $query2 = "SELECT CHARINDEX('t', 'Customer')";
-            $ciudadpack = mysqli_query($conn, $query2);
-            if($ciudadpack != 0){
+            //$query2 = "SELECT CHARINDEX('t', 'Customer')";
+            //$ciudadpack = mysqli_query($conn, $query2);
+            //if($ciudadpack != 0){
 
-            }
+            //}
             $querypack .= "ciudades LIKE '%$ciudad%' AND Nombre_pack LIKE '%$nombre%'";
+        }
+        if (!empty($_GET['precio'])){
+            $precio = $_GET['precio'];
+            $querypack .= " AND Precio_noche <= $precio";
+        }
+        if (!empty($_GET['rating'])){
+            $precio = $_GET['precio'];
+            $querypack .= " AND Precio_noche <= $precio";
         }
         $fecha_salida = $_GET['fecha_salida'];
         $fecha_llegada = $_GET['fecha_llegada'];
         $querypack .= "AND fecha_salida BETWEEN '$fecha_salida' and ' $fecha_llegada' AND fecha_llegada BETWEEN '$fecha_salida' and ' $fecha_llegada' ";
-        }
     }
-    else{
-        echo "HOLA JUAN";
+    
+    else {
         $querypack = "SELECT * FROM paquetes WHERE cant_pack_disp >= 1" ;
-        $result_paquete = mysqli_query($conn, $querypack);
         $queryhotel = "SELECT * FROM hoteles WHERE hab_disp >= 1";
+        if (!empty($_GET['precio'])){
+            $precio = $_GET['precio'];
+            $querypack .= " AND Precio_persona <= $precio";
+        }
+        if (!empty($_GET['rating'])){
+            $calificacion = $_GET['rating'];
+            $querypack .= " AND Num_estrellas >= $calificacion";
+        }
+        if (!empty($_GET['precio'])){
+            $precio = $_GET['precio'];
+            $queryhotel .= " AND Precio_noche <= $precio";
+        }
+        if (!empty($_GET['rating'])){
+            $calificacion = $_GET['rating'];
+            $queryhotel .= " AND Num_estrellas >= $calificacion";
+        }
+        echo"$queryhotel";
+        echo"AAAAAAA";
+        echo"$querypack";
+    }
+    if ($querypack != ""){
+        $result_paquete = mysqli_query($conn, $querypack);
+    }
+    if ($queryhotel != ""){
         $result_hotel = mysqli_query($conn, $queryhotel);
     }
-    ECHO "BOLUDO";
+   
+    }
+
     // Guarda hoteles en un array
     $hoteles = array();
     
     // Verificar si se encontraron hoteles
-    if ($result_hotel->num_rows > 0) {
+    if ($queryhotel != "" && $result_hotel->num_rows > 0  ) {
         // Itera y guarda los datos de cada hotel en el array
         while ($fila = $result_hotel->fetch_assoc()) {
             $hotel = array(
@@ -90,7 +128,7 @@ if(ISSET($_GET['search'])){
     $paquetes = array();
 
     // Verificar si se encontraron paquetes
-    if ($result_paquete->num_rows > 0) {
+    if ($querypack != "" && $result_paquete->num_rows > 0 ) {
         // Itera y guarda los datos de cada hotel en el array
         while ($fila = $result_paquete->fetch_assoc()) {
             $paquete = array(
@@ -158,8 +196,7 @@ if(ISSET($_GET['search'])){
         include 'wishfunction.php';
     }
     
-    echo '</div>';
-    echo '</div>';
+
     
     // Divide los paquetes en grupos de 4
     $gruposPaquetes = array_chunk($paquetes, 3);
@@ -193,7 +230,9 @@ if(ISSET($_GET['search'])){
             echo '</div>';
         }
         echo '</div>';
-    }
+    }    
+    echo '</div>';
+    echo '</div>';
     if (ISSET($_POST['Wish'])){
         echo $_POST['paquete'];
         include 'wishfunction.php';
