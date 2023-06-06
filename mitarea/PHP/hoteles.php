@@ -81,7 +81,7 @@
                                            
                                             echo '<input type="hidden"  value="'.$hotel['id_hotel'].'" name= "pid">'; 
                                             echo '<input type="hidden"  value="0" name= "bool">'; 
-                                            echo '<button type = "submit" class="btn btn-reserve rounded">Agregar al carrito</button>';  
+                                            echo '<button type = "submit" name="cart" class="btn btn-reserve rounded">Agregar al carrito</button>';  
                                             echo '<button type="submit" name="wish" class="btn btn-cart rounded mt-1">Wishlist</button>';
                                             
                                         echo '</div>';
@@ -94,6 +94,9 @@
             }
             if (ISSET($_POST['wish'])){
                 include 'wishlist.php'; 
+            }
+            if (ISSET($_POST['cart'])){
+                include 'cart.php'; 
             }
             ?>
             
