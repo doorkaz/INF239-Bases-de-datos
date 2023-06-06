@@ -4,36 +4,45 @@ include 'db_conn.php';
 if(ISSET($_GET['search'])){
     echo '<div class = "py-3 rounded">';
     echo '<div class="container">';
-    $query = "SELECT * FROM hoteles WHERE hab_disp >= 1 AND";
 
-    $filtered_get = array_filter($_GET); // removes empty values from $_GET
+    //$filtered_get = array_filter($_GET); // removes empty values from $_GET
 
-    if (count($filtered_get)) { // not empty
-
-        $keynames = array_keys($filtered_get); // make array of key names from $filtered_get
-        $length= count($filtered_get); 
-        foreach($filtered_get as $key => $value)
-        {
-        $query .= " $key LIKE '%$value%'";  // $filtered_get keyname = $filtered_get['keyname'] value
-        if($key == "fecha_salida" || $key == "fecha_llegada"){
-
+    if (ISSET($_GET['hotel'])) { // not empty
+        $query = "SELECT * FROM hoteles WHERE hab_disp >= 1 AND ";
+        if(!empty($_GET['Nombre']) && empty($_GET['ciudad'])){
+            $nombre= $_GET['Nombre'];
+            $query .= "Nombre_hotel LIKE '%$nombre%'";
         }
-        if ($length>1) { // more than one search filter, and not the last
-            $query .= " AND";
-            $length -= 1;
+        else if(!empty($_GET['ciudad']) && empty($_GET['Nombre'])){
+            $ciudad= $_GET['ciudad'];
+            $query .= "Ciudad LIKE '%$ciudad%'";
         }
+        else if (!empty($_GET['ciudad']) && !empty($_GET['Nombre'])){
+            $nombre= $_GET['Nombre'];
+            $ciudad= $_GET['ciudad'];
+            $query .= "Ciudad LIKE '%$ciudad%' AND Nombre_hotel LIKE '%$nombre%'";
         }
+        else{
+            $query = "SELECT * FROM hoteles WHERE hab_disp >= 1";
+        }
+        
     }
+    else if (ISSET($_GET['paquete'])){
+        $query = "SELECT * FROM paquetes WHERE cant_pack_disp >= 1";
+    }
+    else{
+        $query = "SELECT * FROM hoteles WHERE hab_disp >= 1";
+    }
+    echo $query;
     $query .= ";";
-    $result = mysqli_query($conn, $query);
-
+    $result_hotel = mysqli_query($conn, $query);
     // Guarda hoteles en un array
     $hoteles = array();
 
     // Verificar si se encontraron hoteles
-    if ($result->num_rows > 0) {
+    if ($result_hotel->num_rows > 0) {
         // Itera y guarda los datos de cada hotel en el array
-        while ($fila = $result->fetch_assoc()) {
+        while ($fila = $result_hotel->fetch_assoc()) {
             $hotel = array(
                 "id_hotel" => $fila["id_hotel"],
                 "Nombre_hotel" => $fila["Nombre_hotel"],

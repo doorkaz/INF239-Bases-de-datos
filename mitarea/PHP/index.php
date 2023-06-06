@@ -79,12 +79,12 @@
 			<h4>Arma tu panorama con nosotros</h4>
 			
 			</div>
-			<form class="col-md-6" method="GET" action="">
+			<form class="col-md-6" method="GET" action="index.php">
 			<fieldset>
 					<tbody>
 						<tr>
 							<td>Nombre hotel/paquete</td>
-							<td><input type="text" class="form-control input-sm" type="search" name="Nombre_hotel" placeholder="¡Busca tu hotel!" ></td>
+							<td><input type="text" class="form-control input-sm" type="search" name="Nombre" placeholder="¡Busca tu hotel o paquete!" ></td>
 						</tr>
 						<!--
 						<tr>
@@ -99,7 +99,11 @@
 						</tr>
 						-->
 						<tr>
-							Ciudad
+						
+							¿Es un Hotel? 
+							<input type="checkbox" id="hotel" name="hotel" value="hotel">
+						</tr>
+						<tr>
 							<input type="text" class="form-control input-sm" name="ciudad" placeholder="¡Encuentra la ciudad que deseas ir!">
 						</tr>
 					</li>
