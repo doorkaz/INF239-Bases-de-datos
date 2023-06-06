@@ -5,7 +5,7 @@ if(!ISSET($_SESSION['Correo'])){
 } else {
     $uid = $_SESSION['id_usuario'];
 
-    $sql = "SELECT * FROM wishlist JOIN paquetes ON paquetes.id_pack = wishlist.pid WHERE wishlist.bool = '1' AND uid = $uid";
+    $sql = "SELECT * FROM cart JOIN paquetes ON paquetes.id_pack = cart.pid WHERE cart.bool = '1'";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0){
@@ -19,10 +19,10 @@ if(!ISSET($_SESSION['Correo'])){
                     <?php echo $row["Nombre_paquete"]?>
                 </td>
                 <td>
-                    <?php echo $row["Num_estrellas"]?>
+                    <?php echo $row["Precio_persona"]?>
                 </td>
                 <td>
-                    <a href="delete-wishlist.php?pid=<?php echo $row['pid'] ?>&bool=1">Eliminar</a>
+                    <?php echo $row["Nombre_paquete"]?>
                 </td>
 
             </tr>
@@ -30,7 +30,7 @@ if(!ISSET($_SESSION['Correo'])){
 <?php
         }  
     }
-    $sql = "SELECT * FROM wishlist JOIN hoteles ON hoteles.id_hotel = wishlist.pid WHERE wishlist.bool = '0' AND uid = $uid";
+    $sql = "SELECT * FROM cart JOIN hoteles ON hoteles.id_hotel = cart.pid WHERE wishlist.bool = '0'";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0){
@@ -49,7 +49,7 @@ if(!ISSET($_SESSION['Correo'])){
                     <?php echo $row["Num_estrellas"]?>
                 </td>
                 <td>
-                    <a href="delete-wishlist.php?pid=<?php echo $row['pid']?>&bool=0" style="text-decoration: none">Eliminar</a>
+                    <?php echo $row["Nombre_hotel"]?>
                 </td>
 
             </tr>
