@@ -16,9 +16,9 @@
 	<title>PrestigeTravels</title>
 
 	<!-- CSS -->
-	<link rel = "stylesheet" type = "text/css" href = "../../css/index.css">
-	<link rel = "stylesheet" type = "text/css" href = "../../css/navbar.css">
-	<link rel = "stylesheet" type = "text/css" href = "../../css/table.css">
+	<link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+	<link rel = "stylesheet" type = "text/css" href = "../css/navbar.css">
+	<link rel = "stylesheet" type = "text/css" href = "../css/table.css">
 	<link rel = "stylesheet" type = "text/css" href = "../css/general.css">
 	<link rel = "stylesheet" type = "text/css" href = "../css/star.css">
 	<!--Jquery -->
@@ -113,7 +113,6 @@
 						<div class="carousel-indicators">
 							
 							<?php
-							include "db_conn.php";
 							$sql = "SELECT * FROM top_hoteles";
 							$result = mysqli_query($conn, $sql);
 							$numero = mysqli_num_rows($result);
@@ -130,7 +129,6 @@
 						<div class="carousel-inner">
 
 							<?php
-							include "db_conn.php";
 							// Consulta la view
 							$sql = "SELECT * FROM top_hoteles";
 							$hoteles = mysqli_query($conn, $sql);
@@ -201,7 +199,6 @@
 			</div>
 
 			<?php
-
 			include 'search.php';
 			?>
 

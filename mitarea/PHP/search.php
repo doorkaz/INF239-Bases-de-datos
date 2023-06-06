@@ -87,9 +87,6 @@ if(ISSET($_GET['search'])){
             $calificacion = $_GET['rating'];
             $queryhotel .= " AND Num_estrellas >= $calificacion";
         }
-        echo"$queryhotel";
-        echo"AAAAAAA";
-        echo"$querypack";
     }
     if ($querypack != ""){
         $result_paquete = mysqli_query($conn, $querypack);
@@ -193,7 +190,7 @@ if(ISSET($_GET['search'])){
         echo '</div>';
     }
     if (ISSET($_POST['wish'])){
-        include 'wishfunction.php';
+        include 'wishlist.php';
     }
     
 
@@ -233,8 +230,4 @@ if(ISSET($_GET['search'])){
     }    
     echo '</div>';
     echo '</div>';
-    if (ISSET($_POST['Wish'])){
-        echo $_POST['paquete'];
-        include 'wishfunction.php';
-    }
 ?>
