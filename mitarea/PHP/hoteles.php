@@ -76,7 +76,7 @@
                                         echo '<i class="bi bi-star me-1"></i>';
                                     }
                                     
-                                    echo '<form action="#"  method="POST">';
+                                    echo '<form action=""  method="POST">';
                                         echo '<div class="d-grid mt-2">';
                                            
                                             echo '<input type="hidden"  value="'.$hotel['id_hotel'].'" name= "pid">'; 
