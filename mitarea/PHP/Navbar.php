@@ -14,9 +14,9 @@
 					</li>
 					<li class="nav-item">
 						<a class="nav-link active fs-6" style="color: white" href="mycart.php">Carrito 
-							<span class="rounded-circle ps-1 pe-1 text-center" style="background-color: #629fa5; color: #182c2e">
-								<?php quantityOnCart($_SESSION['id_usuario'])?>
-							</span>
+							
+							<?php quantityOnCart($_SESSION['id_usuario'])?>
+							
 						</a>
 					</li>
 					<li class="nav-item dropdown">

@@ -9,7 +9,9 @@ function quantityOnCart($id){
     if ($num == 0){
         return;
     } else {
-        echo $num;      
+        echo '<span class="rounded-circle ps-1 pe-1 text-center" style="background-color: #629fa5; color: #182c2e">';
+        echo $num;
+        echo '</span>'; 
     }
 }
 ?>
