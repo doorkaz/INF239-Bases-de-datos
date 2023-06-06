@@ -102,14 +102,10 @@ if(ISSET($_GET['search'])){
         }
         echo '</div>';
     }
-<<<<<<< Updated upstream
     if (ISSET($_POST['wish'])){
         include 'wishfunction.php';
     }
             
-=======
-
->>>>>>> Stashed changes
     echo '</div>';
     echo '</div>';
 }
