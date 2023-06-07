@@ -28,7 +28,8 @@
     <script src="https://kit.fontawesome.com/c7128d3718.js" crossorigin="anonymous"></script>
 	<!-- BOOTSTRAP -->
   	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<!-- BOOTSTRAP FONT ICON -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <!-- BOOTSTRAP FONT ICON -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 
@@ -60,7 +61,7 @@
                 foreach ($grupo as $hotel) {
                     echo '<div class="col-sm-6 col-md-3 col-lg-3">';
                         echo '<div class="card shadow-sm" style="width: 18rem;">';
-                            echo '<img class="card-img-top img-responsive" src="../images/hoteles/h-id' . $hotel["id_hotel"] . '-1.jpg" alt="imghotel">';
+                            echo '<a href="detalles.php?product='. $hotel['id_hotel'].'&bool=0"><img class="card-img-top img-responsive" src="../images/hoteles/h-id' . $hotel["id_hotel"] . '-1.jpg" alt="imghotel"></a>';
                                 echo '<div class="card-body">';
                                     echo '<p class="fs-5">' . $hotel["Nombre_hotel"] . '</p>';
                                     echo '<p class="fs-6">CLP $'. number_format($hotel['Precio_noche'], 0, ",", "."). '</p>';
@@ -130,6 +131,6 @@
             
         }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    
 </body>
 </html>

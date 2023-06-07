@@ -48,11 +48,8 @@ if(!ISSET($_SESSION['Correo'])){
                 <td>
                     <?php echo $row["Num_estrellas"]?>
                 </td>
-                <td method="POST">
-                    <a name="details" class="btn btn-reserve rounded" href="Detalles.php?product=<?php echo $row['id_hotel'] ?>&bool=0" onclick="">Ver</a> 
-                    <input type="hidden" class="form-control input-sm" name="bool" value="0">	
-                    <input type="hidden" class="form-control input-sm" name="id" value="0">	
-                    <?php include 'Detalles.php';  ?>
+                <td>
+                    <a name="details" class="btn btn-reserve rounded" href="detalles.php?product=<?php echo $row['id_hotel'] ?>&bool=0" onclick="">Ver</a> 
                     <a href="delete-wishlist.php?pid=<?php echo $row['pid']?>&bool=0" style="text-decoration: none">Eliminar</a>
                 </td>
 

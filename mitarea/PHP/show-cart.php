@@ -7,8 +7,8 @@ if(!ISSET($_SESSION['Correo'])){
     <table class="table table-bordered bg-white">
             <tr>
 				<th>Imagen</th>
-                <th>Paquete/Hotel</th>
-                <th>Precio</th>
+                <th>Paquete</th>
+                <th>Precio por persona</th>
                 <th>Total</th>
                 
                 
