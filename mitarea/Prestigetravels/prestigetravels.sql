@@ -88,7 +88,7 @@ INSERT INTO `hoteles` (`id_hotel`, `Nombre_hotel`, `Num_estrellas`, `Precio_noch
 (8, 'Hotel La Serena', 2, 25000, 'La Serena', 1, 1, 0, 0, 0, 1, 0),
 (9, 'Hotel Pork', 1, 15000, 'Santiago', 1, 1, 0, 0, 1, 1, 1),
 (10, 'Hotel Lagartijo', 3, 30000, 'Antofagasta', 1, 1, 1, 1, 0, 0, 0),
-(11, 'Hotel Iguana', 4, 45000, 'Antofagasta', 1, 1, 0, 0, 0, 0, 0);
+(11, 'Hotel Iguana', 4, 45000, 'Antofagasta', 1, 1, 0, 0, 0, 0, 0),
 (12, 'Hotel Lagarto', 2, 25000, 'Antofagasta', 1, 1, 0, 0, 0, 1, 0),
 (13, 'Hotel John', 1, 15000, 'Santiago', 1, 1, 0, 0, 0, 0, 1),
 (14, 'Hotel Ciudad Real', 3, 30000, 'Santiago', 1, 1, 0, 0, 1, 0, 0),
@@ -135,7 +135,7 @@ INSERT INTO `paquetes` (`id_pack`, `Nombre_pack`, `aero_ida`, `aero_vuelta`, `ci
 (12, 'Paquete Whiterun', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia','2024-05-02', '2024-07-30', 100, 500000, 2, 10, 5, 5),
 (13, 'Paquete Ventalia', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia','2024-05-02', '2024-06-30', 100, 340000, 1, 10, 3, 5),
 (14, 'Paquete Falkreath', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia','2024-05-02', '2024-06-30', 100, 1200000, 5, 10, 4, 3),
-(15, 'Paquete Riften', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia','2024-05-02', '2024-06-30', 100, 2300000, 4, 10, 2, 2),
+(15, 'Paquete Riften', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia','2024-05-02', '2024-06-30', 100, 2300000, 4, 10, 2, 2);
 
 -- --------------------------------------------------------
 
