@@ -79,20 +79,20 @@ CREATE TABLE `hoteles` (
 
 INSERT INTO `hoteles` (`id_hotel`, `Nombre_hotel`, `Num_estrellas`, `Precio_noche`, `Ciudad`, `cant_total_hab`, `hab_disp`, `estacionamiento`, `piscina`, `serv_lavanderia`, `pet_friend`, `serv_desayuno`) VALUES
 (1, 'Hotel Torres', 5, 100000, 'Santiago', 50, 4, 1, 1, 1, 1, 1),
-(2, 'Hotel Mistral', 4, 30000, 'Santiago', 1, 1, 0, 1, 1, 0, 0),
-(3, 'Hotel Leyton', 3, 50000, 'Santiago', 1, 1, 0, 1, 0, 1, 1),
-(4, 'Hotel Chillan', 2, 25000, 'Chillan', 1, 1, 0, 1, 0, 0, 1),
-(5, 'Hotel Valle del Elqui', 1, 15000, 'Coquimbo', 1, 1, 0, 1, 0, 0, 0),
-(6, 'Hotel Valdivia', 3, 30000, 'Valdivia', 1, 1, 0, 0, 1, 1, 1),
-(7, 'Hotel Loa', 4, 45000, 'Calama', 1, 1, 0, 0, 0, 0, 0),
-(8, 'Hotel La Serena', 2, 25000, 'La Serena', 1, 1, 0, 0, 0, 1, 0),
-(9, 'Hotel Pork', 1, 15000, 'Santiago', 1, 1, 0, 0, 1, 1, 1),
-(10, 'Hotel Lagartijo', 3, 30000, 'Antofagasta', 1, 1, 1, 1, 0, 0, 0),
-(11, 'Hotel Iguana', 4, 45000, 'Antofagasta', 1, 1, 0, 0, 0, 0, 0),
-(12, 'Hotel Lagarto', 2, 25000, 'Antofagasta', 1, 1, 0, 0, 0, 1, 0),
-(13, 'Hotel John', 1, 15000, 'Santiago', 1, 1, 0, 0, 0, 0, 1),
-(14, 'Hotel Ciudad Real', 3, 30000, 'Santiago', 1, 1, 0, 0, 1, 0, 0),
-(15, 'Hotel Montaña Roja', 4, 45000, 'La Serena', 1, 1, 0, 1, 1, 1, 0);
+(2, 'Hotel Mistral', 4, 30000, 'Santiago', 25, 10, 0, 1, 1, 0, 0),
+(3, 'Hotel Leyton', 3, 50000, 'Santiago', 25, 10, 0, 1, 0, 1, 1),
+(4, 'Hotel Chillan', 2, 25000, 'Chillan', 25, 20, 0, 1, 0, 0, 1),
+(5, 'Hotel Valle del Elqui', 1, 15000, 'Coquimbo', 25, 10, 0, 1, 0, 0, 0),
+(6, 'Hotel Valdivia', 3, 30000, 'Valdivia', 45, 2, 0, 0, 1, 1, 1),
+(7, 'Hotel Loa', 4, 45000, 'Calama', 45, 2, 0, 0, 0, 0, 0),
+(8, 'Hotel La Serena', 2, 25000, 'La Serena', 45, 5, 0, 0, 0, 1, 0),
+(9, 'Hotel Pork', 1, 15000, 'Santiago', 45, 5, 0, 0, 1, 1, 1),
+(10, 'Hotel Lagartijo', 3, 30000, 'Antofagasta', 20, 10, 1, 1, 0, 0, 0),
+(11, 'Hotel Iguana', 4, 45000, 'Antofagasta', 20, 5, 0, 0, 0, 0, 0),
+(12, 'Hotel Lagarto', 2, 25000, 'Antofagasta', 20, 1, 0, 0, 0, 1, 0),
+(13, 'Hotel John', 1, 15000, 'Santiago', 10, 5, 0, 0, 0, 0, 1),
+(14, 'Hotel Ciudad Real', 3, 30000, 'Santiago', 10, 2, 0, 0, 1, 0, 0),
+(15, 'Hotel Montaña Roja', 4, 45000, 'La Serena', 10, 2, 0, 1, 1, 1, 0);
 
 -- --------------------------------------------------------
 
