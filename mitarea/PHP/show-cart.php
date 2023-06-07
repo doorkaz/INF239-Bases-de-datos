@@ -146,17 +146,16 @@ if(!ISSET($_SESSION['Correo'])){
     <?php 
     }
     if (ISSET($_POST['Comprar'])){
-        
         $sql=" CREATE TRIGGER resena AFTER DELETE on cart
-        FOR EACH row
+        FOR EACH ROW
         BEGIN
-            INSERT INTO
-            CASE
-                WHEN OLD.bool = 0
-                THEN resena_hotel (id_resenia,id_usuario)
-                ELSE resena_ (id_resenia,id_usuario)
-            END
-            Values (OLD.id_producto,id_usuario)
+            IF OLD.bool = 0 THEN
+                INSERT INTO resena_hotel (id_resenia, id_usuario)
+                VALUES (OLD.id_producto, OLD.id_usuario);
+            ELSE
+                INSERT INTO resena_(id_resenia, id_usuario)
+                VALUES (OLD.id_producto, OLD.id_usuario);
+            END IF;
         END
         ";
         $result= mysqli_query($conn,$sql);
