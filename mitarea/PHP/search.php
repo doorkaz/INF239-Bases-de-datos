@@ -81,7 +81,7 @@ if(ISSET($_GET['search'])){
     }
     $fecha_salida =  date_create($_GET['fecha_salida']);
     $fecha_llegada =  date_create($_GET['fecha_llegada']);
-    $cant= $fecha_salida->diff($fecha_llegada);
+    $cant= $fecha_salida->diff($fecha_llegada)->format("%a");
     if ($querypack != ""){
         $result_paquete = mysqli_query($conn, $querypack);
     }

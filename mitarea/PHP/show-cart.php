@@ -6,7 +6,11 @@
 	<title>PrestigeTravels</title>
 
 	<!-- CSS -->
+	<link rel = "stylesheet" type = "text/css" href = "../css/index.css">
+	<link rel = "stylesheet" type = "text/css" href = "../css/navbar.css">
+	<link rel = "stylesheet" type = "text/css" href = "../css/table.css">
 	<link rel = "stylesheet" type = "text/css" href = "../css/general.css">
+	<link rel = "stylesheet" type = "text/css" href = "../css/star.css">
 	<!--Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<!-- FONTAWESOME -->
@@ -22,7 +26,11 @@ include "db_conn.php";
 
 if(!ISSET($_SESSION['Correo'])){
     header('location:login.php');
-} else {
+} else { 
+    $sql = "SELECT * FROM cart JOIN paquetes ON paquetes.id_pack = cart.pid WHERE cart.bool = '1'";
+    $result = mysqli_query($conn, $sql);
+    $precio = 0;
+    if (mysqli_num_rows($result) > 0){
     ?>
     <table class="table table-bordered bg-white">
             <tr>
@@ -37,10 +45,9 @@ if(!ISSET($_SESSION['Correo'])){
     <?php
     $uid = $_SESSION['id_usuario'];
 
-    $sql = "SELECT * FROM cart JOIN paquetes ON paquetes.id_pack = cart.pid WHERE cart.bool = '1'";
-    $result = mysqli_query($conn, $sql);
-    $precio = 0;
-    if (mysqli_num_rows($result) > 0){
+   
+    
+    
 
         while ($row = mysqli_fetch_assoc($result)){      
             ?>
@@ -68,8 +75,7 @@ if(!ISSET($_SESSION['Correo'])){
     }
     ?>
     </table>
-    <table class="table table-bordered bg-white">
-        <thead>AA</thead>
+    <table class="table table-bordered bg-white">   
         <tr>
             <th>Imagen</th>
             <th>Hotel</th>
@@ -86,6 +92,12 @@ if(!ISSET($_SESSION['Correo'])){
     if (mysqli_num_rows($result) > 0){
 
         while ($row = mysqli_fetch_assoc($result)){
+            if ($row["cant"] == 0){
+                $cant = 1;
+            }
+            else{
+                $cant = $row["cant"];
+            }
 ?>
             <tr>
                 <td>
@@ -103,22 +115,33 @@ if(!ISSET($_SESSION['Correo'])){
                     ?>
                     <td>
                     <?php  echo $row["Precio_noche"]?>
-                    <input type="hidden" class="form-control input-sm" name="precio" id="precio"  value="<?php echo $row["Precio_noche"]; ?>"
-                </td>
+                    <input type="hidden" class="form-control input-sm" name="precio" id="precio"  value="<?php echo $cant; ?>"
+                    </td>
                 <td>
                     <p id="resultado"> <?php 
-                    $precio += $row["cant"]*$row["Precio_noche"];
-                    echo  $row["cant"]*$row["Precio_noche"];?></p>
+                    $precio += $cant*$row["Precio_noche"];
+                    echo  $cant*$row["Precio_noche"];?></p>
 
                 </td>
                 </form>
             </tr>
 <?php 
-        }       
+        }      
+        ?>
+        <tr>
+            <td style="border: none"></td>
+            <td style="border: none"></td>
+            <td style="border: none"></td>
+        <td colspan=4 aria-posinset="right">
+            Precio total = <?php echo $precio?> <br><button type="submit" name="Comprar" class="btn btn-cart rounded mt-1">Compra boludo</button>
+        </td>
+        
+        </tr>
+
+        <?php 
     }
     ?>
     </table>
-    <div> <?php echo $precio?> </div>
     <?php
 }
 ?>
