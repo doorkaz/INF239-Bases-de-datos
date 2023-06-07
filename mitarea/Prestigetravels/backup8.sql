@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2023 a las 07:15:02
+-- Tiempo de generación: 07-06-2023 a las 05:10:24
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -102,12 +102,11 @@ INSERT INTO `hoteles` (`id_hotel`, `Nombre_hotel`, `Num_estrellas`, `Precio_noch
 
 CREATE TABLE `paquetes` (
   `id_pack` int(11) NOT NULL,
-  `hid1` int(11) NOT NULL,
-  `hid2` int(11) NOT NULL,
-  `hid3` int(11) NOT NULL,
   `Nombre_pack` varchar(200) NOT NULL,
   `aero_ida` varchar(200) NOT NULL,
   `aero_vuelta` text NOT NULL,
+  `ciudades` text NOT NULL,
+  `hospedajes` text NOT NULL,
   `fecha_salida` date NOT NULL,
   `fecha_llegada` date NOT NULL,
   `total_noches` int(11) NOT NULL,
@@ -122,23 +121,23 @@ CREATE TABLE `paquetes` (
 -- Volcado de datos para la tabla `paquetes`
 --
 
-INSERT INTO `paquetes` (`id_pack`, `hid1`, `hid2`, `hid3`, `Nombre_pack`, `aero_ida`, `aero_vuelta`, `fecha_salida`, `fecha_llegada`, `total_noches`, `precio_persona`, `cant_pack_disp`, `total_packs`, `total_person_pack`, `Num_estrellas`) VALUES
-(1, 2, 4, 3, 'Paquete Bronze', 'NotSky', 'NotSky', '2024-04-01', '2024-04-01', 1, 1, 1, 1, 1, 1),
-(2, 2, 5, 3, 'Paquete Silver', 'Sky', 'Latam Airlines', '2024-06-30', '2024-05-02', 59, 250000, 4, 10, 5, 5),
-(3, 3, 6, 3, 'Paquete Emerald', 'Sky', 'Latam Airlines', '2024-06-30', '2024-05-02', 59, 350000, 4, 10, 5, 5),
-(4, 3, 7, 6, 'Paquete Global', 'Sky', 'Latam Airlines', '2024-06-30', '2024-05-02', 59, 25000000, 4, 10, 5, 5),
-(5, 4, 8, 6, 'Paquete Diamond', 'Sky', 'Latam Airlines', '2024-06-30', '2024-05-02', 59, 2500000, 4, 10, 5, 3),
-(6, 4, 9, 6, 'Paquete Star', 'Sky', 'Latam Airlines', '2024-06-30', '2024-05-02', 59, 1200000, 3, 10, 5, 2),
-(7, 5, 10, 9, 'Paquete Copper', 'Sky', 'Latam Airlines', '2024-06-30', '2024-05-02', 59, 540000, 3, 10, 5, 5),
-(8, 5, 11, 9, 'Paquete Obsidian', 'Sky', 'Latam Airlines', '2024-06-30', '2024-05-02', 59, 500000, 4, 10, 5, 4),
-(9, 1, 12, 9, 'Paquete Oblivion', 'Sky', 'Latam Airlines', '2024-06-30', '2024-05-02', 59, 25000, 4, 10, 5, 1),
-(10, 1, 13, 3, 'Paquete Skyrim', 'Sky', 'Latam Airlines', '2024-09-30', '2024-07-02', 90, 5000, 4, 10, 3, 1),
-(11, 10, 14, 3, 'Paquete Morrowind', 'Sky', 'Latam Airlines', '2024-09-25', '2024-07-02', 85, 5000, 3, 10, 5, 4),
-(12, 10, 15, 3, 'Paquete Whiterun', 'Sky', 'Latam Airlines', '2024-07-30', '2024-05-02', 89, 500000, 2, 10, 5, 5),
-(13, 11, 1, 6, 'Paquete Ventalia', 'Sky', 'Latam Airlines', '2024-06-30', '2024-05-02', 59, 340000, 1, 10, 3, 5),
-(14, 11, 1, 6, 'Paquete Falkreath', 'Sky', 'Latam Airlines', '2024-06-30', '2024-05-02', 59, 1200000, 5, 10, 4, 3),
-(15, 12, 1, 6, 'Paquete Riften', 'Sky', 'Latam Airlines', '2024-06-30', '2024-05-02', 59, 2300000, 4, 10, 2, 2),
-(16, 15, 1, 1, 'Paquete Orgrimmar', 'NotSky', 'NotSky', '2024-04-01', '2024-04-01', 1, 1, 1, 1, 1, 1);
+INSERT INTO `paquetes` (`id_pack`, `Nombre_pack`, `aero_ida`, `aero_vuelta`, `ciudades`, `hospedajes`, `fecha_salida`, `fecha_llegada`, `total_noches`, `precio_persona`, `cant_pack_disp`, `total_packs`, `total_person_pack`, `Num_estrellas`) VALUES
+(1, 'Paquete Bronze', 'NotSky', 'NotSky', 'Valdivia, Chillan, Santiago', 'Hotel Torres, Hotel Loa', '2024-04-02', '2024-04-01', 1, 1, 1, 1, 1, 1),
+(2, 'Paquete Silver', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-06-30', '2024-05-02', 59, 250000, 4, 10, 5, 5),
+(3, 'Paquete Emerald', 'Sky', 'Latam Airlines', 'La Serena, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-06-30', '2024-05-02', 59, 350000, 4, 10, 5, 5),
+(4, 'Paquete Global', 'Sky', 'Latam Airlines', 'Santiago, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-06-30', '2024-05-02', 59, 25000000, 4, 10, 5, 5),
+(5, 'Paquete Diamond', 'Sky', 'Latam Airlines', 'Chillan, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-06-30', '2024-05-02', 59, 2500000, 4, 10, 5, 3),
+(6, 'Paquete Star', 'Sky', 'Latam Airlines', 'Coquimbo, Chillan', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-06-30', '2024-05-02', 59, 1200000, 3, 10, 5, 2),
+(7, 'Paquete Copper', 'Sky', 'Latam Airlines', 'Coquimbo, Santiago', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-06-30', '2024-05-02', 59, 540000, 3, 10, 5, 5),
+(8, 'Paquete Obsidian', 'Sky', 'Latam Airlines', 'Santiago, Coquimbo', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-06-30', '2024-05-02', 59, 500000, 4, 10, 5, 4),
+(9, 'Paquete Oblivion', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-06-30', '2024-05-02', 59, 25000, 4, 10, 5, 1),
+(10, 'Paquete Skyrim', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-09-30', '2024-07-02', 90, 5000, 4, 10, 3, 1),
+(11, 'Paquete Morrowind', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-09-25', '2024-07-02', 85, 5000, 3, 10, 5, 4),
+(12, 'Paquete Whiterun', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-07-30', '2024-05-02', 89, 500000, 2, 10, 5, 5),
+(13, 'Paquete Ventalia', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-06-30', '2024-05-02', 59, 340000, 1, 10, 3, 5),
+(14, 'Paquete Falkreath', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-06-30', '2024-05-02', 59, 1200000, 5, 10, 4, 3),
+(15, 'Paquete Riften', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-06-30', '2024-05-02', 59, 2300000, 4, 10, 2, 2),
+(16, 'Paquete Orgrimmar', 'NotSky', 'NotSky', 'Valdivia, Chillan, Santiago', 'Hotel Torres, Hotel Loa', '2024-04-01', '2024-04-01', 1, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -259,10 +258,7 @@ ALTER TABLE `hoteles`
 -- Indices de la tabla `paquetes`
 --
 ALTER TABLE `paquetes`
-  ADD PRIMARY KEY (`id_pack`),
-  ADD KEY `hid1` (`hid1`),
-  ADD KEY `hid2` (`hid2`),
-  ADD KEY `hid3` (`hid3`);
+  ADD PRIMARY KEY (`id_pack`);
 
 --
 -- Indices de la tabla `resena_hotel`
@@ -337,14 +333,6 @@ ALTER TABLE `wishlist`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `paquetes`
---
-ALTER TABLE `paquetes`
-  ADD CONSTRAINT `paquetes_ibfk_1` FOREIGN KEY (`hid1`) REFERENCES `hoteles` (`id_hotel`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `paquetes_ibfk_2` FOREIGN KEY (`hid2`) REFERENCES `hoteles` (`id_hotel`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `paquetes_ibfk_3` FOREIGN KEY (`hid3`) REFERENCES `hoteles` (`id_hotel`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `resena_hotel`

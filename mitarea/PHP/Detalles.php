@@ -44,7 +44,7 @@
 					$result = mysqli_query($conn,$query);
 					$row = $result->fetch_assoc();
 				?>
-				<div class="col-6">
+				<div class="col-6" style="width: 36rem;">
 					<img class="card-img-top" src="../images/hoteles/h-id<?php echo $row["id_hotel"]?>-1.jpg" alt="imghotel">	
 					
 				
@@ -124,8 +124,23 @@
 				
 				</div>
 				<?php 
-				} 
+				} elseif($_GET['bool'] == 1){
+					$query = 'SELECT * FROM paquetes WHERE id_pack = "'.$_GET['product'].'"';
+					$result = mysqli_query($conn,$query);
+					$row = $result->fetch_assoc();
+					?>
+					<div class="col-6" style="width: 36rem;">
+						<img class="card-img-top" src="../images/paquetes/p-id<?php echo $row["id_pack"]?>-1.jpg" alt="imghotel">	
+					</div>
+					<div class="col-6">
+						<p class="fs-2"><?php echo $row['Nombre_pack'] ?></p>
+						<p class="fs-4">CLP $<?php echo number_format($row['precio_persona'], 0, ",", ".")?></p>
+						</br>
+					</div>
 				
+				
+				<?php
+				}
 			} else {
 				header('location:index.php');
 			}
