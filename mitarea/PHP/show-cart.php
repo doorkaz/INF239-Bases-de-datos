@@ -58,7 +58,7 @@ if(!ISSET($_SESSION['Correo'])){
     <?php
     $sql = "SELECT * FROM cart JOIN hoteles ON hoteles.id_hotel = cart.pid WHERE cart.bool = '0'";
     $result = mysqli_query($conn, $sql);
-
+    $precios = array();
     if (mysqli_num_rows($result) > 0){
 
         while ($row = mysqli_fetch_assoc($result)){
@@ -72,24 +72,35 @@ if(!ISSET($_SESSION['Correo'])){
                 <td>
                     <?php echo $row["Nombre_hotel"]?>
                 </td>
-                <td>
-                    <?php echo $row["Precio_noche"]?>
+                <form action="GET">
+                    <?php
+                    $precioFechaPairs = array(
+                        array("precio" => $row["Precio_noche"], "fecha1" => "2023-06-01", "fecha2" => "2023-06-03"),
+                        // Add more precio-fecha pairs as needed
+                    );
+                    ?>
+            <td>
+                    <?php  echo $row["Precio_noche"]?>
+                    <input type="hidden" class="form-control input-sm" name="precio" id="precio"  value="<?php echo $row["Precio_noche"]; ?>"
                 </td>
                 
                 <td>
                     <?php  $newDate= date("Y-m-d"); ?>
-                    <input type="date" class="form-control input-sm" name="fecha"  value="<?=$newDate?>"
+                    <input type="date" class="form-control input-sm" name="fecha1" id="fecha1"  value="<?php echo $newDate?>"
                 </td>
                 <td>
                     <?php  $newDate= date("Y-m-d"); ?>
-                    <input type="date" class="form-control input-sm" name="fecha"   value="<?=$newDate?>">
+                    <input  onchange="calculartotal()" type="date" class="form-control input-sm" name="fecha2"  id="fecha2"  value="<?=$newDate?>">
                 </td>
                 <td>
-                    <p id="resultado"></p>
-                    
+                    <?php $interval = $fecha1->diff($fecha2); ?>
+                    <p id="resultado">Total: <?php echo "difference " . $interval->days . " days ";?></p>
                 </td>
+                </form>
             </tr>
-    
+            if (ISSET($_POST['wish'])){
+        include 'wishlist.php';
+    }
 <?php 
         }       
     }
