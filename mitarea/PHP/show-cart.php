@@ -66,7 +66,7 @@ if(!ISSET($_SESSION['Correo'])){
                      ?>
                 </td>
                 <td>
-                    <?php echo 'hola'?>
+                    <?php echo  $row["precio_persona"]?>
                 </td>
 
             </tr>
@@ -125,7 +125,7 @@ if(!ISSET($_SESSION['Correo'])){
                 </td>
                 </form>
             </tr>
-<?php 
+        <?php 
         }      
         ?>
         <tr>
@@ -133,12 +133,30 @@ if(!ISSET($_SESSION['Correo'])){
             <td style="border: none"></td>
             <td style="border: none"></td>
         <td colspan=4 aria-posinset="right">
-            Precio total = <?php echo $precio?> <br><button type="submit" name="Comprar" class="btn btn-cart rounded mt-1">Compra boludo</button>
+            Precio total = <?php echo $precio?> <br>
+            <form >
+            <button type="submit" name="Comprar" class="btn btn-cart rounded mt-1"> Compra boludo </button>
+            </form>
         </td>
         
         </tr>
 
-        <?php 
+    <?php 
+    }
+    if (ISSET($_POST['Comprar'])){
+        $sql=" CREATE TRIGGER resena AFTER DELETE on cart
+        FOR EACH row
+        BEGIN
+            INSERT INTO
+            CASE
+                WHEN OLD.bool = 0
+                THEN resena_hotel (id_resenia,id_usuario)
+                ELSE resena_ (id_resenia,id_usuario)
+            END
+            Values (OLD.id_producto,id_usuario)
+        END
+        ";
+        $result= mysqli_query($conn,$sql);
     }
     ?>
     </table>
