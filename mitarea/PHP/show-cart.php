@@ -49,8 +49,6 @@ if(!ISSET($_SESSION['Correo'])){
             <th>Imagen</th>
             <th>Hotel</th>
             <th>Precio por noche</th>
-            <th>Fecha de llegada</th>
-            <th>Fecha de salida</th>
             <th>Total</th>
             
             
@@ -74,33 +72,19 @@ if(!ISSET($_SESSION['Correo'])){
                 </td>
                 <form action="GET">
                     <?php
-                    $precioFechaPairs = array(
-                        array("precio" => $row["Precio_noche"], "fecha1" => "2023-06-01", "fecha2" => "2023-06-03"),
+                    $precioFechaPairs = array("precio" => $row["Precio_noche"]);
                         // Add more precio-fecha pairs as needed
-                    );
                     ?>
-            <td>
+                    <td>
                     <?php  echo $row["Precio_noche"]?>
                     <input type="hidden" class="form-control input-sm" name="precio" id="precio"  value="<?php echo $row["Precio_noche"]; ?>"
                 </td>
-                
                 <td>
-                    <?php  $newDate= date("Y-m-d"); ?>
-                    <input type="date" class="form-control input-sm" name="fecha1" id="fecha1"  value="<?php echo $newDate?>"
-                </td>
-                <td>
-                    <?php  $newDate= date("Y-m-d"); ?>
-                    <input  onchange="calculartotal()" type="date" class="form-control input-sm" name="fecha2"  id="fecha2"  value="<?=$newDate?>">
-                </td>
-                <td>
-                    <?php $interval = $fecha1->diff($fecha2); ?>
-                    <p id="resultado">Total: <?php echo "difference " . $interval->days . " days ";?></p>
+                    <p id="resultado"> <?php echo  $row["cant"]*$row["Precio_noche"];?></p>
+
                 </td>
                 </form>
             </tr>
-            if (ISSET($_POST['wish'])){
-        include 'wishlist.php';
-    }
 <?php 
         }       
     }
