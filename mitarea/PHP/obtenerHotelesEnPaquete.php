@@ -24,9 +24,8 @@ function obtenerHotelesEnPaquete($hid1, $hid2, $hid3){
             );
 
             $hoteles[] = $hotel;
-            echo "<p>".$fila["Nombre_hotel"] . " - ". $fila["Ciudad"]."</p>";
         }
     }
-
+    return $hoteles;
 }
 ?>

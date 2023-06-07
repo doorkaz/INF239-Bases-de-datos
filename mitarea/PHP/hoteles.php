@@ -43,10 +43,18 @@
 		<div class="row mt-3">
 			<h1>¡Bienvenido a PrestigeTravels!</h1>
 			<h4>Arma tu panorama con nosotros</h4>
-			
+            <?php 
+			if (ISSET($_POST['wish'])){
+				include 'wishlist.php'; 
+			}
+			if (ISSET($_POST['cart'])){
+				include 'cart.php'; 
+			} 
+		    ?>
 		</div>
 	</div>
 	<div class = "py-3 rounded">
+        
 		<div class="container">
             <?php
             
@@ -77,6 +85,7 @@
                                         echo '<i class="bi bi-star me-1"></i>';
                                     }
                                     
+                                    
                                     echo '<form action="#"  method="POST">';
                                         echo '<div class="d-grid mt-2">';
                                            
@@ -93,12 +102,6 @@
                 }
                 echo '</div>';
             }
-            if (ISSET($_POST['wish'])){
-                include 'wishlist.php'; 
-            }
-            if (ISSET($_POST['cart'])){
-                include 'cart.php'; 
-            } 
             ?>
             
 		</div>

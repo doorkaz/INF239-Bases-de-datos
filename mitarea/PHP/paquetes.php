@@ -50,10 +50,18 @@
 		<div class="row mt-3">
 			<h1>¡Bienvenido a PrestigeTravels!</h1>
 			<h4>Arma tu panorama con nosotros</h4>
-			
+			<?php 
+			if (ISSET($_POST['wish'])){
+				include 'wishlist.php'; 
+			}
+			if (ISSET($_POST['cart'])){
+				include 'cart.php'; 
+			} 
+		    ?>
 		</div>
 	</div>
 	<div class = "py-3 rounded">
+
 		<div class="container">
             <?php
             include "obtener_paquetes.php";
@@ -88,7 +96,10 @@
                                     echo '<div class="row">';
                                         echo '<div class="col-12">';
                                             echo '<h6> Hospedajes </h6>';
-                                            obtenerHotelesEnPaquete($paquete["hid1"], $paquete["hid2"], $paquete["hid3"]);
+                                            $hoteles = obtenerHotelesEnPaquete($paquete["hid1"], $paquete["hid2"], $paquete["hid3"]);
+                                            foreach($hoteles as $hotel){
+                                                echo "<p>" . $hotel["Nombre_hotel"] . " - " . $hotel["Ciudad"] . "</p>";
+                                            }
                                         echo '</div>';
                                     echo '</div>';
                                     echo '</br>';
@@ -104,12 +115,16 @@
                                     echo '</div>';
                                    
                                     echo '<a href="detalles.php?product='. $paquete['id_pack'].'&bool=1" class="details-link">Ver más</a>';
-                                    echo '<form action=""  method="POST">';
+                                    
+                                    
+                                    echo '<form action="#"  method="POST">';
                                         echo '<div class="d-grid mt-2">';
                                         
-                                            echo '<input type="hidden"  value="'.$paquete['Nombre_pack'].'" name= "paquete">'; 
-                                            echo '<button type = "submit" name="Wish" id = "Wish" class="btn btn-reserve rounded">Reservar</button>';  
-                                            echo '<button type="button" class="btn btn-cart rounded mt-1">Agregar al carrito</button>';
+                                            echo '<input type="hidden"  value="'.$paquete['id_pack'].'" name= "pid">'; 
+                                            echo '<input type="hidden"  value="1" name= "bool">'; 
+                                            echo '<button type = "submit" name="cart" class="btn btn-reserve rounded">Agregar al carrito</button>';  
+                                            echo '<button type="submit" name="wish" class="btn btn-cart rounded mt-1">Wishlist</button>';
+                                            
                                             
                                         echo '</div>';
                                     echo '</form>';
@@ -119,10 +134,6 @@
                 }
                 echo '</div>';
             }
-            if (ISSET($_POST['Wish'])){
-                include 'wishlist.php';
-            }
-
             ?>
             
 		</div>

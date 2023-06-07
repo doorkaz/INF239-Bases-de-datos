@@ -101,15 +101,15 @@
 				</div>
 		</div>
 	</div>
-	<div class = "shadow-sm py-3 rounded" style="background-color: #fafafb">
+	<div class = "shadow-sm py-3 rounded mt-2" style="background-color: #fafafb">
 
 		<div class="container">
 
 			<div class="row">
+				<h1 class="fs-2">¡Te presentamos nuestros hoteles favoritos!</h1>			
+				<div class="col-12">
 
-				<div class="col-sm-6">
-
-					<div id="carouselExampleCaptions" class="carousel slide">
+					<div id="carouselExampleCaptions" class="carousel slide"  style="width: 40rem;">
 
 						<div class="carousel-indicators">
 							
@@ -186,17 +186,91 @@
 						</button>
 					</div>
 				</div>
-				<div class="col-sm-6">
 
-					</br></br></br></br>
-					<h2>Recorrer Chile ahora es más facil</h2>
-					<h4>con variedad de opciones y...</h4>
+			</div>
+			
+			<div class="row mt-5">
+				<h1 class="fs-2">¡Te presentamos nuestros paquetes favoritos!</h1>
+				<div class="col-12">
 					
-					<h1>¡Precios accesibles!</h1>
+					<div id="carouselExampleCaptions2" class="carousel slide" style="width: 32rem;">
+						
+						<div class="carousel-indicators">
+							
+							<?php
+							$sql = "SELECT * FROM top_paquetes";
+							$result = mysqli_query($conn, $sql);
+							$numero = mysqli_num_rows($result);
+							for($i = 0; $i < $numero; $i++){
+								if ($i == 0){
+									echo '<button type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>';
+								} else {
+									echo '<button type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide-to="'. $i.'" aria-label="Slide ' . $i+1 .'"></button>';
+								}
+							}
+							?>
+						</div>
 					
+						<div class="carousel-inner">
 					
+							<?php
+							// Consulta la view
+							$sql = "SELECT * FROM top_paquetes";
+							$paquetes = mysqli_query($conn, $sql);
+							
+							// Itera hotel por hotel de la view
+							$first = false;
+							foreach ($paquetes as $paquete) {
+								// Primer item del carousel active
+								if ($first == false){
+									echo '<div class="carousel-item active">';
+										echo '<img src="../images/paquetes/p-id'. $paquete['id_pack'].'-1.jpg" class="d-block w-100" alt="firstSlide">';
+										echo '<div class="carousel-caption d-none d-md-block rounded glass-efect">';
+											echo '<h5 class="carousel-color">'.$paquete['Nombre_pack'].'</h5>';
+											for ($i = 1; $i <= $paquete["Num_estrellas"]; $i++) {
+												echo '<i class="bi bi-star-fill me-1"></i>'; 
+											}
+											for ($i = $paquete["Num_estrellas"] + 1; $i <= 5; $i++) {
+												echo '<i class="bi bi-star me-1"></i>';
+											}
+										echo '</div>';
+									echo '</div>';
+									$first = true;
+								} else {
+									echo '<div class="carousel-item">';
+										echo '<img src="../images/paquetes/p-id'. $paquete['id_pack'].'-1.jpg" class="d-block w-100" alt="second">';
+										echo '<div class="carousel-caption d-none d-md-block glass-efect">';
+											echo '<h5>'. $paquete['Nombre_pack'].'</h5>';
+											for ($i = 1; $i <= $paquete["Num_estrellas"]; $i++) {
+												echo '<i class="bi bi-star-fill me-1"></i>'; 
+											}
+											for ($i = $paquete["Num_estrellas"] + 1; $i <= 5; $i++) {
+												echo '<i class="bi bi-star me-1"></i>';
+											}
+										echo '</div>';
+									echo '</div>';
+								}
+							}
+							?>
+						</div>
+					
+						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide="prev">
+					
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					
+							<span class="visually-hidden">Previous</span>
+					
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide="next">
+					
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					
+							<span class="visually-hidden">Next</span>
+					
+						</button>
+					</div>			
 				</div>
-
+				
 			</div>
 
 			<?php
