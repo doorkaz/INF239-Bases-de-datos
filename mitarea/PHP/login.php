@@ -18,9 +18,14 @@
             <h2 class="text-center fs-2">PrestigeTravels</h2>
             <hr style="height: 3px;">
             <h3 class="text-center fs-3">Iniciar sesión</h3>
-           
-            <?php if (isset($_GET['error'])){ ?>
+            <?php if(isset($_GET["exito"])){ ?>
+                <div class="alert alert-sucess" role = "alert">Cuenta registrada satisfactoriamente</div>
+            <?php }?>
+            <?php if (isset($_GET['errorlogin'])){ ?>
                 <div class="alert alert-danger" role = "alert"><?php echo "Acceso inválido. Por favor, inténtelo otra vez"; ?></div>
+            <?php } ?>
+            <?php if (isset($_GET['error'])){ ?>
+                <div class="alert alert-danger" role = "alert"><?php echo "Datos incompletos al intentar registrarse."; ?></div>
             <?php } ?>
             
             <form name = "f1" action = "auth.php" onsubmit="return validation()" method = "POST">
@@ -43,28 +48,5 @@
         </div>
     </div>
     
-    <!-- validar campos vacios -->
-    <!-- <script>  
-        function validation()  
-        {  
-            var id=document.f1.user.value;  
-            var ps=document.f1.pass.value;  
-            if(id.length=="" && ps.length=="") {  
-                alert("User Name and Password fields are empty");  
-                return false;  
-            }  
-            else  
-            {  
-                if(id.length=="") {  
-                    alert("User Name is empty");  
-                    return false;  
-                }   
-                if (ps.length=="") {  
-                alert("Password field is empty");  
-                return false;  
-                }  
-            }                             
-        }  
-    </script>  -->
 </body>
 </html>

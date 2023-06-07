@@ -24,13 +24,13 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
     if (empty($username)) {
 
-        header("Location: login.php?error=User Name is required");
+        header("Location: login.php?errorlogin=User Name is required");
 
         exit();
 
     }else if(empty($password)){
 
-        header("Location: login.php?error=Password is required");
+        header("Location: login.php?errorlogin=Password is required");
 
         exit();
 
@@ -65,7 +65,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
             }else{
 
-                header("Location: index.php?error=Incorect User name or password");
+                header("Location: index.php?errorlogin=Incorect User name or password");
 
                 exit();
 

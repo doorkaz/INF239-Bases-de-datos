@@ -33,7 +33,9 @@
     
             header("Location: login.php?error=correo is required");
     
-
+        }else if(empty($fechanac)){
+    
+            header("Location: login.php?error=fecha is required");
     
         }
         else{
@@ -42,10 +44,8 @@
     
             $result = mysqli_query($conn,$sql);
             if ($result) {
-    
-                echo "Exitosamente guardado";
 
-                header("Location: login.php");
+                header("Location: login.php?exito=exito");
             }else{
     
                 header("Location: index.php?error=Incorect User name or password");

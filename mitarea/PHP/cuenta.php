@@ -14,11 +14,11 @@
 			mysqli_query($conn, $sql);
 		}
 	if(ISSET($_POST['delete'])){
+		include "db_conn.php";
 		$id = $_SESSION['id_usuario'];
-		$sql = "DELETE 'usuarios' WHERE id_usuario = $id ";
+		$sql = "DELETE FROM usuarios WHERE id_usuario = $id";
 		mysqli_query($conn, $sql);
-		echo 'Cuenta eliminada correctamente';
-		header('location:login.php');
+		header('location:logout.php');
 		
 	}
 		
@@ -54,39 +54,44 @@
 	<div>
 		<div class="container">
 			<div class="row">
-				<h1>¿Deseas cambiar tus datos personales?</h1>
-				<form class="col-md-6" method="POST" action="">
-					<table class= "table table-condensed">
-						<tbody>
-							<tr>
-								<td>Nombre</td>
-								<td><input type="text" class="form-control input-sm" name="nombre" value="<?=$_SESSION['Nombre']?>" required></td>
-							</tr>
-							<tr>
-								<td>Fecha de nacimiento</td>
-								<!-- TRANSFORMAR FECHA EN DIA MES AÑO -->
-								<?php $date = $_SESSION['Fecha_Nacimiento'];
-								$newDate= date("Y-m-d", strtotime($date)); ?>
-								<td><input type="date" class="form-control input-sm" name="fechanac" value="<?=$newDate?>"></td>
-							</tr>
-							<tr>
-								<td>Correo electrónico/Email</td>
-								<td><input type="email" class="form-control input-sm" name="correo" value="<?=$_SESSION['Correo']?>" readonly></td>
-							</tr>
-							
-						</tbody>
-					</table>
-					<div class="d-grid form-group mt-2">
-                        <button class = "btn btn-success" type =  "submit" name="actualizacion" id = "actualizacion">Actualizar datos</button>
-                    </div>
-				</div>
-				<form method="POST" action="">
-					<button class = "btn btn-danger" type =  "submit" name="delete" id = "delete">Delete datos</button>
-				</form>
 				<div class="col-md-6">
-					<img src="../images/jpcover.jpg" class="d-block w-50">
+					<h1>¿Deseas cambiar tus datos personales?</h1>
+					<form method="POST" action="">
+						<table class= "table table-condensed">
+							<tbody>
+								<tr>
+									<td>Nombre</td>
+									<td><input type="text" class="form-control input-sm" name="nombre" value="<?=$_SESSION['Nombre']?>" required></td>
+								</tr>
+								<tr>
+									<td>Fecha de nacimiento</td>
+									<!-- TRANSFORMAR FECHA EN DIA MES AÑO -->
+									<?php $date = $_SESSION['Fecha_Nacimiento'];
+									$newDate= date("Y-m-d", strtotime($date)); ?>
+									<td><input type="date" class="form-control input-sm" name="fechanac" value="<?=$newDate?>"></td>
+								</tr>
+								<tr>
+									<td>Correo electrónico/Email</td>
+									<td><input type="email" class="form-control input-sm" name="correo" value="<?=$_SESSION['Correo']?>" readonly></td>
+								</tr>
+								
+							</tbody>
+						</table>
+						<div class="d-grid form-group mt-2">
+							<button class = "btn btn-success" type =  "submit" name="actualizacion" id = "actualizacion">Actualizar datos</button>
+							<button class = "btn btn-danger mt-2" type =  "submit" name="delete" id = "delete">Eliminar cuenta</button>
+						</div>
+					</form>
 				</div>
-				
+				<div class="col-md-6" style="width: 24rem;">
+					<div class="border border-2 rounded shadow-sm p-3">
+						
+						<img class="card-img-top rounded" src="../images/jpcover.jpg" class="d-block w-75">
+						
+						
+					</div>
+					
+				</div>
 			</div>
 		</div>
 	</div>
