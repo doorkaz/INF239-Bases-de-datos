@@ -97,7 +97,7 @@
             }
             if (ISSET($_POST['cart'])){
                 include 'cart.php'; 
-            }
+            } 
             ?>
             
 		</div>
