@@ -28,4 +28,36 @@ p{
     color: #347ac4;
     text-decoration: none;
 }
+.styled-table {
+    border-collapse: collapse !important;
+    margin: 25px 0 !important;
+    font-size: 0.9em !important;
+    font-family: sans-serif !important;
+    min-width: 400px !important;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15) !important;
+}
+.styled-table thead tr {
+    background-color: #009879 !important;
+    color: #ffffff !important;
+    text-align: left !important;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px !important;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #000000 !important;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3 !important;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879 !important;
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold !important;
+    color: #009879 !important;
+}
 

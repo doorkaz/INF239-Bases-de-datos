@@ -81,7 +81,7 @@ if(ISSET($_GET['search'])){
     }
     $fecha_salida =  date_create($_GET['fecha_salida']);
     $fecha_llegada =  date_create($_GET['fecha_llegada']);
-    $cant= $fecha_salida->diff($fecha_llegada);
+    $cant= $fecha_salida->diff($fecha_llegada)->format("%a");
     if ($querypack != ""){
         $result_paquete = mysqli_query($conn, $querypack);
     }
@@ -207,10 +207,19 @@ if(ISSET($_GET['search'])){
                             echo '<p class="fs-5">' . $paquete["Nombre_pack"] . '</p>';
                             echo '<p class="fs-6">CLP $'. number_format($paquete['precio_persona'], 0, ",", "."). '</p>';
                             echo '</br>';
-                            echo '<div class="row">';
-                                echo '<div class="col-6">';
-                                echo '<h6>Aerolinea de Ida</h6>';
-                                echo '<p>' . $paquete["aero_ida"]. '</p>';
+                            
+                            echo '</br>';
+                            
+                            
+                            echo '<form action=""  method="POST">';
+                                echo '<div class="d-grid mt-2">';
+                                
+                                    echo '<input type="hidden"  value="'.$paquete['id_pack'].'" name= "pid">'; 
+                                    echo '<input type="hidden"  value="1" name= "bool">'; 
+                                    echo '<input type="hidden"  value="1" name= "cant">'; 
+                                    echo '<button type = "submit" name="cart" class="btn btn-reserve rounded">Reservar</button>';  
+                                    echo '<button type="submit" name="wish" class="btn btn-cart rounded mt-1">Agregar al carrito</button>';
+                                    
                                 echo '</div>';
                                 echo '<div class="col-6">';
                                 echo '<h6>Aerolinea de Vuelta</h6>';
