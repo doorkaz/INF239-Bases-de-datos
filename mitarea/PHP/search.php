@@ -88,6 +88,9 @@ if(ISSET($_GET['search'])){
             $queryhotel .= " AND Num_estrellas >= $calificacion";
         }
     }
+    $fecha_salida =  date_create($_GET['fecha_salida']);
+    $fecha_llegada =  date_create($_GET['fecha_llegada']);
+    $cant= $fecha_salida->diff($fecha_llegada);
     if ($querypack != ""){
         $result_paquete = mysqli_query($conn, $querypack);
     }
@@ -178,9 +181,10 @@ if(ISSET($_GET['search'])){
                                     
                                     echo '<input type="hidden"  value="'.$hotel['id_hotel'].'" name= "pid">'; 
                                     echo '<input type="hidden"  value="0" name= "bool">'; 
-                                    echo '<button type = "submit" class="btn btn-reserve rounded">Reservar</button>';  
+                                    echo '<input type="hidden"  value="'.$cant->d.'" name= "cant" type="int">'; 
+                                    echo '<button type = "submit" name="cart" class="btn btn-reserve rounded">Reservar</button>';  
                                     echo '<button type="submit" name="wish" class="btn btn-cart rounded mt-1">Agregar al carrito</button>';
-                                    
+                                    echo $cant->d;
                                 echo '</div>';
                             echo '</form>';
                         echo '</div>';
@@ -192,7 +196,9 @@ if(ISSET($_GET['search'])){
     if (ISSET($_POST['wish'])){
         include 'wishlist.php';
     }
-    
+    if (ISSET($_POST['cart'])){
+        include 'cart.php'; 
+    } 
 
     
     // Divide los paquetes en grupos de 4

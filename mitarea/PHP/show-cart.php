@@ -74,12 +74,10 @@ if(!ISSET($_SESSION['Correo'])){
                 </td>
                 <form action="GET">
                     <?php
-                    $precioFechaPairs = array(
-                        array("precio" => $row["Precio_noche"], "fecha1" => "2023-06-01", "fecha2" => "2023-06-03"),
+                    $precioFechaPairs = array("precio" => $row["Precio_noche"]);
                         // Add more precio-fecha pairs as needed
-                    );
                     ?>
-            <td>
+                    <td>
                     <?php  echo $row["Precio_noche"]?>
                     <input type="hidden" class="form-control input-sm" name="precio" id="precio"  value="<?php echo $row["Precio_noche"]; ?>"
                 </td>
@@ -98,9 +96,6 @@ if(!ISSET($_SESSION['Correo'])){
                 </td>
                 </form>
             </tr>
-            if (ISSET($_POST['wish'])){
-        include 'wishlist.php';
-    }
 <?php 
         }       
     }
