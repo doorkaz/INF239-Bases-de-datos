@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2023 a las 08:35:02
+-- Tiempo de generación: 07-06-2023 a las 07:15:02
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -124,21 +124,21 @@ CREATE TABLE `paquetes` (
 
 INSERT INTO `paquetes` (`id_pack`, `hid1`, `hid2`, `hid3`, `Nombre_pack`, `aero_ida`, `aero_vuelta`, `fecha_salida`, `fecha_llegada`, `total_noches`, `precio_persona`, `cant_pack_disp`, `total_packs`, `total_person_pack`, `Num_estrellas`) VALUES
 (1, 2, 4, 3, 'Paquete Bronze', 'NotSky', 'NotSky', '2024-04-01', '2024-04-01', 1, 1, 1, 1, 1, 1),
-(2, 2, 5, 3, 'Paquete Silver', 'Sky', 'Latam Airlines', '2024-05-02', '2024-06-30', 59, 250000, 4, 10, 5, 5),
-(3, 3, 6, 1, 'Paquete Emerald', 'Sky', 'Latam Airlines', '2024-05-02', '2024-06-30', 59, 350000, 4, 10, 5, 5),
-(4, 3, 7, 6, 'Paquete Global', 'Sky', 'Latam Airlines', '2024-05-02', '2024-06-30', 59, 25000000, 4, 10, 5, 5),
-(5, 4, 8, 6, 'Paquete Diamond', 'Sky', 'Latam Airlines', '2024-05-02', '2024-06-30', 59, 2500000, 4, 10, 5, 3),
-(6, 4, 9, 6, 'Paquete Star', 'Sky', 'Latam Airlines', '2024-05-02', '2024-06-30', 59, 1200000, 3, 10, 5, 2),
-(7, 5, 10, 9, 'Paquete Copper', 'Sky', 'Latam Airlines', '2024-05-02', '2024-06-30', 59, 540000, 3, 10, 5, 5),
-(8, 5, 11, 9, 'Paquete Obsidian', 'Sky', 'Latam Airlines', '2024-05-02', '2024-06-30', 59, 500000, 4, 10, 5, 4),
-(9, 1, 12, 9, 'Paquete Oblivion', 'Sky', 'Latam Airlines', '2024-05-02', '2024-06-30', 59, 25000, 4, 10, 5, 1),
-(10, 1, 13, 3, 'Paquete Skyrim', 'Sky', 'Latam Airlines', '2024-07-02', '2024-09-30', 90, 5000, 4, 10, 3, 1),
-(11, 10, 14, 3, 'Paquete Morrowind', 'Sky', 'Latam Airlines', '2024-07-02', '2024-09-25', 85, 5000, 3, 10, 5, 4),
-(12, 10, 15, 3, 'Paquete Whiterun', 'Sky', 'Latam Airlines', '2024-05-02', '2024-07-30', 89, 500000, 2, 10, 5, 5),
-(13, 11, 1, 6, 'Paquete Ventalia', 'Sky', 'Latam Airlines', '2024-05-02', '2024-06-30', 59, 340000, 1, 10, 3, 5),
-(14, 7, 1, 6, 'Paquete Falkreath', 'Sky', 'Latam Airlines', '2024-05-02', '2024-06-30', 59, 1200000, 5, 10, 4, 3),
-(15, 12, 1, 6, 'Paquete Riften', 'Sky', 'Latam Airlines', '2024-05-02', '2024-06-30', 59, 2300000, 4, 10, 2, 2),
-(16, 15, 1, 12, 'Paquete Orgrimmar', 'NotSky', 'NotSky', '2024-04-01', '2024-04-01', 1, 1, 1, 1, 1, 1);
+(2, 2, 5, 3, 'Paquete Silver', 'Sky', 'Latam Airlines', '2024-06-30', '2024-05-02', 59, 250000, 4, 10, 5, 5),
+(3, 3, 6, 3, 'Paquete Emerald', 'Sky', 'Latam Airlines', '2024-06-30', '2024-05-02', 59, 350000, 4, 10, 5, 5),
+(4, 3, 7, 6, 'Paquete Global', 'Sky', 'Latam Airlines', '2024-06-30', '2024-05-02', 59, 25000000, 4, 10, 5, 5),
+(5, 4, 8, 6, 'Paquete Diamond', 'Sky', 'Latam Airlines', '2024-06-30', '2024-05-02', 59, 2500000, 4, 10, 5, 3),
+(6, 4, 9, 6, 'Paquete Star', 'Sky', 'Latam Airlines', '2024-06-30', '2024-05-02', 59, 1200000, 3, 10, 5, 2),
+(7, 5, 10, 9, 'Paquete Copper', 'Sky', 'Latam Airlines', '2024-06-30', '2024-05-02', 59, 540000, 3, 10, 5, 5),
+(8, 5, 11, 9, 'Paquete Obsidian', 'Sky', 'Latam Airlines', '2024-06-30', '2024-05-02', 59, 500000, 4, 10, 5, 4),
+(9, 1, 12, 9, 'Paquete Oblivion', 'Sky', 'Latam Airlines', '2024-06-30', '2024-05-02', 59, 25000, 4, 10, 5, 1),
+(10, 1, 13, 3, 'Paquete Skyrim', 'Sky', 'Latam Airlines', '2024-09-30', '2024-07-02', 90, 5000, 4, 10, 3, 1),
+(11, 10, 14, 3, 'Paquete Morrowind', 'Sky', 'Latam Airlines', '2024-09-25', '2024-07-02', 85, 5000, 3, 10, 5, 4),
+(12, 10, 15, 3, 'Paquete Whiterun', 'Sky', 'Latam Airlines', '2024-07-30', '2024-05-02', 89, 500000, 2, 10, 5, 5),
+(13, 11, 1, 6, 'Paquete Ventalia', 'Sky', 'Latam Airlines', '2024-06-30', '2024-05-02', 59, 340000, 1, 10, 3, 5),
+(14, 11, 1, 6, 'Paquete Falkreath', 'Sky', 'Latam Airlines', '2024-06-30', '2024-05-02', 59, 1200000, 5, 10, 4, 3),
+(15, 12, 1, 6, 'Paquete Riften', 'Sky', 'Latam Airlines', '2024-06-30', '2024-05-02', 59, 2300000, 4, 10, 2, 2),
+(16, 15, 1, 1, 'Paquete Orgrimmar', 'NotSky', 'NotSky', '2024-04-01', '2024-04-01', 1, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 

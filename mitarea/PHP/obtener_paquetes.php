@@ -16,11 +16,12 @@ function obtener_paquetes()
         while ($fila = $result->fetch_assoc()) {
             $paquete = array(
                 "id_pack" => $fila["id_pack"],
+                "hid1" => $fila["hid1"],
+                "hid2" => $fila["hid2"],
+                "hid3" => $fila["hid3"],
                 "Nombre_pack" => $fila["Nombre_pack"],
                 "aero_ida" => $fila["aero_ida"],
                 "aero_vuelta" => $fila["aero_vuelta"],
-                "ciudades" => $fila["ciudades"],
-                "hospedajes" => $fila["hospedajes"],
                 "fecha_salida" => $fila["fecha_salida"],
                 "fecha_llegada" => $fila["fecha_llegada"],
                 "total_noches" => $fila["total_noches"],
