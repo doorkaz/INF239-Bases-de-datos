@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2023 a las 13:12:23
+-- Tiempo de generación: 07-06-2023 a las 08:35:02
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -196,30 +196,6 @@ CREATE TABLE `top_hoteles` (
 -- --------------------------------------------------------
 
 --
--- Estructura Stand-in para la vista `top_paquetes`
--- (Véase abajo para la vista actual)
---
-CREATE TABLE `top_paquetes` (
-`id_pack` int(11)
-,`hid1` int(11)
-,`hid2` int(11)
-,`hid3` int(11)
-,`Nombre_pack` varchar(200)
-,`aero_ida` varchar(200)
-,`aero_vuelta` text
-,`fecha_salida` date
-,`fecha_llegada` date
-,`total_noches` int(11)
-,`precio_persona` int(11)
-,`cant_pack_disp` int(11)
-,`total_packs` int(11)
-,`total_person_pack` int(11)
-,`Num_estrellas` int(1)
-);
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -260,15 +236,6 @@ CREATE TABLE `wishlist` (
 DROP TABLE IF EXISTS `top_hoteles`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `top_hoteles`  AS SELECT `hoteles`.`id_hotel` AS `id_hotel`, `hoteles`.`Nombre_hotel` AS `Nombre_hotel`, `hoteles`.`Num_estrellas` AS `Num_estrellas`, `hoteles`.`Precio_noche` AS `Precio_noche`, `hoteles`.`Ciudad` AS `Ciudad`, `hoteles`.`cant_total_hab` AS `cant_total_hab`, `hoteles`.`hab_disp` AS `hab_disp`, `hoteles`.`estacionamiento` AS `estacionamiento`, `hoteles`.`piscina` AS `piscina`, `hoteles`.`serv_lavanderia` AS `serv_lavanderia`, `hoteles`.`pet_friend` AS `pet_friend`, `hoteles`.`serv_desayuno` AS `serv_desayuno` FROM `hoteles` ORDER BY `hoteles`.`Num_estrellas` DESC LIMIT 0, 10 ;
-
--- --------------------------------------------------------
-
---
--- Estructura para la vista `top_paquetes`
---
-DROP TABLE IF EXISTS `top_paquetes`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `top_paquetes`  AS SELECT `paquetes`.`id_pack` AS `id_pack`, `paquetes`.`hid1` AS `hid1`, `paquetes`.`hid2` AS `hid2`, `paquetes`.`hid3` AS `hid3`, `paquetes`.`Nombre_pack` AS `Nombre_pack`, `paquetes`.`aero_ida` AS `aero_ida`, `paquetes`.`aero_vuelta` AS `aero_vuelta`, `paquetes`.`fecha_salida` AS `fecha_salida`, `paquetes`.`fecha_llegada` AS `fecha_llegada`, `paquetes`.`total_noches` AS `total_noches`, `paquetes`.`precio_persona` AS `precio_persona`, `paquetes`.`cant_pack_disp` AS `cant_pack_disp`, `paquetes`.`total_packs` AS `total_packs`, `paquetes`.`total_person_pack` AS `total_person_pack`, `paquetes`.`Num_estrellas` AS `Num_estrellas` FROM `paquetes` ORDER BY `paquetes`.`Num_estrellas` DESC LIMIT 0, 10 ;
 
 --
 -- Índices para tablas volcadas
@@ -359,7 +326,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- Restricciones para tablas volcadas
