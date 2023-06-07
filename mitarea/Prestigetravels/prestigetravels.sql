@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2023 a las 00:19:34
+-- Tiempo de generación: 07-06-2023 a las 05:10:24
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -93,6 +93,7 @@ INSERT INTO `hoteles` (`id_hotel`, `Nombre_hotel`, `Num_estrellas`, `Precio_noch
 (13, 'Hotel John', 1, 15000, 'Santiago', 1, 1, 0, 0, 0, 0, 1),
 (14, 'Hotel Ciudad Real', 3, 30000, 'Santiago', 1, 1, 0, 0, 1, 0, 0),
 (15, 'Hotel Montaña Roja', 4, 45000, 'La Serena', 1, 1, 0, 1, 1, 1, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -120,22 +121,23 @@ CREATE TABLE `paquetes` (
 -- Volcado de datos para la tabla `paquetes`
 --
 
-INSERT INTO `paquetes` (`id_pack`, `Nombre_pack`, `aero_ida`, `aero_vuelta`, `ciudades`, `hospedajes`, `fecha_llegada`, `fecha_salida`, `total_noches`, `precio_persona`, `cant_pack_disp`, `total_packs`, `total_person_pack`, `Num_estrellas`) VALUES
-(1, 'Paquete Bronze', 'NotSky', 'NotSky', 'Valdivia, Chillan, Santiago', 'Hotel Torres, Hotel Loa', '2024-04-01', '2024-04-02', 1, 1, 1, 1, 1, 1),
-(2, 'Paquete Silver', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia','2024-05-02', '2024-06-30', 100, 250000, 4, 10, 5, 5),
-(3, 'Paquete Emerald', 'Sky', 'Latam Airlines', 'La Serena, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia','2024-05-02', '2024-06-30', 20, 350000, 4, 10, 5, 5),
-(4, 'Paquete Global', 'Sky', 'Latam Airlines', 'Santiago, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia','2024-05-02', '2024-06-30', 50, 25000000, 4, 10, 5, 5),
-(5, 'Paquete Diamond', 'Sky', 'Latam Airlines', 'Chillan, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia','2024-05-02', '2024-06-30', 10, 2500000, 4, 10, 5, 3),
-(6, 'Paquete Star', 'Sky', 'Latam Airlines', 'Coquimbo, Chillan', 'Hotel Valle del Elqui, Hotel Valdivia','2024-05-02', '2024-06-30', 10, 1200000, 3, 10, 5, 2),
-(7, 'Paquete Copper', 'Sky', 'Latam Airlines', 'Coquimbo, Santiago', 'Hotel Valle del Elqui, Hotel Valdivia','2024-05-02', '2024-06-30', 100, 540000, 3, 10, 5, 5),
-(8, 'Paquete Obsidian', 'Sky', 'Latam Airlines', 'Santiago, Coquimbo', 'Hotel Valle del Elqui, Hotel Valdivia','2024-05-02', '2024-06-30', 100, 500000, 4, 10, 5, 4),
-(9, 'Paquete Oblivion', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia','2024-05-02', '2024-06-30', 100, 25000, 4, 10, 5, 1),
-(10, 'Paquete Skyrim', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia','2024-07-02', '2024-09-30', 100, 5000, 4, 10, 3, 1),
-(11, 'Paquete Morrowind', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia','2024-07-02', '2024-09-30', 100, 5000, 3, 10, 5, 4),
-(12, 'Paquete Whiterun', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia','2024-05-02', '2024-07-30', 100, 500000, 2, 10, 5, 5),
-(13, 'Paquete Ventalia', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia','2024-05-02', '2024-06-30', 100, 340000, 1, 10, 3, 5),
-(14, 'Paquete Falkreath', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia','2024-05-02', '2024-06-30', 100, 1200000, 5, 10, 4, 3),
-(15, 'Paquete Riften', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia','2024-05-02', '2024-06-30', 100, 2300000, 4, 10, 2, 2);
+INSERT INTO `paquetes` (`id_pack`, `Nombre_pack`, `aero_ida`, `aero_vuelta`, `ciudades`, `hospedajes`, `fecha_salida`, `fecha_llegada`, `total_noches`, `precio_persona`, `cant_pack_disp`, `total_packs`, `total_person_pack`, `Num_estrellas`) VALUES
+(1, 'Paquete Bronze', 'NotSky', 'NotSky', 'Valdivia, Chillan, Santiago', 'Hotel Torres, Hotel Loa', '2024-04-02', '2024-04-01', 1, 1, 1, 1, 1, 1),
+(2, 'Paquete Silver', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-06-30', '2024-05-02', 59, 250000, 4, 10, 5, 5),
+(3, 'Paquete Emerald', 'Sky', 'Latam Airlines', 'La Serena, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-06-30', '2024-05-02', 59, 350000, 4, 10, 5, 5),
+(4, 'Paquete Global', 'Sky', 'Latam Airlines', 'Santiago, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-06-30', '2024-05-02', 59, 25000000, 4, 10, 5, 5),
+(5, 'Paquete Diamond', 'Sky', 'Latam Airlines', 'Chillan, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-06-30', '2024-05-02', 59, 2500000, 4, 10, 5, 3),
+(6, 'Paquete Star', 'Sky', 'Latam Airlines', 'Coquimbo, Chillan', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-06-30', '2024-05-02', 59, 1200000, 3, 10, 5, 2),
+(7, 'Paquete Copper', 'Sky', 'Latam Airlines', 'Coquimbo, Santiago', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-06-30', '2024-05-02', 59, 540000, 3, 10, 5, 5),
+(8, 'Paquete Obsidian', 'Sky', 'Latam Airlines', 'Santiago, Coquimbo', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-06-30', '2024-05-02', 59, 500000, 4, 10, 5, 4),
+(9, 'Paquete Oblivion', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-06-30', '2024-05-02', 59, 25000, 4, 10, 5, 1),
+(10, 'Paquete Skyrim', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-09-30', '2024-07-02', 90, 5000, 4, 10, 3, 1),
+(11, 'Paquete Morrowind', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-09-25', '2024-07-02', 85, 5000, 3, 10, 5, 4),
+(12, 'Paquete Whiterun', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-07-30', '2024-05-02', 89, 500000, 2, 10, 5, 5),
+(13, 'Paquete Ventalia', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-06-30', '2024-05-02', 59, 340000, 1, 10, 3, 5),
+(14, 'Paquete Falkreath', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-06-30', '2024-05-02', 59, 1200000, 5, 10, 4, 3),
+(15, 'Paquete Riften', 'Sky', 'Latam Airlines', 'Coquimbo, Valdivia', 'Hotel Valle del Elqui, Hotel Valdivia', '2024-06-30', '2024-05-02', 59, 2300000, 4, 10, 2, 2),
+(16, 'Paquete Orgrimmar', 'NotSky', 'NotSky', 'Valdivia, Chillan, Santiago', 'Hotel Torres, Hotel Loa', '2024-04-01', '2024-04-01', 1, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -201,17 +203,16 @@ CREATE TABLE `usuarios` (
   `Correo` varchar(200) NOT NULL,
   `Nombre` varchar(200) NOT NULL,
   `Fecha_Nacimiento` date NOT NULL,
-  `Contrasena` varchar(30) NOT NULL,
-  `wishlist` varchar(200) NOT NULL
+  `Contrasena` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `Correo`, `Nombre`, `Fecha_Nacimiento`, `Contrasena`, `wishlist`) VALUES
-(1, 'juan@mail.com', 'juan', '2003-05-01', 'juan', 'a,AS,Hotel Torres,Hotel Torres,Hotel Torres,Hotel Leyton,Hotel Leyton,Hotel Torres,Hotel Torres'),
-(3, 'pedro@mail.com', 'pedro', '2002-02-12', 'pedro', '');
+INSERT INTO `usuarios` (`id_usuario`, `Correo`, `Nombre`, `Fecha_Nacimiento`, `Contrasena`) VALUES
+(1, 'juan@mail.com', 'juan', '2003-05-01', 'juan'),
+(3, 'pedro@mail.com', 'pedro', '2002-02-12', 'pedro');
 
 -- --------------------------------------------------------
 
@@ -303,13 +304,13 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT de la tabla `hoteles`
 --
 ALTER TABLE `hoteles`
-  MODIFY `id_hotel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_hotel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `paquetes`
 --
 ALTER TABLE `paquetes`
-  MODIFY `id_pack` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pack` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
