@@ -36,6 +36,9 @@
     if ($_GET['bool'] == 0){
         $query = 'SELECT * FROM hoteles WHERE id_hotel = "'.$_GET['product'].'"';
         $result = mysqli_query($conn,$query);
+        $hoteles = array();
+
+
         ?>
     <?php 
     } 
