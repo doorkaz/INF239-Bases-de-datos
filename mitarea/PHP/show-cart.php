@@ -144,6 +144,7 @@ if(!ISSET($_SESSION['Correo'])){
     <?php 
     }
     if (ISSET($_POST['Comprar'])){
+        
         $sql=" CREATE TRIGGER resena AFTER DELETE on cart
         FOR EACH row
         BEGIN
