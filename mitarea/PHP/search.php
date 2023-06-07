@@ -201,25 +201,16 @@ if(ISSET($_GET['search'])){
         echo '<div class="row mb-5" >';
         foreach ($grupo as $paquete) {
             echo '<div class="col-sm-6 col-md-4 col-lg-4">';
-                echo '<div class="card shadow-sm" style="width: 24rem; height: 100%">';
+                echo '<div class="card shadow-sm" style="width: 20rem; height: 100%">';
                     echo '<a href="detalles.php?product='. $paquete['id_pack'].'&bool=1"><img class="card-img-top img-responsive" src="../images/paquetes/p-id' . $paquete["id_pack"] . '-1.jpg" alt="imgpaquete"></a>';
                         echo '<div class="card-body">';
                             echo '<p class="fs-5">' . $paquete["Nombre_pack"] . '</p>';
                             echo '<p class="fs-6">CLP $'. number_format($paquete['precio_persona'], 0, ",", "."). '</p>';
                             echo '</br>';
-                            
-                            echo '</br>';
-                            
-                            
-                            echo '<form action=""  method="POST">';
-                                echo '<div class="d-grid mt-2">';
-                                
-                                    echo '<input type="hidden"  value="'.$paquete['id_pack'].'" name= "pid">'; 
-                                    echo '<input type="hidden"  value="1" name= "bool">'; 
-                                    echo '<input type="hidden"  value="1" name= "cant">'; 
-                                    echo '<button type = "submit" name="cart" class="btn btn-reserve rounded">Reservar</button>';  
-                                    echo '<button type="submit" name="wish" class="btn btn-cart rounded mt-1">Agregar al carrito</button>';
-                                    
+                            echo '<div class="row">';
+                                echo '<div class="col-6">';
+                                echo '<h6>Aerolinea de Ida</h6>';
+                                echo '<p>' . $paquete["aero_ida"]. '</p>';
                                 echo '</div>';
                                 echo '<div class="col-6">';
                                 echo '<h6>Aerolinea de Vuelta</h6>';
@@ -249,15 +240,19 @@ if(ISSET($_GET['search'])){
                             echo '</div>';
                            
                             echo '<a href="detalles.php?product='. $paquete['id_pack'].'&bool=1" class="details-link">Ver más</a>';
-                            echo '<form action="#"  method="POST">';
-                            echo '<div class="d-grid mt-2">';
                             
-                                echo '<input type="hidden"  value="'.$paquete['id_pack'].'" name= "pid">'; 
-                                echo '<input type="hidden"  value="1" name= "bool">'; 
-                                echo '<button type = "submit" name="cart" class="btn btn-reserve rounded">Agregar al carrito</button>';  
-                                echo '<button type="submit" name="wish" class="btn btn-cart rounded mt-1">Wishlist</button>';
-                            echo '</div>';
-                        echo '</form>';
+                            
+                            echo '<form action="#"  method="POST">';
+                                echo '<div class="d-grid mt-2">';
+                                
+                                    echo '<input type="hidden"  value="'.$paquete['id_pack'].'" name= "pid">'; 
+                                    echo '<input type="hidden"  value="1" name= "bool">'; 
+                                    echo '<button type = "submit" name="cart" class="btn btn-reserve rounded">Agregar al carrito</button>';  
+                                    echo '<button type="submit" name="wish" class="btn btn-cart rounded mt-1">Wishlist</button>';
+                                    
+                                    
+                                echo '</div>';
+                            echo '</form>';
                         echo '</div>';
                 echo '</div>';
             echo '</div>';

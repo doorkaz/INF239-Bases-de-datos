@@ -76,7 +76,7 @@
                 echo '<div class="row mb-5" >';
                 foreach ($grupo as $paquete) {
                     echo '<div class="col-sm-6 col-md-4 col-lg-4">';
-                        echo '<div class="card shadow-sm" style="width: 24rem; height: 100%">';
+                        echo '<div class="card shadow-sm" style="width: 20rem; height: 100%">';
                             echo '<a href="detalles.php?product='. $paquete['id_pack'].'&bool=1"><img class="card-img-top img-responsive" src="../images/paquetes/p-id' . $paquete["id_pack"] . '-1.jpg" alt="imgpaquete"></a>';
                                 echo '<div class="card-body">';
                                     echo '<p class="fs-5">' . $paquete["Nombre_pack"] . '</p>';

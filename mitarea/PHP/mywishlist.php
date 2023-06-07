@@ -36,9 +36,9 @@
 	include "Navbar.php";
 	?>
 	
-    <div class="container"> 
+    <div class="container mt-2"> 
     
-        <h2 class='text-center text-white'>Cart</h2>
+        <h2 class='text-center'>Tu lista de deseos</h2>
 
         <table class="table table-bordered bg-white">
             <tr>
