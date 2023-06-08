@@ -129,6 +129,7 @@
                                         
                                             echo '<input type="hidden"  value="'.$paquete['id_pack'].'" name= "pid">'; 
                                             echo '<input type="hidden"  value="1" name= "bool">'; 
+                                            
                                             echo '<button type = "submit" name="cart" class="btn btn-reserve rounded">Agregar al carrito</button>';  
                                             echo '<button type="submit" name="wish" class="btn btn-cart rounded mt-1">Wishlist</button>';
                                             
