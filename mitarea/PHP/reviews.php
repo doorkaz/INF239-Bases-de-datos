@@ -87,87 +87,24 @@
 				<form method="GET" action="#">
 					<input type="hidden" name="pid" value=<?php echo $row["id_pack"] ?>>
 				<td>
-					<div>
-						<div class="star belowchecked">
-							<input type="radio" name="calidadhotel" value="1">
-						</div>
-						<div class="star">
-							<input type="radio" name="calidadhotel" value="2">
-						</div>
-						<div class="star">
-							<input type="radio" name="calidadhotel" value="3">
-						</div>
-						<div class="star">
-							<input type="radio" name="calidadhotel" value="4">
-						</div>
-						<div class="star">
-							<input type="radio" name="calidadhotel" value="5">
-						</div>
-					</div>
+				<input type="number" name="calidadhotel" min=1 max=5 value=1 />
+				</td>
 
-					<td>
-				<div>
-							<div class="star belowchecked">
-								<input type="radio" name="transport" value="1">
-							</div>
-							<div class="star">
-								<input type="radio" name="transport" value="2">
-							</div>
-							<div class="star">
-								<input type="radio" name="transport" value="3">
-							</div>
-							<div class="star">
-								<input type="radio" name="transport" value="4">
-							</div>
-							<div class="star">
-								<input type="radio" name="transport" value="5">
-							</div>
-						</div>
-					</td>
-					<td>
-					<div>
-							<div class="star belowchecked">
-								<input type="radio" name="servicio" value="1">
-							</div>
-							<div class="star">
-								<input type="radio" name="servicio" value="2">
-							</div>
-							<div class="star">
-								<input type="radio" name="servicio" value="3">
-							</div>
-							<div class="star">
-								<input type="radio" name="servicio" value="4">
-							</div>
-							<div class="star">
-								<input type="radio" name="servicio" value="5">
-							</div>
-						</div>
-					</td>
-					<td>
-					<div>
-							<div class="star belowchecked">
-								<input type="radio" name="calprecio" value="1">
-							</div>
-							<div class="star">
-								<input type="radio" name="calprecio" value="2">
-							</div>
-							<div class="star">
-								<input type="radio" name="calprecio" value="3">
-							</div>
-							<div class="star">
-								<input type="radio" name="calprecio" value="4">
-							</div>
-							<div class="star">
-								<input type="radio" name="calprecio" value="5">
-							</div>
-						</div>
-					</td>
-					<td input>
-					<input type="text"style= " width: 100%; max-width: 100%; height: 255px; box-sizing: border-box;" name="resena" placeholder="Escriba">
-					</td>
-					<td>
-					<button style= "height: 255px" stype = "submit" name="resenapack" class="btn btn-reserve rounded">Escribir</button>
-					</td>
+				<td>
+				<input type="number" name="transport" min=1 max=5 value=1 />
+				</td>
+				<td>
+				<input type="number" name="servicio" min=1 max=5 value=1 />
+				</td>
+				<td>
+				<input type="number" name="calprecio" min=1 max=5 value=1 />
+				</td>
+				<td input>
+				<input type="text"style= " width: 100%; max-width: 100%; height: 255px; box-sizing: border-box;" name="resena" placeholder="Escriba">
+				</td>
+				<td>
+				<button style= "height: 255px" stype = "submit" name="resenapack" class="btn btn-reserve rounded">Escribir</button>
+				</td>
 				</form>	
 			</tr>
 			
@@ -182,6 +119,92 @@
 			$resena = $_GET['resena'];
 			$pid =  $_GET['pid'];
 			$sql = "UPDATE resena_pack SET calidad_hoteles = ".$calhotel.", transporte = ".$transport.", servicio = ".$servicio.", rel_cal_precio = ".$calprecio.", texto_resena = '".$resena."' WHERE id_pack = ".$pid."";
+			$result = mysqli_query($conn,$sql);
+		}
+    ?>
+
+	</table>        
+	<table class="table table-bordered bg-white">   
+	<tr>
+		<td>
+		Imagen hotel
+		</td>
+		<td>
+		Nombre hotel
+		</td>
+		<td>
+		Limpieza
+		</td>
+		<td>
+		Servicio
+		</td>
+		<td>
+		Decoracion
+		</td>
+		<td>
+		Calidad de las camas
+		</td>
+		<td>
+		Texto
+		</td>	
+	</tr>
+	<?php
+    
+        $query = 'SELECT * FROM resena_hotel';
+		
+        $result = mysqli_query($conn,$query);
+
+        while ($row = mysqli_fetch_assoc($result)){	
+			$idpack = $row["id_hotel"];	
+			$query = 'SELECT Nombre_hotel FROM hoteles where id_hotel = '.$idpack.'';
+        	$result2 = mysqli_query($conn,$query); 
+			$a = $result2->fetch_assoc();
+			?>
+            <div class="col-6" style="width: 38rem;">
+			<tr>
+                <td style="width: 300px">
+                <img class="card-img-top" src="../images/hoteles/h-id<?php echo $row["id_hotel"]?>-1.jpg" alt="imghotel"> 
+				</td>
+				<td>
+                	<?php echo $a["Nombre_hotel"]; ?>
+				</td>
+				
+				
+				<form method="GET" action="#">
+					<input type="hidden" name="pid" value=<?php echo $row["id_hotel"] ?>>
+				<td>
+				<input type="number" name="limpieza" min=1 max=5 value=1 />
+				</td>
+
+				<td>
+				<input type="number" name="servicio" min=1 max=5 value=1 />
+				</td>
+				<td>
+				<input type="number" name="decoracion" min=1 max=5 value=1 />
+				</td>
+				<td>
+				<input type="number" name="calcama" min=1 max=5 value=1 />
+				</td>
+				<td input>
+				<input type="text"style= " width: 100%; max-width: 100%; height: 255px; box-sizing: border-box;" name="resena" placeholder="Escriba">
+				</td>
+				<td>
+				<button style= "height: 255px" stype = "submit" name="resenahotel" class="btn btn-reserve rounded">Escribir</button>
+				</td>
+				</form>	
+			</tr>
+			
+                
+        <?php
+        }
+		if(ISSET($_GET['resenahotel'])){
+			$limpieza = $_GET['limpieza'];
+			$servicio = $_GET['servicio'];
+			$decoracion = $_GET['decoracion'];
+			$calcama = $_GET['calcama'];
+			$resena = $_GET['resena'];
+			$pid =  $_GET['pid'];
+			$sql = "UPDATE resena_hotel SET limpieza = ".$limpieza.", servicio = ".$servicio.", decoracion = ".$decoracion.", Calidad_cama = ".$calcama.", texto_resena = '".$resena."' WHERE id_hotel= ".$pid."";
 			$result = mysqli_query($conn,$sql);
 		}
     ?>
