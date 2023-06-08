@@ -91,6 +91,7 @@
                                            
                                             echo '<input type="hidden"  value="'.$hotel['id_hotel'].'" name= "pid">'; 
                                             echo '<input type="hidden"  value="0" name= "bool">'; 
+                                            echo '<input type="hidden"  value="1" name= "cant">';
                                             echo '<button type = "submit" name="cart" class="btn btn-reserve rounded">Agregar al carrito</button>';  
                                             echo '<button type="submit" name="wish" class="btn btn-cart rounded mt-1">Wishlist</button>';
                                             
