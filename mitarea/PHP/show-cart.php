@@ -42,6 +42,7 @@ if(!ISSET($_SESSION['Correo'])){
                 <th>Precio por persona</th>
                 <th>Cantidad de paquetes</th>
                 <th>Total</th>
+                <th>Acción</th>
                 
                 
             </tr>
@@ -63,20 +64,34 @@ if(!ISSET($_SESSION['Correo'])){
                     
                 </td>
                 <td>
-                    <?php echo $row["Nombre_pack"]?>
+                    <p><?php echo $row["Nombre_pack"]?></p>
                 </td>
                 <td>
 
                     <?php
                     $precio += $row["precio_persona"];
-                    echo $row["precio_persona"];
+                    echo "<p>CLP $".$row["precio_persona"]."</p>";
                      ?>
                 </td>
                 <td>
-                    <p><?php echo  $row["cant"] ?></p>
+                    <form method="POST" action="#">
+                        <input type="hidden"  value="<?php echo $row["id_pack"] ?>" name= "pid"> 
+                        <input type="hidden"  value="1" name= "bool">
+                        
+                        <input type="number" name="cant" min="1" max="<?php echo $row['cant_pack_disp']?>" value="<?php echo $row["cant"]?>" />
+                        </br>
+                        <button type="submit" name="actualizar" value="1" class="btn btn-primary btn-sm rounded mt-1">Actualizar cantidad</button>
+                    </form>
                 </td>
                 <td>
-                    <p><?php echo  $row["precio_persona"]*$row["cant"] ?></p>
+                    <p>CLP $<?php echo  $row["precio_persona"]*$row["cant"] ?></p>
+                </td>
+                <td>
+                    <form method="POST" action="#">
+                        <input type="hidden"  value="<?php echo $row["id_pack"]?>" name= "pid"> 
+                        <input type="hidden"  value="1" name= "bool">
+                        <button type="submit" name="eliminar" value="1" class="btn btn-danger btn-sm rounded mt-1">Eliminar del carrito</button>
+                    </form>
                 </td>
 
             </tr>
@@ -92,6 +107,7 @@ if(!ISSET($_SESSION['Correo'])){
             <th>Precio por noche</th>
             <th>Cantidad de noches</th>
             <th>Total</th>
+            <th>Acción</th>
             
             
         </tr>
@@ -128,7 +144,7 @@ if(!ISSET($_SESSION['Correo'])){
                         <input type="hidden"  value="<?php echo $row["id_hotel"]?>" name= "pid"> 
                         <input type="hidden"  value="0" name= "bool">
                         
-                        <input type="number" name="cant" value="<?php echo $row["cant"]?>" />
+                        <input type="number" name="cant" min="1" value="<?php echo $row["cant"]?>" />
                         </br>
                         <button type="submit" name="actualizar" value="1" class="btn btn-primary btn-sm rounded mt-1">Actualizar cantidad</button>
                     </form>
@@ -141,6 +157,13 @@ if(!ISSET($_SESSION['Correo'])){
                     ?>
                     
 
+                </td>
+                <td>
+                    <form method="POST" action="#">
+                        <input type="hidden"  value="<?php echo $row["id_hotel"]?>" name= "pid"> 
+                        <input type="hidden"  value="0" name= "bool">
+                        <button type="submit" name="eliminar" value="1" class="btn btn-danger btn-sm rounded mt-1">Eliminar del carrito</button>
+                    </form>
                 </td>
                
             </tr>
@@ -163,10 +186,7 @@ if(!ISSET($_SESSION['Correo'])){
 
     <?php 
     }
-    if (ISSET($_POST['Comprar'])){
-        $sql= "DELETE FROM cart";
-        $result= mysqli_query($conn,$sql);
-    }
+
     ?>
     </table>
     <?php
