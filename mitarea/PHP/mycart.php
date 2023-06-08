@@ -41,6 +41,14 @@
 		if (ISSET($_POST['actualizar'])){
 			include 'actualizarCarrito.php'; 
 		} 
+		if (ISSET($_POST['eliminar'])){
+			include "eliminarCarrito.php";
+		}
+		if (ISSET($_POST['Comprar'])){
+			$uid = $_SESSION['id_usuario'];
+			$sql= "DELETE FROM cart WHERE uid = $uid";
+			$result= mysqli_query($conn,$sql);
+		}
 	?>
     <div class="container"> 
     
