@@ -12,7 +12,7 @@ if(!ISSET($_SESSION['Correo'])){
     if(mysqli_num_rows($result_check) == 1){
         echo 'Producto ya existe en el carrito';
     } else {
-        $query = "INSERT INTO `cart`(`pid`, `uid`, `bool`) VALUES ('$pid','$uid','$bool')";   
+        $query = "INSERT INTO `cart`(`pid`, `uid`, `bool`, `cant`) VALUES ('$pid','$uid','$bool','$cant')";   
         $result = mysqli_query($conn, $query);
     }
 }
