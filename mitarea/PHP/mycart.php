@@ -37,19 +37,7 @@
 	<?php 
 	include "Navbar.php";
 	?>
-	<?php 
-		if (ISSET($_POST['actualizar'])){
-			include 'actualizarCarrito.php'; 
-		} 
-		if (ISSET($_POST['eliminar'])){
-			include "eliminarCarrito.php";
-		}
-		if (ISSET($_POST['Comprar'])){
-			$uid = $_SESSION['id_usuario'];
-			$sql= "DELETE FROM cart WHERE uid = $uid";
-			$result= mysqli_query($conn,$sql);
-		}
-	?>
+
     <div class="container"> 
     
         <h2 class='text-center text-white'>Cart</h2>
@@ -58,7 +46,24 @@
 
     </div>
 	
-    
+  	<?php 
+		if (ISSET($_POST['actualizar'])){
+			include 'actualizarCarrito.php'; 
+		} 
+		if (ISSET($_POST['eliminar'])){
+			$uid = $_SESSION['id_usuario'];
+			$pid = $_POST['pid'];
+			$bool = $_POST['bool'];
+			
+			$sql = "DELETE FROM cart WHERE pid = ".$pid." AND bool = ".$bool." AND uid = ".$uid;
+			$result = mysqli_query($conn, $sql);
+		}
+		if (ISSET($_POST['Comprar'])){
+			$uid = $_SESSION['id_usuario'];
+			$sql= "DELETE FROM cart WHERE uid = $uid";
+			$result= mysqli_query($conn,$sql);
+		}
+	?>  
     
     <footer class="footer row">
     </footer>
