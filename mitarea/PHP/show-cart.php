@@ -29,7 +29,8 @@ include "db_conn.php";
 if(!ISSET($_SESSION['Correo'])){
     header('location:login.php');
 } else { 
-    $sql = "SELECT * FROM cart JOIN paquetes ON paquetes.id_pack = cart.pid WHERE cart.bool = '1'";
+    $uid = $_SESSION['id_usuario'];
+    $sql = "SELECT * FROM cart JOIN paquetes ON paquetes.id_pack = cart.pid WHERE cart.bool = '1' AND cart.uid = $uid";
     $result = mysqli_query($conn, $sql);
     $precio = 0;
     if (mysqli_num_rows($result) > 0){
@@ -39,6 +40,7 @@ if(!ISSET($_SESSION['Correo'])){
 				<th>Imagen</th>
                 <th>Paquete</th>
                 <th>Precio por persona</th>
+                <th>Cantidad de paquetes</th>
                 <th>Total</th>
                 
                 
@@ -54,8 +56,11 @@ if(!ISSET($_SESSION['Correo'])){
         while ($row = mysqli_fetch_assoc($result)){      
             ?>
             <tr>
-                <td>
-                    <?php echo '<img class="card-img-top img-responsive" src="../images/paquetes/p-id' . $row["id_pack"] . '-1.jpg" alt="imgpaquete">'?>
+                <td style="width: 250px;">
+                    <div style="width: 250px;">
+                    <?php echo '<img class="card-img-top img-responsive" height="100px" src="../images/paquetes/p-id' . $row["id_pack"] . '-1.jpg" alt="imgpaquete">'?>
+                    </div>
+                    
                 </td>
                 <td>
                     <?php echo $row["Nombre_pack"]?>
@@ -68,7 +73,10 @@ if(!ISSET($_SESSION['Correo'])){
                      ?>
                 </td>
                 <td>
-                    <?php echo  $row["precio_persona"]?>
+                    <p><?php echo  $row["cant"] ?></p>
+                </td>
+                <td>
+                    <p><?php echo  $row["precio_persona"]*$row["cant"] ?></p>
                 </td>
 
             </tr>
@@ -82,13 +90,14 @@ if(!ISSET($_SESSION['Correo'])){
             <th>Imagen</th>
             <th>Hotel</th>
             <th>Precio por noche</th>
+            <th>Cantidad de noches</th>
             <th>Total</th>
             
             
         </tr>
         
     <?php
-    $sql = "SELECT * FROM cart JOIN hoteles ON hoteles.id_hotel = cart.pid WHERE cart.bool = '0'";
+    $sql = "SELECT * FROM cart JOIN hoteles ON hoteles.id_hotel = cart.pid WHERE cart.bool = '0' AND cart.uid = $uid";
     $result = mysqli_query($conn, $sql);
     
     if (mysqli_num_rows($result) > 0){
@@ -102,7 +111,7 @@ if(!ISSET($_SESSION['Correo'])){
             }
 ?>
             <tr>
-                <td>
+                <td style="width: 250px;">
                     <div class="card" style="width: 250px;">
                         <?php echo '<img class="card-img-top" src="../images/hoteles/h-id' . $row["id_hotel"] . '-1.jpg" alt="imghotel">'?>
                     </div>
@@ -110,22 +119,30 @@ if(!ISSET($_SESSION['Correo'])){
                 <td>
                     <?php echo $row["Nombre_hotel"]?>
                 </td>
-                <form action="GET">
-                    <?php
-                    $precioFechaPairs = array("precio" => $row["Precio_noche"]);
-                        // Add more precio-fecha pairs as needed
-                    ?>
-                    <td>
-                    <?php  echo $row["Precio_noche"]?>
-                    <input type="hidden" class="form-control input-sm" name="precio" id="precio"  value="<?php echo $cant; ?>"
-                    </td>
                 <td>
-                    <p id="resultado"> <?php 
+                    <p>CLP $<?php  echo $row["Precio_noche"]?></p>
+                
+                </td> 
+                <td>
+                    <form method="POST" action="#">
+                        <input type="hidden"  value="<?php echo $row["id_hotel"]?>" name= "pid"> 
+                        <input type="hidden"  value="0" name= "bool">
+                        
+                        <input type="number" name="cant" value="<?php echo $row["cant"]?>" />
+                        </br>
+                        <button type="submit" name="actualizar" value="1" class="btn btn-primary btn-sm rounded mt-1">Actualizar cantidad</button>
+                    </form>
+                </td>   
+                <td>
+                    
+                    <?php 
                     $precio += $cant*$row["Precio_noche"];
-                    echo  $cant*$row["Precio_noche"];?></p>
+                    echo  '<p>CLP $'. $cant*$row["Precio_noche"] . '</p>';
+                    ?>
+                    
 
                 </td>
-                </form>
+               
             </tr>
         <?php 
         }      
@@ -134,35 +151,19 @@ if(!ISSET($_SESSION['Correo'])){
             <td style="border: none"></td>
             <td style="border: none"></td>
             <td style="border: none"></td>
-        <td colspan=4 aria-posinset="right">
-            Precio total = <?php echo $precio?> <br>
-            <form method="POST" action="#" >
-            <button type="submit" name="Comprar" id ="Comprar" class="btn btn-cart rounded mt-1"> Compra boludo </button>
-            </form>
-        </td>
+            <td colspan=4 aria-posinset="right">
+                CLP $<?php echo $precio?> 
+                </br>
+                <form method="POST" action="#" >
+                    <button type="submit" name="Comprar" id ="Comprar" class="btn btn-cart rounded mt-1"> Comprar</button>
+                </form>
+            </td>
         
         </tr>
 
     <?php 
     }
     if (ISSET($_POST['Comprar'])){
-        $sql="DROP TRIGGER IF EXISTS resena";
-        $result= mysqli_query($conn,$sql);
-        $sql="CREATE TRIGGER resena AFTER DELETE on cart
-        FOR EACH ROW
-        BEGIN
-            IF OLD.bool = 0 THEN
-                INSERT INTO resena_hotel (id_hotel, id_usuario)
-                VALUES (OLD.pid, OLD.uid);
-                UPDATE hoteles set hab_disp =hab_disp - 1 WHERE id_hotel = OLD.pid;
-            ELSE
-                INSERT INTO resena_pack (id_pack, id_usuario)
-                VALUES (OLD.pid, OLD.uid);
-                UPDATE hoteles set cant_pack_disp =cant_pack_disp - 1 WHERE id_pack = OLD.pid;
-            END IF;
-        END
-        ";
-        $result= mysqli_query($conn,$sql);
         $sql= "DELETE FROM cart";
         $result= mysqli_query($conn,$sql);
     }

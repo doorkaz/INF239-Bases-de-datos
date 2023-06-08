@@ -45,6 +45,7 @@
                 <th>Imagen</th>
                 <th>Paquete/Hotel</th>
                 <th>Calificación</th>
+				<th>Acciones</th>
                 
                 
             </tr>

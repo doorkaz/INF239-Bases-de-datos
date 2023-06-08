@@ -37,7 +37,11 @@
 	<?php 
 	include "Navbar.php";
 	?>
-	
+	<?php 
+		if (ISSET($_POST['actualizar'])){
+			include 'actualizarCarrito.php'; 
+		} 
+	?>
     <div class="container"> 
     
         <h2 class='text-center text-white'>Cart</h2>
