@@ -20,7 +20,7 @@
 	<link rel = "stylesheet" type = "text/css" href = "../css/navbar.css">
 	<link rel = "stylesheet" type = "text/css" href = "../css/table.css">
 	<link rel = "stylesheet" type = "text/css" href = "../css/general.css">
-	<link rel = "stylesheet" type = "text/css" href = "../css/star.css">
+	<link rel = "stylesheet" type = "text/css" href = "../css/star2.css">
 	<!--Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<!-- FONTAWESOME -->
@@ -38,21 +38,172 @@
 	?>
 <div class="container">
 <div class="row rounded mt-5 p-3 border border shadow">
+<table class="table table-bordered bg-white">   
+	<tr>
+		<td>
+		Imagen paquete
+		</td>
+		<td>
+		Nombre paquete
+		</td>
+		<td>
+		Calidad Hotel
+		</td>
+		<td>
+		Transporte
+		</td>
+		<td>
+		Servicio
+		</td>
+		<td>
+		Relación cálidad y Precio
+		</td>
+		<td>
+		Texto
+		</td>	
+	</tr>
 <?php
     
-        $query = 'SELECT * FROM resena_hotel';
+        $query = 'SELECT * FROM resena_pack';
+		
         $result = mysqli_query($conn,$query);
-        while ($row = mysqli_fetch_assoc($result)){ ?>
+
+        while ($row = mysqli_fetch_assoc($result)){	
+			$idpack = $row["id_pack"];	
+			$query = 'SELECT * FROM paquetes where id_pack = '.$idpack.'';
+        	$result2 = mysqli_query($conn,$query); 
+			$a = $result2->fetch_assoc();
+			?>
             <div class="col-6" style="width: 38rem;">
-                <img class="card-img-top" src="../images/hoteles/h-id<?php echo $row["id_hotel"]?>-1.jpg" alt="imghotel">
-                	
+			<tr>
+                <td style="width: 300px">
+                <img class="card-img-top" src="../images/paquetes/p-id<?php echo $row["id_pack"]?>-1.jpg" alt="imghotel"> 
+				</td>
+				<td>
+                	<?php echo $a["Nombre_pack"]; ?>
+				</td>
+				
+				
+				<form method="GET" action="#">
+					<input type="hidden" name="pid" value=<?php echo $row["id_pack"] ?>>
+				<td>
+					<div>
+						<div class="star belowchecked">
+							<input type="radio" name="calidadhotel" value="1">
+						</div>
+						<div class="star">
+							<input type="radio" name="calidadhotel" value="2">
+						</div>
+						<div class="star">
+							<input type="radio" name="calidadhotel" value="3">
+						</div>
+						<div class="star">
+							<input type="radio" name="calidadhotel" value="4">
+						</div>
+						<div class="star">
+							<input type="radio" name="calidadhotel" value="5">
+						</div>
+					</div>
+
+					<td>
+				<div>
+							<div class="star belowchecked">
+								<input type="radio" name="transport" value="1">
+							</div>
+							<div class="star">
+								<input type="radio" name="transport" value="2">
+							</div>
+							<div class="star">
+								<input type="radio" name="transport" value="3">
+							</div>
+							<div class="star">
+								<input type="radio" name="transport" value="4">
+							</div>
+							<div class="star">
+								<input type="radio" name="transport" value="5">
+							</div>
+						</div>
+					</td>
+					<td>
+					<div>
+							<div class="star belowchecked">
+								<input type="radio" name="servicio" value="1">
+							</div>
+							<div class="star">
+								<input type="radio" name="servicio" value="2">
+							</div>
+							<div class="star">
+								<input type="radio" name="servicio" value="3">
+							</div>
+							<div class="star">
+								<input type="radio" name="servicio" value="4">
+							</div>
+							<div class="star">
+								<input type="radio" name="servicio" value="5">
+							</div>
+						</div>
+					</td>
+					<td>
+					<div>
+							<div class="star belowchecked">
+								<input type="radio" name="calprecio" value="1">
+							</div>
+							<div class="star">
+								<input type="radio" name="calprecio" value="2">
+							</div>
+							<div class="star">
+								<input type="radio" name="calprecio" value="3">
+							</div>
+							<div class="star">
+								<input type="radio" name="calprecio" value="4">
+							</div>
+							<div class="star">
+								<input type="radio" name="calprecio" value="5">
+							</div>
+						</div>
+					</td>
+					<td input>
+					<input type="text"style= " width: 100%; max-width: 100%; height: 255px; box-sizing: border-box;" name="resena" placeholder="Escriba">
+					</td>
+					<td>
+					<button style= "height: 255px" stype = "submit" name="resenapack" class="btn btn-reserve rounded">Escribir</button>
+					</td>
+				</form>	
+			</tr>
+			
+                
         <?php
         }
-
+		if(ISSET($_GET['resenapack'])){
+			$calhotel = $_GET['calidadhotel'];
+			$transport = $_GET['transport'];
+			$servicio = $_GET['servicio'];
+			$calprecio = $_GET['calprecio'];
+			$resena = $_GET['resena'];
+			$pid =  $_GET['pid'];
+			$sql = "UPDATE resena_pack SET calidad_hoteles = ".$calhotel.", transporte = ".$transport.", servicio = ".$servicio.", rel_cal_precio = ".$calprecio.", texto_resena = '".$resena."' WHERE id_pack = ".$pid."";
+			$result = mysqli_query($conn,$sql);
+		}
     ?>
 
-        
+	</table>        
     
     </div>
-    
+	<script>
+	$(function () {
+		$(".star").click(function(){
+			var x = $(this).find("input[type='radio']");
+			var val = x.val();
+			x.attr("checked",true);
+			$(".star input[type='radio']").each(function(){
+				if ($(this).val()<=val){
+					$(this).parent().addClass("belowchecked");
+				} else {
+					$(this).parent().removeClass("belowchecked");
+				}
+			});
+		});
+
+	});
+	</script>
 </body>
