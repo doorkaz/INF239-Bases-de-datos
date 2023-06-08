@@ -88,8 +88,8 @@ if(!ISSET($_SESSION['Correo'])){
                 </td>
                 <td>
                     <form method="POST" action="#">
-                        <input type="hidden"  value="<?php echo $row["id_pack"]?>" name= "pid"> 
-                        <input type="hidden"  value="1" name= "bool">
+                        <input type="hidden"  value="<?php echo $row["id"]?>" name= "cid"> 
+                       
                         <button type="submit" name="eliminar" value="1" class="btn btn-danger btn-sm rounded mt-1">Eliminar del carrito</button>
                     </form>
                 </td>

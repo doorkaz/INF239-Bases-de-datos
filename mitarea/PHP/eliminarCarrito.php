@@ -4,10 +4,9 @@ if(!ISSET($_SESSION['Correo'])){
     header('location:login.php');
 } else {
     $uid = $_SESSION['id_usuario'];
-    $pid = $_POST['pid'];
-    $bool = $_POST['bool'];
+    $cid = $_POST['cid'];
 
-    $sql = "DELETE FROM cart WHERE pid = $pid AND bool = $bool AND uid = $uid";
+    $sql = "DELETE FROM cart WHERE id = $cid";
     $result = mysqli_query($conn, $sql);
    
 }
