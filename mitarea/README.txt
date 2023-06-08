@@ -7,6 +7,7 @@
     Instrucciones para la correcta ejecución del programa:
         - Abrir XAMPP Control Panel
         - Click en 'Start' en Apache y MySql
+        - Exportar base de datos del archivo prestigtravels.sql dentro de la carpeta sql
 
 
 
