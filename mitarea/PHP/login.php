@@ -19,7 +19,7 @@
             <hr style="height: 3px;">
             <h3 class="text-center fs-3">Iniciar sesión</h3>
             <?php if(isset($_GET["exito"])){ ?>
-                <div class="alert alert-sucess" role = "alert">Cuenta registrada satisfactoriamente</div>
+                <div class="alert alert-primary" role = "alert">Cuenta registrada satisfactoriamente</div>
             <?php }?>
             <?php if (isset($_GET['errorlogin'])){ ?>
                 <div class="alert alert-danger" role = "alert"><?php echo "Acceso inválido. Por favor, inténtelo otra vez"; ?></div>

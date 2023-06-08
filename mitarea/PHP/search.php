@@ -29,7 +29,7 @@ if(ISSET($_GET['search'])){
         
     }
     else if (!empty($_GET['pack']) && empty($_GET['hotel'])){
-        $querypack = "SELECT paquetes.*, h1.*, h2.*, h3.* FROM paquetes";
+        $querypack = "SELECT paquetes.*, h1.*, h2.*, h3.* FROM paquetes ";
         $querypack .= "JOIN hoteles AS h1 ON paquetes.hid1 = h1.id_hotel ";
         $querypack .= "JOIN hoteles AS h2 ON paquetes.hid2 = h2.id_hotel ";
         $querypack .= "JOIN hoteles AS h3 ON paquetes.hid3= h3.id_hotel "; 
@@ -77,6 +77,9 @@ if(ISSET($_GET['search'])){
             $querypack .= "AND Num_estrellas >= $calificacion ";
             $queryhotel .= "AND Num_estrellas >= $calificacion ";
         }
+        $fecha_salida = $_GET['fecha_salida'];
+        $fecha_llegada = $_GET['fecha_llegada'];
+        $querypack .= "AND fecha_salida BETWEEN '$fecha_salida' AND ' $fecha_llegada' AND fecha_llegada BETWEEN '$fecha_salida' AND ' $fecha_llegada' ";
        
     }
     $fecha_salida =  date_create($_GET['fecha_salida']);
