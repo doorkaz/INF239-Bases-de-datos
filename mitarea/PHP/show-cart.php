@@ -136,7 +136,7 @@ if(!ISSET($_SESSION['Correo'])){
             <td style="border: none"></td>
         <td colspan=4 aria-posinset="right">
             Precio total = <?php echo $precio?> <br>
-            <form method="POST" >
+            <form method="POST" action="#" >
             <button type="submit" name="Comprar" id ="Comprar" class="btn btn-cart rounded mt-1"> Compra boludo </button>
             </form>
         </td>
