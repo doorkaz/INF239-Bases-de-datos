@@ -3,11 +3,13 @@
         Pablo Retamales Jara    ROL: 202173650-6
         Gabriel Leyton Leyton   ROL: 202173624-7
 /------------------------------------------------------------------/
-
+    Probado con github:
+    
     Instrucciones para la correcta ejecución del programa:
         - Abrir XAMPP Control Panel
         - Click en 'Start' en Apache y MySql
         - Exportar base de datos del archivo prestigtravels.sql dentro de la carpeta sql
+        - En el buscador escribir : "http://localhost/Tarea2Datos/mitarea/php/index.php"
 
 
 
