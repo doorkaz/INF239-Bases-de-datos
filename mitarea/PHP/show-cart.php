@@ -154,23 +154,11 @@ if(!ISSET($_SESSION['Correo'])){
             IF OLD.bool = 0 THEN
                 INSERT INTO resena_hotel (id_hotel, id_usuario)
                 VALUES (OLD.pid, OLD.uid);
-                UPDATE hoteles set hab_dip =
-                VALUES (OLD.pid, OLD.uid);
+                UPDATE hoteles set hab_disp =hab_disp - 1 WHERE id_hotel = OLD.pid;
             ELSE
                 INSERT INTO resena_pack (id_pack, id_usuario)
                 VALUES (OLD.pid, OLD.uid);
-            END IF;
-        END
-        ";
-        $sql="CREATE TRIGGER menoscant AFTER DELETE on cart
-        FOR EACH ROW
-        BEGIN
-            IF OLD.bool = 0 THEN
-                INSERT INTO resena_hotel (id_hotel, id_usuario)
-                VALUES (OLD.pid, OLD.uid);
-            ELSE
-                INSERT INTO resena_pack (id_pack, id_usuario)
-                VALUES (OLD.pid, OLD.uid);
+                UPDATE hoteles set cant_pack_disp =cant_pack_disp - 1 WHERE id_pack = OLD.pid;
             END IF;
         END
         ";
