@@ -54,7 +54,7 @@
 					$result = mysqli_query($conn,$query);
 					$row = $result->fetch_assoc();
 				?>
-				<div class="col-6" style="width: 36rem;">
+				<div class="col-6" style="width: 38rem;">
 					<img class="card-img-top" src="../images/hoteles/h-id<?php echo $row["id_hotel"]?>-1.jpg" alt="imghotel">	
 					
 				
@@ -62,10 +62,9 @@
 				<div class="col-6">
 					<p class="fs-2"><?php echo $row['Nombre_hotel'] ?></p>
 					<p class="fs-4">CLP $<?php echo number_format($row['Precio_noche'], 0, ",", ".")?></p>
+					<p class="fs-5"><?php echo $row['Ciudad']?></p>
 					</br>
-					</br>
-					</br>
-					</br>
+					
 					<?php
 					if ($row["estacionamiento"] == 1){
 						echo '<p><i class="fa-solid fa-car"></i> Estacionamiento';
@@ -114,17 +113,23 @@
 						echo '<i class="bi bi-x"></i>';
 					}
 					echo '</p>';
-					echo '<form action="#"  method="POST">';
-						echo '<div class="d-grid mt-2">';
-							
-							echo '<input type="hidden"  value="'.$row['id_hotel'].'" name= "pid">'; 
-							echo '<input type="hidden"  value="0" name= "bool">'; 
-							echo '<button type = "submit" name="cart" class="btn btn-reserve rounded">Agregar al carrito</button>';  
-							echo '<button type="submit" name="wish" class="btn btn-cart rounded mt-1">Wishlist</button>';
-							
-						echo '</div>';
-					echo '</form>';
+					echo '</br>';
+					for ($i = 1; $i <= $row['Num_estrellas']; $i++) {
+						echo '<i class="bi bi-star-fill me-1"></i>'; 
+					}
+					for ($i = $row['Num_estrellas'] + 1; $i <= 5; $i++) {
+						echo '<i class="bi bi-star me-1"></i>';
+					}
+
 					?>
+					<form action="#"  method="POST">
+						<div class="d-grid mt-2">
+							<input type="hidden" value="<?= $row['id_hotel'] ?>" name="pid">
+							<input type="hidden" value="0" name="bool">
+							<button type="submit" name="cart" class="btn btn-reserve rounded">Agregar al carrito</button>
+							<button type="submit" name="wish" class="btn btn-cart rounded mt-1">Wishlist</button>
+						</div>
+					</form>
 				
 				</div>
 				<?php 
@@ -133,8 +138,8 @@
 					$result = mysqli_query($conn,$query);
 					$paquete = $result->fetch_assoc();
 					?>
-					<div class="col-6" style="width: 36rem;">
-						<img class="card-img-top" src="../images/paquetes/p-id<?php echo $paquete["id_pack"]?>-1.jpg" alt="imghotel">	
+					<div class="col-6">
+						<img class="card-img-top" height="550px" src="../images/paquetes/p-id<?php echo $paquete["id_pack"]?>-1.jpg" alt="imghotel">	
 					</div>
 					<div class="col-6">
 						<p class="fs-2"><?php echo $paquete['Nombre_pack'] ?></p>
@@ -175,8 +180,16 @@
 								<p><?php echo date("d-m-Y", strtotime($paquete["fecha_llegada"])); ?></p>
 							</div>
 						</div>
-						
-				
+						</br>
+						<?php
+						for ($i = 1; $i <= $paquete['Num_estrellas']; $i++) {
+							echo '<i class="bi bi-star-fill me-1"></i>'; 
+						}
+						for ($i = $paquete['Num_estrellas'] + 1; $i <= 5; $i++) {
+							echo '<i class="bi bi-star me-1"></i>';
+						}
+						?>
+								
 						<form action="#" method="POST">
 							<div class="d-grid mt-2">
 								<input type="hidden" value="<?php echo $paquete['id_pack']; ?>" name="pid">

@@ -7,3 +7,9 @@
 .carousel-color{
     color: #FFF;
 }
+
+.peopleCarouselImg img {
+    width: auto;
+    height: 225px;
+    max-height: 225px;
+  }

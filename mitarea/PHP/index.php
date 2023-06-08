@@ -37,14 +37,183 @@
 	include "Navbar.php";
 	?>
 
-	<div class="container">
+	<div class="container mt-3">
+		<h1>¡Bienvenido a PrestigeTravels!</h1>
+		<h4>Arma tu panorama con nosotros</h4>
 		<div class="row mt-3">
-			<h1>¡Bienvenido a PrestigeTravels!</h1>
-			<h4>Arma tu panorama con nosotros</h4>
-			
-			</div>
-			<form class="col-md-6" method="GET" action="index.php">
 
+			<div class="col-6">
+			
+				<div id="carouselExampleCaptions2" class="carousel slide">
+					
+					<div class="carousel-indicators">
+						
+						<?php
+						$sql = "SELECT * FROM top_paquetes";
+						$result = mysqli_query($conn, $sql);
+						$numero = mysqli_num_rows($result);
+						for($i = 0; $i < $numero; $i++){
+							if ($i == 0){
+								echo '<button type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>';
+							} else {
+								echo '<button type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide-to="'. $i.'" aria-label="Slide ' . $i+1 .'"></button>';
+							}
+						}
+						?>
+					</div>
+				
+					<div class="carousel-inner">
+				
+						<?php
+						// Consulta la view
+						$sql = "SELECT * FROM top_paquetes";
+						$paquetes = mysqli_query($conn, $sql);
+						
+						// Itera hotel por hotel de la view
+						$first = false;
+						foreach ($paquetes as $paquete) {
+							// Primer item del carousel active
+							if ($first == false){
+								echo '<div class="carousel-item active">';
+									echo '<img src="../images/paquetes/p-id'. $paquete['id_pack'].'-1.jpg" height="450px" class="d-block w-100" alt="firstSlide">';
+									echo '<div class="carousel-caption d-none d-md-block rounded glass-efect">';
+										echo '<h5 class="carousel-color">'.$paquete['Nombre_pack'].'</h5>';
+										for ($i = 1; $i <= $paquete["Num_estrellas"]; $i++) {
+											echo '<i class="bi bi-star-fill me-1"></i>'; 
+										}
+										for ($i = $paquete["Num_estrellas"] + 1; $i <= 5; $i++) {
+											echo '<i class="bi bi-star me-1"></i>';
+										}
+									echo '</div>';
+								echo '</div>';
+								$first = true;
+							} else {
+								echo '<div class="carousel-item">';
+									echo '<img src="../images/paquetes/p-id'. $paquete['id_pack'].'-1.jpg" height="450px" class="d-block w-100" alt="second">';
+									echo '<div class="carousel-caption d-none d-md-block glass-efect">';
+										echo '<h5>'. $paquete['Nombre_pack'].'</h5>';
+										for ($i = 1; $i <= $paquete["Num_estrellas"]; $i++) {
+											echo '<i class="bi bi-star-fill me-1"></i>'; 
+										}
+										for ($i = $paquete["Num_estrellas"] + 1; $i <= 5; $i++) {
+											echo '<i class="bi bi-star me-1"></i>';
+										}
+									echo '</div>';
+								echo '</div>';
+							}
+						}
+						?>
+					</div>
+				
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide="prev">
+				
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				
+						<span class="visually-hidden">Previous</span>
+				
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide="next">
+				
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				
+						<span class="visually-hidden">Next</span>
+				
+					</button>
+				</div>			
+			</div>
+			
+				
+			<div class="col-6">
+
+				<div id="carouselExampleCaptions" class="carousel slide">
+
+					<div class="carousel-indicators">
+						
+						<?php
+						$sql = "SELECT * FROM top_hoteles";
+						$result = mysqli_query($conn, $sql);
+						$numero = mysqli_num_rows($result);
+						for($i = 0; $i < $numero; $i++){
+							if ($i == 0){
+								echo '<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>';
+							} else {
+								echo '<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="'. $i.'" aria-label="Slide ' . $i+1 .'"></button>';
+							}
+						}
+						?>
+					</div>
+
+					<div class="carousel-inner">
+
+						<?php
+						// Consulta la view
+						$sql = "SELECT * FROM top_hoteles";
+						$hoteles = mysqli_query($conn, $sql);
+						
+						// Itera hotel por hotel de la view
+						$first = false;
+						foreach ($hoteles as $hotel) {
+							// Primer item del carousel active
+							if ($first == false){
+								echo '<div class="carousel-item active">';
+									echo '<img src="../images/hoteles/h-id'. $hotel['id_hotel'].'-1.jpg" height="450px" class="d-block w-100" alt="firstSlide">';
+									echo '<div class="carousel-caption d-none d-md-block rounded glass-efect">';
+										echo '<h5 class="carousel-color">'.$hotel['Nombre_hotel'].'</h5>';
+										for ($i = 1; $i <= $hotel["Num_estrellas"]; $i++) {
+											echo '<i class="bi bi-star-fill me-1"></i>'; 
+										}
+										for ($i = $hotel["Num_estrellas"] + 1; $i <= 5; $i++) {
+											echo '<i class="bi bi-star me-1"></i>';
+										}
+									echo '</div>';
+								echo '</div>';
+								$first = true;
+							} else {
+								echo '<div class="carousel-item">';
+									echo '<img src="../images/hoteles/h-id'. $hotel['id_hotel'].'-1.jpg" height="450px" class="d-block w-100" alt="second">';
+									echo '<div class="carousel-caption d-none d-md-block glass-efect">';
+										echo '<h5>'. $hotel['Nombre_hotel'].'</h5>';
+										for ($i = 1; $i <= $hotel["Num_estrellas"]; $i++) {
+											echo '<i class="bi bi-star-fill me-1"></i>'; 
+										}
+										for ($i = $hotel["Num_estrellas"] + 1; $i <= 5; $i++) {
+											echo '<i class="bi bi-star me-1"></i>';
+										}
+									echo '</div>';
+								echo '</div>';
+							}
+						}
+						?>
+					</div>
+
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+
+						<span class="visually-hidden">Previous</span>
+
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+
+						<span class="visually-hidden">Next</span>
+
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="row mt-5">
+			
+		</div>
+	</div>
+	<div class = "shadow-sm py-3 rounded mt-2" style="background-color: #fafafb">
+
+		<div class="container">
+
+			<div class="row">
+				<h1>Busqueda avanzada</h1>
+				<form  method="GET" action="index.php">
 					<tbody>
 						<tr>
 							<td>Nombre hotel/paquete</td>
@@ -77,201 +246,33 @@
 						<tr>
 							<input type="number" class="form-control input-sm" name="precio" placeholder="¿A que precio desea su reserva?">
 						</tr>
-						Calificación preferida:
+						Calificación mínima:
 						<div>
 							<div class="star belowchecked">
-									<input type="radio" name="rating" value="1">
-								</div>
+								<input type="radio" name="rating" value="1">
+							</div>
 							<div class="star">
-									<input type="radio" name="rating" value="2">
-								</div>
+								<input type="radio" name="rating" value="2">
+							</div>
 							<div class="star">
-									<input type="radio" name="rating" value="3">
-								</div>
+								<input type="radio" name="rating" value="3">
+							</div>
 							<div class="star">
-									<input type="radio" name="rating" value="4">
-								</div>
+								<input type="radio" name="rating" value="4">
+							</div>
 							<div class="star">
-									<input type="radio" name="rating" value="5">
-								</div>
+								<input type="radio" name="rating" value="5">
+							</div>
 						</div>
 					</tbody>
-				<div class="d-grid form-group mt-2">
-					<button class = "btn btn-success" type =  "submit" name="search" id = "search">Busca ya</button>
-				</div>
-		</div>
-	</div>
-	<div class = "shadow-sm py-3 rounded mt-2" style="background-color: #fafafb">
-
-		<div class="container">
-
-			<div class="row">
-				<h1 class="fs-2">¡Te presentamos nuestros hoteles favoritos!</h1>			
-				<div class="col-12">
-
-					<div id="carouselExampleCaptions" class="carousel slide"  style="width: 40rem;">
-
-						<div class="carousel-indicators">
-							
-							<?php
-							$sql = "SELECT * FROM top_hoteles";
-							$result = mysqli_query($conn, $sql);
-							$numero = mysqli_num_rows($result);
-							for($i = 0; $i < $numero; $i++){
-								if ($i == 0){
-									echo '<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>';
-								} else {
-									echo '<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="'. $i.'" aria-label="Slide ' . $i+1 .'"></button>';
-								}
-							}
-							?>
-						</div>
-
-						<div class="carousel-inner">
-
-							<?php
-							// Consulta la view
-							$sql = "SELECT * FROM top_hoteles";
-							$hoteles = mysqli_query($conn, $sql);
-							
-							// Itera hotel por hotel de la view
-							$first = false;
-							foreach ($hoteles as $hotel) {
-								// Primer item del carousel active
-								if ($first == false){
-									echo '<div class="carousel-item active">';
-										echo '<img src="../images/hoteles/h-id'. $hotel['id_hotel'].'-1.jpg" class="d-block w-100" alt="firstSlide">';
-										echo '<div class="carousel-caption d-none d-md-block rounded glass-efect">';
-											echo '<h5 class="carousel-color">'.$hotel['Nombre_hotel'].'</h5>';
-											for ($i = 1; $i <= $hotel["Num_estrellas"]; $i++) {
-												echo '<i class="bi bi-star-fill me-1"></i>'; 
-											}
-											for ($i = $hotel["Num_estrellas"] + 1; $i <= 5; $i++) {
-												echo '<i class="bi bi-star me-1"></i>';
-											}
-										echo '</div>';
-									echo '</div>';
-									$first = true;
-								} else {
-									echo '<div class="carousel-item">';
-										echo '<img src="../images/hoteles/h-id'. $hotel['id_hotel'].'-1.jpg" class="d-block w-100" alt="second">';
-										echo '<div class="carousel-caption d-none d-md-block glass-efect">';
-											echo '<h5>'. $hotel['Nombre_hotel'].'</h5>';
-											for ($i = 1; $i <= $hotel["Num_estrellas"]; $i++) {
-												echo '<i class="bi bi-star-fill me-1"></i>'; 
-											}
-											for ($i = $hotel["Num_estrellas"] + 1; $i <= 5; $i++) {
-												echo '<i class="bi bi-star me-1"></i>';
-											}
-										echo '</div>';
-									echo '</div>';
-								}
-							}
-							?>
-						</div>
-
-						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-
-							<span class="visually-hidden">Previous</span>
-
-						</button>
-						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-
-							<span class="visually-hidden">Next</span>
-
-						</button>
+					<div class="d-grid form-group mt-2">
+						<button class = "btn btn-success" type =  "submit" name="search" id = "search">Busca ya</button>
 					</div>
-				</div>
+				</form>
 
 			</div>
 			
-			<div class="row mt-5">
-				<h1 class="fs-2">¡Te presentamos nuestros paquetes favoritos!</h1>
-				<div class="col-12">
-					
-					<div id="carouselExampleCaptions2" class="carousel slide" style="width: 32rem;">
-						
-						<div class="carousel-indicators">
-							
-							<?php
-							$sql = "SELECT * FROM top_paquetes";
-							$result = mysqli_query($conn, $sql);
-							$numero = mysqli_num_rows($result);
-							for($i = 0; $i < $numero; $i++){
-								if ($i == 0){
-									echo '<button type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>';
-								} else {
-									echo '<button type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide-to="'. $i.'" aria-label="Slide ' . $i+1 .'"></button>';
-								}
-							}
-							?>
-						</div>
-					
-						<div class="carousel-inner">
-					
-							<?php
-							// Consulta la view
-							$sql = "SELECT * FROM top_paquetes";
-							$paquetes = mysqli_query($conn, $sql);
-							
-							// Itera hotel por hotel de la view
-							$first = false;
-							foreach ($paquetes as $paquete) {
-								// Primer item del carousel active
-								if ($first == false){
-									echo '<div class="carousel-item active">';
-										echo '<img src="../images/paquetes/p-id'. $paquete['id_pack'].'-1.jpg" class="d-block w-100" alt="firstSlide">';
-										echo '<div class="carousel-caption d-none d-md-block rounded glass-efect">';
-											echo '<h5 class="carousel-color">'.$paquete['Nombre_pack'].'</h5>';
-											for ($i = 1; $i <= $paquete["Num_estrellas"]; $i++) {
-												echo '<i class="bi bi-star-fill me-1"></i>'; 
-											}
-											for ($i = $paquete["Num_estrellas"] + 1; $i <= 5; $i++) {
-												echo '<i class="bi bi-star me-1"></i>';
-											}
-										echo '</div>';
-									echo '</div>';
-									$first = true;
-								} else {
-									echo '<div class="carousel-item">';
-										echo '<img src="../images/paquetes/p-id'. $paquete['id_pack'].'-1.jpg" class="d-block w-100" alt="second">';
-										echo '<div class="carousel-caption d-none d-md-block glass-efect">';
-											echo '<h5>'. $paquete['Nombre_pack'].'</h5>';
-											for ($i = 1; $i <= $paquete["Num_estrellas"]; $i++) {
-												echo '<i class="bi bi-star-fill me-1"></i>'; 
-											}
-											for ($i = $paquete["Num_estrellas"] + 1; $i <= 5; $i++) {
-												echo '<i class="bi bi-star me-1"></i>';
-											}
-										echo '</div>';
-									echo '</div>';
-								}
-							}
-							?>
-						</div>
-					
-						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide="prev">
-					
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					
-							<span class="visually-hidden">Previous</span>
-					
-						</button>
-						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide="next">
-					
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					
-							<span class="visually-hidden">Next</span>
-					
-						</button>
-					</div>			
-				</div>
-				
-			</div>
+			
 
 			<?php
 			include 'search.php';
@@ -309,18 +310,18 @@
 		}
 		$(function () {
 
-		$(".star").click(function(){
-			var x = $(this).find("input[type='radio']");
-			var val = x.val();
-			x.attr("checked",true);
-			$(".star input[type='radio']").each(function(){
-				if ($(this).val()<=val){
-					$(this).parent().addClass("belowchecked");
-				} else {
-					$(this).parent().removeClass("belowchecked");
-				}
+			$(".star").click(function(){
+				var x = $(this).find("input[type='radio']");
+				var val = x.val();
+				x.attr("checked",true);
+				$(".star input[type='radio']").each(function(){
+					if ($(this).val()<=val){
+						$(this).parent().addClass("belowchecked");
+					} else {
+						$(this).parent().removeClass("belowchecked");
+					}
+				});
 			});
-		});
 
 		});
 	</script>

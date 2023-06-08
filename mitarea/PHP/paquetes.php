@@ -113,8 +113,15 @@
                                         echo "<p>".date("d-m-Y", strtotime($paquete["fecha_llegada"])). "</p>";
                                         echo '</div>';
                                     echo '</div>';
-                                   
+                                    echo '</br>';
                                     echo '<a href="detalles.php?product='. $paquete['id_pack'].'&bool=1" class="details-link">Ver más</a>';
+                                    echo '</br>';
+                                    for ($i = 1; $i <= $paquete['Num_estrellas']; $i++) {
+                                        echo '<i class="bi bi-star-fill me-1"></i>'; 
+                                    }
+                                    for ($i = $paquete['Num_estrellas'] + 1; $i <= 5; $i++) {
+                                        echo '<i class="bi bi-star me-1"></i>';
+                                    }
                                     
                                     
                                     echo '<form action="#"  method="POST">';
