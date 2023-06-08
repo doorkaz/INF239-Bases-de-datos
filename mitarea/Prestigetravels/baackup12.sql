@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-06-2023 a las 03:21:27
+-- Tiempo de generación: 08-06-2023 a las 02:31:04
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -36,22 +36,6 @@ CREATE TABLE `cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `cart`
---
-
-INSERT INTO `cart` (`id`, `pid`, `uid`, `cant`, `bool`) VALUES
-(7, 10, 1, 0, 0),
-(8, 5, 1, 0, 1),
-(9, 1, 1, 0, 1),
-(10, 2, 1, 0, 1),
-(11, 11, 1, 0, 0),
-(12, 13, 1, 7671, 0),
-(13, 3, 1, 1, 0),
-(14, 4, 1, 1, 0),
-(15, 2, 1, 1, 0),
-(16, 1, 1, 1, 0);
-
---
 -- Disparadores `cart`
 --
 DELIMITER $$
@@ -59,11 +43,9 @@ CREATE TRIGGER `resena` AFTER DELETE ON `cart` FOR EACH ROW BEGIN
             IF OLD.bool = 0 THEN
                 INSERT INTO resena_hotel (id_hotel, id_usuario)
                 VALUES (OLD.pid, OLD.uid);
-                UPDATE hoteles set hab_disp =hab_disp - 1 WHERE id_hotel = OLD.pid;
             ELSE
                 INSERT INTO resena_pack (id_pack, id_usuario)
                 VALUES (OLD.pid, OLD.uid);
-                UPDATE hoteles set cant_pack_disp =cant_pack_disp - 1 WHERE id_pack = OLD.pid;
             END IF;
         END
 $$
@@ -95,11 +77,11 @@ CREATE TABLE `hoteles` (
 --
 
 INSERT INTO `hoteles` (`id_hotel`, `Nombre_hotel`, `Num_estrellas`, `Precio_noche`, `Ciudad`, `cant_total_hab`, `hab_disp`, `estacionamiento`, `piscina`, `serv_lavanderia`, `pet_friend`, `serv_desayuno`) VALUES
-(1, 'Hotel Torres', 5, 100000, 'Santiago', 50, 3, 1, 1, 1, 1, 1),
+(1, 'Hotel Torres', 5, 100000, 'Santiago', 50, 4, 1, 1, 1, 1, 1),
 (2, 'Hotel Mistral', 4, 30000, 'Santiago', 25, 10, 0, 1, 1, 0, 0),
 (3, 'Hotel Leyton', 3, 50000, 'Santiago', 25, 10, 0, 1, 0, 1, 1),
 (4, 'Hotel Chillan', 2, 25000, 'Chillan', 25, 20, 0, 1, 0, 0, 1),
-(5, 'Hotel Valle del Elqui', 1, 15000, 'Coquimbo', 25, 9, 0, 1, 0, 0, 0),
+(5, 'Hotel Valle del Elqui', 1, 15000, 'Coquimbo', 25, 10, 0, 1, 0, 0, 0),
 (6, 'Hotel Valdivia', 3, 30000, 'Valdivia', 45, 2, 0, 0, 1, 1, 1),
 (7, 'Hotel Loa', 4, 45000, 'Calama', 45, 2, 0, 0, 0, 0, 0),
 (8, 'Hotel La Serena', 2, 25000, 'La Serena', 45, 5, 0, 0, 0, 1, 0),
@@ -178,9 +160,7 @@ CREATE TABLE `resena_hotel` (
 --
 
 INSERT INTO `resena_hotel` (`id_hotel`, `id_usuario`, `limpieza`, `servicio`, `decoracion`, `Calidad_cama`, `texto_resena`) VALUES
-(1, 1, 0, 0, 0, 0, ''),
 (2, 1, 0, 0, 0, 0, ''),
-(5, 1, 0, 0, 0, 0, ''),
 (6, 1, 0, 0, 0, 0, '');
 
 -- --------------------------------------------------------
@@ -293,8 +273,7 @@ CREATE TABLE `wishlist` (
 
 INSERT INTO `wishlist` (`id`, `pid`, `uid`, `bool`) VALUES
 (57, 2, 1, 0),
-(58, 1, 1, 1),
-(59, 2, 1, 1);
+(58, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -379,7 +358,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT de la tabla `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `hoteles`
@@ -403,7 +382,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- Restricciones para tablas volcadas
