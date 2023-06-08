@@ -29,7 +29,7 @@ if(ISSET($_GET['search'])){
         
     }
     else if (!empty($_GET['pack']) && empty($_GET['hotel'])){
-        $querypack = "SELECT paquetes.*, h1.*, h2.*, h3.* FROM paquetes";
+        $querypack = "SELECT paquetes.*, h1.*, h2.*, h3.* FROM paquetes ";
         $querypack .= "JOIN hoteles AS h1 ON paquetes.hid1 = h1.id_hotel ";
         $querypack .= "JOIN hoteles AS h2 ON paquetes.hid2 = h2.id_hotel ";
         $querypack .= "JOIN hoteles AS h3 ON paquetes.hid3= h3.id_hotel "; 
