@@ -136,7 +136,7 @@ if(!ISSET($_SESSION['Correo'])){
             <td style="border: none"></td>
         <td colspan=4 aria-posinset="right">
             Precio total = <?php echo $precio?> <br>
-            <form method="POST" >
+            <form method="POST" action="#" >
             <button type="submit" name="Comprar" id ="Comprar" class="btn btn-cart rounded mt-1"> Compra boludo </button>
             </form>
         </td>
@@ -146,20 +146,25 @@ if(!ISSET($_SESSION['Correo'])){
     <?php 
     }
     if (ISSET($_POST['Comprar'])){
-        $sql="DROP TRIGGER IF EXISTS resena CREATE TRIGGER resena AFTER DELETE on cart
+        $sql="DROP TRIGGER IF EXISTS resena";
+        $result= mysqli_query($conn,$sql);
+        $sql="CREATE TRIGGER resena AFTER DELETE on cart
         FOR EACH ROW
         BEGIN
             IF OLD.bool = 0 THEN
-                INSERT INTO resena_hotel (id_resenia, id_usuario)
+                INSERT INTO resena_hotel (id_hotel, id_usuario)
                 VALUES (OLD.pid, OLD.uid);
+                UPDATE hoteles set hab_disp =hab_disp - 1 WHERE id_hotel = OLD.pid;
             ELSE
-                INSERT INTO resena_(id_resenia, id_usuario)
+                INSERT INTO resena_pack (id_pack, id_usuario)
                 VALUES (OLD.pid, OLD.uid);
+                UPDATE hoteles set cant_pack_disp =cant_pack_disp - 1 WHERE id_pack = OLD.pid;
             END IF;
         END
         ";
         $result= mysqli_query($conn,$sql);
-
+        $sql= "DELETE FROM cart";
+        $result= mysqli_query($conn,$sql);
     }
     ?>
     </table>

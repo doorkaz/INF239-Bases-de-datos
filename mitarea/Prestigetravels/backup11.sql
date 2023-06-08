@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-06-2023 a las 02:31:04
+-- Tiempo de generación: 07-06-2023 a las 13:12:23
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -21,6 +21,23 @@ SET time_zone = "+00:00";
 -- Base de datos: `prestigetravels`
 --
 
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `add_wishlist` (IN `val` VARCHAR(200), IN `id` INT(11))   BEGIN 
+    UPDATE usuarios
+    SET wishlist=(
+        CASE WHEN wishlist=''
+            THEN val
+            ELSE concat_WS('\,',wishlist, val)
+        END
+    )
+    WHERE id_usuario = id;
+END$$
+
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -31,25 +48,9 @@ CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
   `pid` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
-  `cant` int(11) NOT NULL,
+  `timestamp` date NOT NULL DEFAULT current_timestamp(),
   `bool` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Disparadores `cart`
---
-DELIMITER $$
-CREATE TRIGGER `resena` AFTER DELETE ON `cart` FOR EACH ROW BEGIN
-            IF OLD.bool = 0 THEN
-                INSERT INTO resena_hotel (id_hotel, id_usuario)
-                VALUES (OLD.pid, OLD.uid);
-            ELSE
-                INSERT INTO resena_pack (id_pack, id_usuario)
-                VALUES (OLD.pid, OLD.uid);
-            END IF;
-        END
-$$
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -155,14 +156,6 @@ CREATE TABLE `resena_hotel` (
   `texto_resena` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `resena_hotel`
---
-
-INSERT INTO `resena_hotel` (`id_hotel`, `id_usuario`, `limpieza`, `servicio`, `decoracion`, `Calidad_cama`, `texto_resena`) VALUES
-(2, 1, 0, 0, 0, 0, ''),
-(6, 1, 0, 0, 0, 0, '');
-
 -- --------------------------------------------------------
 
 --
@@ -178,14 +171,6 @@ CREATE TABLE `resena_pack` (
   `rel_cal_precio` int(11) NOT NULL,
   `texto_resena` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `resena_pack`
---
-
-INSERT INTO `resena_pack` (`id_pack`, `id_usuario`, `calidad_hoteles`, `transporte`, `servicio`, `rel_cal_precio`, `texto_resena`) VALUES
-(1, 1, 0, 0, 0, 0, ''),
-(16, 1, 0, 0, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -266,14 +251,6 @@ CREATE TABLE `wishlist` (
   `uid` int(11) NOT NULL,
   `bool` tinyint(1) NOT NULL COMMENT '1 if paquete 0 if hotel'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `wishlist`
---
-
-INSERT INTO `wishlist` (`id`, `pid`, `uid`, `bool`) VALUES
-(57, 2, 1, 0),
-(58, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -358,7 +335,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT de la tabla `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `hoteles`
@@ -382,7 +359,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- Restricciones para tablas volcadas
