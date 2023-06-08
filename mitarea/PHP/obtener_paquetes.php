@@ -28,7 +28,8 @@ function obtener_paquetes()
                 "precio_persona" => $fila["precio_persona"],
                 "cant_pack_disp" => $fila["cant_pack_disp"],
                 "total_packs" => $fila["total_packs"],
-                "total_person_pack" => $fila["cant_pack_disp"]
+                "total_person_pack" => $fila["cant_pack_disp"],
+                "Num_estrellas" => $fila["Num_estrellas"]
             );
 
             $paquetes[] = $paquete;

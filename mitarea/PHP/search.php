@@ -136,7 +136,8 @@ if(ISSET($_GET['search'])){
                 "precio_persona" => $fila["precio_persona"],
                 "cant_pack_disp" => $fila["cant_pack_disp"],
                 "total_packs" => $fila["total_packs"],
-                "total_person_pack" => $fila["cant_pack_disp"]
+                "total_person_pack" => $fila["cant_pack_disp"],
+                "Num_estrellas" => $fila["Num_estrellas"]
             );
 
             $paquetes[] = $paquete;
@@ -238,9 +239,15 @@ if(ISSET($_GET['search'])){
                                 echo "<p>".date("d-m-Y", strtotime($paquete["fecha_llegada"])). "</p>";
                                 echo '</div>';
                             echo '</div>';
-                           
+                            echo '</br>';
                             echo '<a href="detalles.php?product='. $paquete['id_pack'].'&bool=1" class="details-link">Ver más</a>';
-                            
+                            echo '</br>';
+                            for ($i = 1; $i <= $paquete['Num_estrellas']; $i++) {
+                                echo '<i class="bi bi-star-fill me-1"></i>'; 
+                            }
+                            for ($i = $paquete['Num_estrellas'] + 1; $i <= 5; $i++) {
+                                echo '<i class="bi bi-star me-1"></i>';
+                            }
                             
                             echo '<form action="#"  method="POST">';
                                 echo '<div class="d-grid mt-2">';

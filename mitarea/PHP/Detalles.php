@@ -64,8 +64,7 @@
 					<p class="fs-4">CLP $<?php echo number_format($row['Precio_noche'], 0, ",", ".")?></p>
 					</br>
 					</br>
-					</br>
-					</br>
+					
 					<?php
 					if ($row["estacionamiento"] == 1){
 						echo '<p><i class="fa-solid fa-car"></i> Estacionamiento';
@@ -114,17 +113,23 @@
 						echo '<i class="bi bi-x"></i>';
 					}
 					echo '</p>';
-					echo '<form action="#"  method="POST">';
-						echo '<div class="d-grid mt-2">';
-							
-							echo '<input type="hidden"  value="'.$row['id_hotel'].'" name= "pid">'; 
-							echo '<input type="hidden"  value="0" name= "bool">'; 
-							echo '<button type = "submit" name="cart" class="btn btn-reserve rounded">Agregar al carrito</button>';  
-							echo '<button type="submit" name="wish" class="btn btn-cart rounded mt-1">Wishlist</button>';
-							
-						echo '</div>';
-					echo '</form>';
+					echo '</br>';
+					for ($i = 1; $i <= $row['Num_estrellas']; $i++) {
+						echo '<i class="bi bi-star-fill me-1"></i>'; 
+					}
+					for ($i = $row['Num_estrellas'] + 1; $i <= 5; $i++) {
+						echo '<i class="bi bi-star me-1"></i>';
+					}
+
 					?>
+					<form action="#"  method="POST">
+						<div class="d-grid mt-2">
+							<input type="hidden" value="<?= $row['id_hotel'] ?>" name="pid">
+							<input type="hidden" value="0" name="bool">
+							<button type="submit" name="cart" class="btn btn-reserve rounded">Agregar al carrito</button>
+							<button type="submit" name="wish" class="btn btn-cart rounded mt-1">Wishlist</button>
+						</div>
+					</form>
 				
 				</div>
 				<?php 
