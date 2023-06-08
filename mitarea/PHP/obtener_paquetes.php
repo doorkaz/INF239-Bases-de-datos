@@ -4,7 +4,7 @@ function obtener_paquetes()
 {
     include "db_conn.php";
     // Consulta sql de paquetes
-    $sql = "SELECT * FROM paquetes";
+    $sql = "SELECT * FROM paquetes WHERE cant_pack_disp >= 1";
     $result = mysqli_query($conn, $sql);
 
     // Guarda paquetes en un array

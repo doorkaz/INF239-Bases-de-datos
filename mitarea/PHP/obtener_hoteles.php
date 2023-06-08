@@ -6,7 +6,7 @@ function obtener_hoteles()
 {
     include "db_conn.php";
     // Consulta sql de hoteles
-    $sql = "SELECT * FROM hoteles";
+    $sql = "SELECT * FROM hoteles WHERE hab_disp >= 1";
     $result = mysqli_query($conn, $sql);
 
     // Guarda hoteles en un array
@@ -23,6 +23,7 @@ function obtener_hoteles()
                 "Precio_noche" => $fila["Precio_noche"],
                 "Ciudad" => $fila["Ciudad"],
                 "cant_total_hab" => $fila["cant_total_hab"],
+                "hab_disp" => $fila["hab_disp"],
                 "estacionamiento" => $fila["estacionamiento"],
                 "piscina" => $fila["piscina"],
                 "serv_lavanderia" => $fila["serv_lavanderia"],
